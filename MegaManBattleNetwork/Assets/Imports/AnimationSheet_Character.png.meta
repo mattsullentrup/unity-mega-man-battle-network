@@ -186,12 +186,12 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 1
+  spriteGenerateFallbackPhysicsShape: 0
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -241,12 +241,12 @@ TextureImporter:
       name: AnimationSheet_Character_0
       rect:
         serializedVersion: 2
-        x: 6
-        y: 255
-        width: 18
-        height: 30
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 0
+        y: 256
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0, y: 0.625}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -263,12 +263,12 @@ TextureImporter:
       name: AnimationSheet_Character_1
       rect:
         serializedVersion: 2
-        x: 38
-        y: 255
-        width: 18
-        height: 29
+        x: 32
+        y: 256
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -285,12 +285,12 @@ TextureImporter:
       name: AnimationSheet_Character_2
       rect:
         serializedVersion: 2
-        x: 6
-        y: 223
-        width: 18
-        height: 30
+        x: 0
+        y: 224
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -307,12 +307,12 @@ TextureImporter:
       name: AnimationSheet_Character_3
       rect:
         serializedVersion: 2
-        x: 38
-        y: 223
-        width: 18
-        height: 29
+        x: 32
+        y: 224
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -329,12 +329,12 @@ TextureImporter:
       name: AnimationSheet_Character_4
       rect:
         serializedVersion: 2
-        x: 5
-        y: 191
-        width: 20
-        height: 29
+        x: 0
+        y: 192
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -351,12 +351,12 @@ TextureImporter:
       name: AnimationSheet_Character_5
       rect:
         serializedVersion: 2
-        x: 38
-        y: 191
-        width: 18
-        height: 30
+        x: 32
+        y: 192
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -373,12 +373,12 @@ TextureImporter:
       name: AnimationSheet_Character_6
       rect:
         serializedVersion: 2
-        x: 70
-        y: 191
-        width: 19
-        height: 29
+        x: 64
+        y: 192
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -395,12 +395,12 @@ TextureImporter:
       name: AnimationSheet_Character_7
       rect:
         serializedVersion: 2
-        x: 102
-        y: 191
-        width: 18
-        height: 30
+        x: 96
+        y: 192
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -417,12 +417,12 @@ TextureImporter:
       name: AnimationSheet_Character_8
       rect:
         serializedVersion: 2
-        x: 5
-        y: 159
-        width: 19
-        height: 27
+        x: 0
+        y: 160
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -439,12 +439,12 @@ TextureImporter:
       name: AnimationSheet_Character_9
       rect:
         serializedVersion: 2
-        x: 38
-        y: 159
-        width: 18
-        height: 28
+        x: 32
+        y: 160
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -461,12 +461,12 @@ TextureImporter:
       name: AnimationSheet_Character_10
       rect:
         serializedVersion: 2
-        x: 70
-        y: 159
-        width: 18
-        height: 30
+        x: 64
+        y: 160
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -483,12 +483,12 @@ TextureImporter:
       name: AnimationSheet_Character_11
       rect:
         serializedVersion: 2
-        x: 102
-        y: 159
-        width: 18
-        height: 29
+        x: 96
+        y: 160
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -505,12 +505,12 @@ TextureImporter:
       name: AnimationSheet_Character_12
       rect:
         serializedVersion: 2
-        x: 133
-        y: 159
-        width: 19
-        height: 27
+        x: 128
+        y: 160
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -527,12 +527,12 @@ TextureImporter:
       name: AnimationSheet_Character_13
       rect:
         serializedVersion: 2
-        x: 166
-        y: 159
-        width: 18
-        height: 28
+        x: 160
+        y: 160
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -549,12 +549,12 @@ TextureImporter:
       name: AnimationSheet_Character_14
       rect:
         serializedVersion: 2
-        x: 198
-        y: 159
-        width: 18
-        height: 30
+        x: 192
+        y: 160
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -571,12 +571,12 @@ TextureImporter:
       name: AnimationSheet_Character_15
       rect:
         serializedVersion: 2
-        x: 230
-        y: 159
-        width: 18
-        height: 29
+        x: 224
+        y: 160
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -593,12 +593,12 @@ TextureImporter:
       name: AnimationSheet_Character_16
       rect:
         serializedVersion: 2
-        x: 6
-        y: 127
-        width: 18
-        height: 30
+        x: 0
+        y: 128
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -615,12 +615,12 @@ TextureImporter:
       name: AnimationSheet_Character_17
       rect:
         serializedVersion: 2
-        x: 37
-        y: 127
-        width: 20
-        height: 28
+        x: 32
+        y: 128
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -637,12 +637,12 @@ TextureImporter:
       name: AnimationSheet_Character_18
       rect:
         serializedVersion: 2
-        x: 68
-        y: 127
-        width: 22
-        height: 25
+        x: 64
+        y: 128
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -659,12 +659,12 @@ TextureImporter:
       name: AnimationSheet_Character_19
       rect:
         serializedVersion: 2
-        x: 70
-        y: 97
-        width: 18
-        height: 30
+        x: 96
+        y: 128
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -681,12 +681,12 @@ TextureImporter:
       name: AnimationSheet_Character_20
       rect:
         serializedVersion: 2
-        x: 99
-        y: 127
-        width: 24
-        height: 22
+        x: 128
+        y: 128
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -703,12 +703,12 @@ TextureImporter:
       name: AnimationSheet_Character_21
       rect:
         serializedVersion: 2
-        x: 101
-        y: 76
-        width: 20
-        height: 52
+        x: 160
+        y: 128
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -725,12 +725,12 @@ TextureImporter:
       name: AnimationSheet_Character_22
       rect:
         serializedVersion: 2
-        x: 133
-        y: 127
-        width: 21
-        height: 25
+        x: 0
+        y: 96
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -747,12 +747,12 @@ TextureImporter:
       name: AnimationSheet_Character_23
       rect:
         serializedVersion: 2
-        x: 133
-        y: 98
-        width: 21
-        height: 29
+        x: 32
+        y: 96
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -769,12 +769,12 @@ TextureImporter:
       name: AnimationSheet_Character_24
       rect:
         serializedVersion: 2
-        x: 165
-        y: 127
-        width: 19
-        height: 28
+        x: 64
+        y: 96
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -791,12 +791,12 @@ TextureImporter:
       name: AnimationSheet_Character_25
       rect:
         serializedVersion: 2
-        x: 6
-        y: 95
-        width: 18
-        height: 30
+        x: 96
+        y: 96
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -813,12 +813,12 @@ TextureImporter:
       name: AnimationSheet_Character_26
       rect:
         serializedVersion: 2
-        x: 37
-        y: 95
-        width: 20
-        height: 27
+        x: 128
+        y: 96
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -835,12 +835,12 @@ TextureImporter:
       name: AnimationSheet_Character_27
       rect:
         serializedVersion: 2
-        x: 165
-        y: 95
-        width: 21
-        height: 27
+        x: 160
+        y: 96
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -857,12 +857,12 @@ TextureImporter:
       name: AnimationSheet_Character_28
       rect:
         serializedVersion: 2
-        x: 197
-        y: 95
-        width: 19
-        height: 28
+        x: 192
+        y: 96
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -879,12 +879,12 @@ TextureImporter:
       name: AnimationSheet_Character_29
       rect:
         serializedVersion: 2
-        x: 229
-        y: 95
-        width: 19
-        height: 29
+        x: 224
+        y: 96
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -901,12 +901,12 @@ TextureImporter:
       name: AnimationSheet_Character_30
       rect:
         serializedVersion: 2
-        x: 6
-        y: 63
-        width: 18
-        height: 30
+        x: 0
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -923,12 +923,12 @@ TextureImporter:
       name: AnimationSheet_Character_31
       rect:
         serializedVersion: 2
-        x: 37
-        y: 63
-        width: 20
-        height: 28
+        x: 32
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -945,12 +945,12 @@ TextureImporter:
       name: AnimationSheet_Character_32
       rect:
         serializedVersion: 2
-        x: 69
+        x: 64
         y: 64
-        width: 20
-        height: 25
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -967,12 +967,12 @@ TextureImporter:
       name: AnimationSheet_Character_33
       rect:
         serializedVersion: 2
-        x: 6
-        y: 31
-        width: 18
-        height: 30
+        x: 96
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -989,12 +989,12 @@ TextureImporter:
       name: AnimationSheet_Character_34
       rect:
         serializedVersion: 2
-        x: 36
-        y: 31
-        width: 20
-        height: 29
+        x: 0
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1011,12 +1011,12 @@ TextureImporter:
       name: AnimationSheet_Character_35
       rect:
         serializedVersion: 2
-        x: 69
-        y: 31
-        width: 19
-        height: 27
+        x: 32
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1033,12 +1033,12 @@ TextureImporter:
       name: AnimationSheet_Character_36
       rect:
         serializedVersion: 2
-        x: 101
-        y: 0
-        width: 23
-        height: 56
+        x: 64
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1055,12 +1055,12 @@ TextureImporter:
       name: AnimationSheet_Character_37
       rect:
         serializedVersion: 2
-        x: 133
-        y: 0
-        width: 30
-        height: 50
+        x: 96
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1077,12 +1077,12 @@ TextureImporter:
       name: AnimationSheet_Character_38
       rect:
         serializedVersion: 2
-        x: 161
-        y: 31
-        width: 31
-        height: 14
+        x: 128
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1099,12 +1099,12 @@ TextureImporter:
       name: AnimationSheet_Character_39
       rect:
         serializedVersion: 2
-        x: 193
-        y: 31
-        width: 31
-        height: 13
+        x: 160
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1121,12 +1121,12 @@ TextureImporter:
       name: AnimationSheet_Character_40
       rect:
         serializedVersion: 2
-        x: 225
-        y: 31
-        width: 31
-        height: 13
+        x: 192
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1143,12 +1143,12 @@ TextureImporter:
       name: AnimationSheet_Character_41
       rect:
         serializedVersion: 2
-        x: 6
-        y: 0
-        width: 18
-        height: 29
+        x: 224
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1165,12 +1165,12 @@ TextureImporter:
       name: AnimationSheet_Character_42
       rect:
         serializedVersion: 2
-        x: 39
+        x: 0
         y: 0
-        width: 19
-        height: 27
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1187,12 +1187,12 @@ TextureImporter:
       name: AnimationSheet_Character_43
       rect:
         serializedVersion: 2
-        x: 70
+        x: 32
         y: 0
-        width: 23
-        height: 29
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1209,12 +1209,12 @@ TextureImporter:
       name: AnimationSheet_Character_44
       rect:
         serializedVersion: 2
-        x: 165
+        x: 64
         y: 0
-        width: 24
-        height: 25
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1231,12 +1231,12 @@ TextureImporter:
       name: AnimationSheet_Character_45
       rect:
         serializedVersion: 2
-        x: 193
+        x: 96
         y: 0
-        width: 23
-        height: 27
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1253,12 +1253,12 @@ TextureImporter:
       name: AnimationSheet_Character_46
       rect:
         serializedVersion: 2
-        x: 224
+        x: 128
         y: 0
-        width: 24
-        height: 29
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1271,11 +1271,77 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: AnimationSheet_Character_47
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc9a51460054ba3a3a6a0c6d365cf466
+      internalID: -2087232445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AnimationSheet_Character_48
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0936ddfae20b7a657a5f585896c59fd9
+      internalID: 21836580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AnimationSheet_Character_49
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ad6c79d4609132b88565b813e868ff4
+      internalID: -1995221418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: c616784a87a658a4db4ebf78349363e8
     internalID: 0
     vertices: []
     indices: 
@@ -1327,6 +1393,9 @@ TextureImporter:
       AnimationSheet_Character_44: 520556416462525903
       AnimationSheet_Character_45: -580482337852342584
       AnimationSheet_Character_46: -7424985502434106660
+      AnimationSheet_Character_47: -2087232445
+      AnimationSheet_Character_48: 21836580
+      AnimationSheet_Character_49: -1995221418
       AnimationSheet_Character_5: 9056928846778740707
       AnimationSheet_Character_6: -2833313214525304144
       AnimationSheet_Character_7: 7085597507905639842
