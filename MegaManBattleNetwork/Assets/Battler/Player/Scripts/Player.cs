@@ -2,15 +2,13 @@ using UnityEngine;
 
 [RequireComponent(typeof(PlayerInput), typeof(PlayerMovement), typeof(PlayerShootComponent))]
 [RequireComponent(typeof(PlayerChipComponent))]
-public class NewMonoBehaviourScript : MonoBehaviour
+public class Player : Battler
 {
-    
     private PlayerMovement _playerMovement;
     private PlayerInput _playerInput;
     private PlayerShootComponent _playerShootComponent;
     private PlayerChipComponent _playerChipComponent;
-    private bool _canMove = true;
-    public bool CanMove => _canMove;
+    public bool CanMove { get; set; } = true;
 
     private void Awake()
     {
@@ -22,5 +20,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
         _playerInput.PlayerMovement = _playerMovement;
         _playerInput.PlayerChipComponent = _playerChipComponent;
         _playerInput.PlayerShootComponent = _playerShootComponent;
+
+        _playerMovement.Player = this;
     }
 }
