@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class MoveCommand : ICommand
 {
-    private Vector2 _direction;
+    private Vector2Int _direction;
     private Battler _battler;
 
-    public MoveCommand(Vector2 direction, Battler battler)
+    public MoveCommand(Vector2Int direction, Battler battler)
     {
         _direction = direction;
         _battler = battler;

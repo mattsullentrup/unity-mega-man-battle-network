@@ -132,6 +132,10 @@ GameObject:
   - component: {fileID: 518180097}
   - component: {fileID: 518180096}
   - component: {fileID: 518180099}
+  - component: {fileID: 518180101}
+  - component: {fileID: 518180100}
+  - component: {fileID: 518180103}
+  - component: {fileID: 518180102}
   m_Layer: 0
   m_Name: PlayerParent
   m_TagString: Untagged
@@ -250,6 +254,54 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f2d876e04d00029f394b9b77b7981091, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &518180100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 518180094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e133dc820116f8e6f8052276d6b9f8a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &518180101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 518180094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af80685fa57b16436b62aebc8cbe8f43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &518180102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 518180094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3b63eb4e84ec67b69d93d6da0efd073, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &518180103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 518180094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74c58dc1b90a672ba8abe3e8a45a3b56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &519420028
@@ -508,8 +560,9 @@ GameObject:
   m_Component:
   - component: {fileID: 987968741}
   - component: {fileID: 987968740}
+  - component: {fileID: 987968742}
   m_Layer: 0
-  m_Name: Grid
+  m_Name: BattleGrid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -544,6 +597,18 @@ Transform:
   - {fileID: 1481804121}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &987968742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 987968739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3dc8b68f2e4acafb7c1e3f4968fcb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1481804120
 GameObject:
   m_ObjectHideFlags: 0
