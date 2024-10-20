@@ -1,9 +1,11 @@
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerInput), typeof(PlayerMovement), typeof(PlayerShootComponent))]
 [RequireComponent(typeof(PlayerChipComponent))]
 public class Player : Battler
 {
+    private const float _moveCooldown = 0.1f;
     private PlayerMovement _playerMovement;
     private PlayerInput _playerInput;
     private PlayerShootComponent _playerShootComponent;
@@ -22,5 +24,16 @@ public class Player : Battler
         _playerInput.PlayerShootComponent = _playerShootComponent;
 
         _playerMovement.Player = this;
+    }
+
+    public void StartMoveCooldown()
+    {
+        StartCoroutine(MoveCooldownRoutine());
+    }
+
+    private IEnumerator MoveCooldownRoutine()
+    {
+        yield return new WaitForSeconds(_moveCooldown);
+        CanMove = true;
     }
 }

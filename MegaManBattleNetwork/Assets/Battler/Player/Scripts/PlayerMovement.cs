@@ -11,5 +11,6 @@ public class PlayerMovement : MonoBehaviour
         var moveCommand = new MoveCommand(input, Player);
         moveCommand.Execute();
         Player.CanMove = false;
+        Player.StartMoveCooldown();
     }
 }
