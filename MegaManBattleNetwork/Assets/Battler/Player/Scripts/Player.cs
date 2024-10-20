@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerInput), typeof(PlayerMovement), typeof(PlayerShootComponent))]
@@ -11,6 +12,7 @@ public class Player : Battler
     private PlayerShootComponent _playerShootComponent;
     private PlayerChipComponent _playerChipComponent;
     public bool CanMove { get; set; } = true;
+    public override List<List<Vector2Int>> ValidRows { get; set; }
 
     private void Awake()
     {

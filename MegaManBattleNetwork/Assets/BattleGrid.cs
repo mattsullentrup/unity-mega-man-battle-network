@@ -12,6 +12,9 @@ public class BattleGrid : MonoBehaviour
         Bottom
     }
 
+    [SerializeField] private Player _player;
+    [SerializeField] private EnemyManager _enemyManager;
+
     private readonly Vector2Int _playerStartPos = new(-2, 0);
     private readonly Vector2Int[,] _cells =
     {
@@ -34,6 +37,10 @@ public class BattleGrid : MonoBehaviour
         _grid = GetComponent<Grid>();
 
         SetupRows();
+        _enemyManager.Initialize(_allRows, _enemyRows);
+
+        _player.transform.position = new Vector3(_playerStartPos.x, _playerStartPos.y, 0);
+        _player.ValidRows = _playerRows;
     }
 
     private void SetupRows()
