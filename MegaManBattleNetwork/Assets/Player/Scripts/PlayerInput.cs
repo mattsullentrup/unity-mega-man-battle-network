@@ -4,7 +4,9 @@ using UnityEngine.InputSystem;
 
 public class PlayerInput : MonoBehaviour
 {
-    public PlayerMovement playerMovement;
+    public PlayerMovement PlayerMovement { private get; set; }
+    public PlayerShootComponent PlayerShootComponent { private get; set; }
+    public PlayerChipComponent PlayerChipComponent { private get; set; }
     private InputAction _moveAction;
     private InputAction _primaryAction;
     private InputAction _secondaryAction;
@@ -19,15 +21,19 @@ public class PlayerInput : MonoBehaviour
     private void Update()
     {
         Vector2 moveValue = _moveAction.ReadValue<Vector2>();
-        playerMovement.Move(moveValue);
-        if (_primaryAction.IsPressed())
+        if (moveValue != Vector2.zero)
         {
-
+            PlayerMovement.Move(moveValue);
         }
 
-        if (_secondaryAction.IsPressed())
+        if (_primaryAction.WasPressedThisFrame())
         {
+            PlayerChipComponent.ExecuteChip();
+        }
 
+        if (_secondaryAction.WasPressedThisFrame())
+        {
+            PlayerShootComponent.Shoot();
         }
     }
 }
