@@ -18,7 +18,7 @@ public class Enemy : Battler
 
     private ChipComponent _chipComponent;
 
-    private void Start()
+    private void Awake()
     {
         Animation = GetComponentInChildren<Animator>();
         _chipComponent = GetComponent<ChipComponent>();
@@ -62,7 +62,7 @@ public class Enemy : Battler
     {
         yield return new WaitForSeconds(2);
         var chipCommand = _chipComponent.Chips[0].ChipCommandSO;
-        chipCommand.Battler = this;
+        // chipCommand.Battler = this;
         StartingAction?.Invoke(this, _chipComponent.Chips[0].ChipCommandSO);
     }
 
