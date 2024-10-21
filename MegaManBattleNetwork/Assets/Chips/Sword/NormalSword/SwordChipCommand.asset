@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damage: 5
   _delay: 0.1
-  _damagableCells:
+  DamagableCells:
   - {x: 1, y: 0}

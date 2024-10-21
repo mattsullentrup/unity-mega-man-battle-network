@@ -6,15 +6,23 @@ using UnityEngine;
 
 public class Enemy : Battler
 {
-    [SerializeField] private ChipCommandSO _currentChip;
-    public event Action<Enemy> StartingAction;
+    // [SerializeField] private ChipCommandSO _currentChip;
+    public event Action<Enemy, ChipCommandSO> StartingAction;
     public override List<List<Vector2Int>> ValidRows { get; set; }
     public override Animator Animator { get; set; }
+
+    private ChipComponent _chipComponent;
 
     private void Start()
     {
         Animator = GetComponentInChildren<Animator>();
+        _chipComponent = GetComponent<ChipComponent>();
         StartCoroutine(ActionRoutine());
+    }
+
+    public void ExecuteChip()
+    {
+        _chipComponent.ExecuteChip();
     }
 
     public void Move(Player player)
@@ -45,6 +53,13 @@ public class Enemy : Battler
     private IEnumerator ActionRoutine()
     {
         yield return new WaitForSeconds(1);
-        StartingAction?.Invoke(this);
+        var chipCommand = _chipComponent.Chips[0].ChipCommandSO;
+        chipCommand.Battler = this;
+        StartingAction?.Invoke(this, _chipComponent.Chips[0].ChipCommandSO);
+    }
+
+    public override void TakeDamage()
+    {
+        throw new NotImplementedException();
     }
 }

@@ -8,6 +8,7 @@ public class EnemyManager : MonoBehaviour
     private List<List<Vector2Int>> _allRows;
     private List<List<Vector2Int>> _enemyRows;
     private List<Enemy> _enemies;
+    public List<Enemy> Enemies { get; }
 
     private void Start()
     {
@@ -33,8 +34,15 @@ public class EnemyManager : MonoBehaviour
         _enemyRows = enemyRows;
     }
 
-    private void OnEnemyStartingAction(Enemy enemy)
+    private void OnEnemyStartingAction(Enemy enemy, ChipCommandSO chipCommand)
     {
-        enemy.Move(_player);
+        if (BattleGrid.Instance.GetDamagableDefenders(chipCommand).Count != 0)
+        {
+            enemy.ExecuteChip();
+        }
+        else
+        {
+            enemy.Move(_player);
+        }
     }
 }

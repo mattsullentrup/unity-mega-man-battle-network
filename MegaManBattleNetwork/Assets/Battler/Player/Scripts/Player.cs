@@ -41,4 +41,9 @@ public class Player : Battler
         yield return new WaitForSeconds(_moveCooldown);
         CanMove = true;
     }
+
+    public override void TakeDamage()
+    {
+        throw new System.NotImplementedException();
+    }
 }

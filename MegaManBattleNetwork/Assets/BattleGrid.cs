@@ -29,7 +29,7 @@ public class BattleGrid : MonoBehaviour
     private Grid _grid;
     public Grid Grid => _grid;
     private static BattleGrid _instance;
-    public static BattleGrid Instance => Instance;
+    public static BattleGrid Instance => _instance;
 
     private void Awake()
     {
@@ -41,6 +41,50 @@ public class BattleGrid : MonoBehaviour
 
         _player.transform.position = new Vector3(_playerStartPos.x, _playerStartPos.y, 0);
         _player.ValidRows = _playerRows;
+    }
+
+    public List<Battler> GetDamagableDefenders(ChipCommandSO chipCommand)
+    {
+        var damagableCells = chipCommand.DamagableCells;
+        var attacker = chipCommand.Battler;
+        List<Battler> defenders;
+        if (attacker is Player)
+        {
+            defenders = (List<Battler>)_enemyManager.Enemies.Cast<Battler>().OrderBy(x => x).Select(x => x);
+        }
+        else
+        {
+            defenders = new()
+            {
+                _player
+            };
+        }
+
+        var globalDamagableCells = new List<Vector2Int>();
+        foreach (var cell in chipCommand.DamagableCells)
+        {
+            globalDamagableCells.Add(cell + Globals.WorldToCell2D(attacker.transform.position));
+        }
+
+        var damagableDefenders = new List<Battler>();
+        foreach (var row in _allRows)
+        {
+            foreach (var cell in globalDamagableCells)
+            {
+                if (!row.Contains(cell))
+                    continue;
+                
+                foreach (var defender in defenders)
+                {
+                    if (Globals.WorldToCell2D(defender.transform.position) == cell)
+                    {
+                        damagableDefenders.Add(defender);
+                    }
+                }
+            }
+        }
+
+        return damagableDefenders;
     }
 
     private void SetupRows()
