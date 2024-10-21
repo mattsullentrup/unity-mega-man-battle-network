@@ -8,7 +8,7 @@ public class PlayerInput : MonoBehaviour
 {
     public PlayerMovement PlayerMovement { private get; set; }
     public PlayerShootComponent PlayerShootComponent { private get; set; }
-    public PlayerChipComponent PlayerChipComponent { private get; set; }
+    public ChipComponent PlayerChipComponent { private get; set; }
 
     private readonly Vector2[] _directions = { Vector2.up, Vector2.right, Vector2.left, Vector2.down };
     private InputAction _moveAction;

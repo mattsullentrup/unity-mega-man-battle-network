@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerChipComponent : MonoBehaviour
+public class ChipComponent : MonoBehaviour
 {
     public List<ChipSO> Chips;
 
