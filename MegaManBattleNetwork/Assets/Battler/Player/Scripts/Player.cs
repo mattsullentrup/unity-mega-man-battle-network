@@ -26,6 +26,8 @@ public class Player : Battler
         _playerInput.PlayerShootComponent = _playerShootComponent;
 
         _playerMovement.Player = this;
+
+        _playerChipComponent.Player = this;
     }
 
     public void StartMoveCooldown()

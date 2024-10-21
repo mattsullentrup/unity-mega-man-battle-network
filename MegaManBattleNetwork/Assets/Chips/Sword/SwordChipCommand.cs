@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class SwordChipCommand : ChipCommand
 {
-    public override Battler Battler { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+    public override Battler Battler { get; set; }
 
     public override void Execute()
     {
-        throw new System.NotImplementedException();
+        Debug.Log("executing chip command");
     }
 }
