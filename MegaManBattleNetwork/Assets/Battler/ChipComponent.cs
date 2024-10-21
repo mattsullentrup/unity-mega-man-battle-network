@@ -4,6 +4,7 @@ using UnityEngine;
 public class ChipComponent : MonoBehaviour
 {
     public List<ChipSO> Chips;
+    public Battler Battler { get; set; }
 
     public void ExecuteChip()
     {
@@ -11,6 +12,7 @@ public class ChipComponent : MonoBehaviour
             return;
 
         var chip = Chips[0];
+        chip.ChipCommandSO.Battler = Battler;
         chip.ChipCommandSO.Execute();
     }
 }

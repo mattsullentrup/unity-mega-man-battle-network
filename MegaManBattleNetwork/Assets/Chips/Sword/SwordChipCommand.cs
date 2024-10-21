@@ -6,6 +6,8 @@ public class SwordChipCommand : ChipCommandSO
 {
     public override void Execute()
     {
-        Debug.Log("executing sword chip command");
+        // Battler.Animation.ResetTrigger("Attack");
+        Battler.Animation.SetTrigger("Attack");
+        // Battler.Animation.Play("SwordAttack");
     }
 }

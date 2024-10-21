@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9e9ae1c865b626b1a4defc2fccb6825, type: 3}
   m_Name: SwordChipCommand
   m_EditorClassIdentifier: 
-  _damage: 5
-  _delay: 0.1
+  Damage: 5
+  Delay: 0.1
   DamagableCells:
   - {x: 1, y: 0}

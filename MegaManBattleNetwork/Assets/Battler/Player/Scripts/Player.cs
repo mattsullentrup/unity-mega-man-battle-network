@@ -14,15 +14,15 @@ public class Player : Battler
     private ChipComponent _playerChipComponent;
 
     public override event Action BattlerAttacking;
-
-    public bool CanMove { get; set; } = true;
     public override List<List<Vector2Int>> ValidRows { get; set; }
-    public override Animator Animator { get; set; }
+    public override Animator Animation { get; set; }
+    public override bool IsAttacking { get; set; }
     public ChipComponent ChipComponent { get; }
+    public bool CanMove { get; set; } = true;
 
     private void Awake()
     {
-        Animator = GetComponent<Animator>();
+        Animation = GetComponentInChildren<Animator>();
 
         _playerMovement = GetComponent<PlayerMovement>();
         _playerInput = GetComponent<PlayerInput>();
@@ -34,6 +34,8 @@ public class Player : Battler
         _playerInput.PlayerShootComponent = _playerShootComponent;
 
         _playerMovement.Player = this;
+
+        _playerChipComponent.Battler = this;
     }
 
     public void ExecuteChip()
