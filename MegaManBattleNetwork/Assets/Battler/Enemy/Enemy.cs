@@ -16,20 +16,19 @@ public class Enemy : Battler
     // public AnimationClip AnimationClip { get; private set; }
     // public override AnimationClip AnimationClip { get => throw new NotImplementedException(); protected set => throw new NotImplementedException(); }
 
-    private ChipComponent _chipComponent;
+    public override ChipComponent ChipComponent { get; protected set; }
 
     private void Awake()
     {
         Animation = GetComponentInChildren<Animator>();
-        _chipComponent = GetComponent<ChipComponent>();
-        _chipComponent.Battler = this;
+        ChipComponent = GetComponent<ChipComponent>();
+        ChipComponent.Battler = this;
         StartCoroutine(ActionRoutine());
     }
 
     public void ExecuteChip()
     {
-        _chipComponent.ExecuteChip();
-        BattlerAttacking?.Invoke(_chipComponent.Chips[0].ChipCommandSO);
+        ChipComponent.ExecuteChip();
         StartCoroutine(ActionRoutine());
     }
 
@@ -61,12 +60,17 @@ public class Enemy : Battler
     private IEnumerator ActionRoutine()
     {
         yield return new WaitForSeconds(2);
-        var chipCommand = _chipComponent.Chips[0].ChipCommandSO;
-        StartingAction?.Invoke(this, _chipComponent.Chips[0].ChipCommandSO);
+        var chipCommand = ChipComponent.Chips[0].ChipCommandSO;
+        StartingAction?.Invoke(this, ChipComponent.Chips[0].ChipCommandSO);
     }
 
     public override void TakeDamage(int amount)
     {
         Animation.SetTrigger("TakeDamage");
+    }
+
+    public override void DealDamage()
+    {
+        BattlerAttacking?.Invoke(ChipComponent.Chips[0].ChipCommandSO);
     }
 }

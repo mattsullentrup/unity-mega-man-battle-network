@@ -9,4 +9,6 @@ public abstract class Battler : MonoBehaviour
     public abstract Animator Animation { get; set; }
     public abstract void TakeDamage(int amount);
     public abstract bool IsAttacking { get; set; }
+    public abstract ChipComponent ChipComponent { get; protected set; }
+    public abstract void DealDamage();
 }

@@ -11,13 +11,12 @@ public class Player : Battler
     private PlayerMovement _playerMovement;
     private PlayerInput _playerInput;
     private PlayerShootComponent _playerShootComponent;
-    private ChipComponent _playerChipComponent;
 
     public override event Action<ChipCommandSO> BattlerAttacking;
     public override List<List<Vector2Int>> ValidRows { get; set; }
     public override Animator Animation { get; set; }
     public override bool IsAttacking { get; set; }
-    public ChipComponent ChipComponent { get; }
+    public override ChipComponent ChipComponent { get; protected set; }
     public bool CanMove { get; set; } = true;
 
     private void Awake()
@@ -27,21 +26,20 @@ public class Player : Battler
         _playerMovement = GetComponent<PlayerMovement>();
         _playerInput = GetComponent<PlayerInput>();
         _playerShootComponent = GetComponent<PlayerShootComponent>();
-        _playerChipComponent = GetComponent<ChipComponent>();
+        ChipComponent = GetComponent<ChipComponent>();
 
         _playerInput.PlayerMovement = _playerMovement;
-        _playerInput.PlayerChipComponent = _playerChipComponent;
+        _playerInput.PlayerChipComponent = ChipComponent;
         _playerInput.PlayerShootComponent = _playerShootComponent;
 
         _playerMovement.Player = this;
         _playerInput.Player = this;
-        _playerChipComponent.Battler = this;
+        ChipComponent.Battler = this;
     }
 
     public void ExecuteChip()
     {
-        BattlerAttacking?.Invoke(_playerChipComponent.Chips[0].ChipCommandSO);
-        _playerChipComponent.ExecuteChip();
+        ChipComponent.ExecuteChip();
     }
 
     public void StartMoveCooldown()
@@ -58,5 +56,10 @@ public class Player : Battler
     public override void TakeDamage(int amount)
     {
         Animation.SetTrigger("TakeDamage");
+    }
+
+    public override void DealDamage()
+    {
+        BattlerAttacking?.Invoke(ChipComponent.Chips[0].ChipCommandSO);
     }
 }
