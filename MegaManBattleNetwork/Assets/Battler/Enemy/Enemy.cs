@@ -62,7 +62,6 @@ public class Enemy : Battler
     {
         yield return new WaitForSeconds(2);
         var chipCommand = _chipComponent.Chips[0].ChipCommandSO;
-        // chipCommand.Battler = this;
         StartingAction?.Invoke(this, _chipComponent.Chips[0].ChipCommandSO);
     }
 

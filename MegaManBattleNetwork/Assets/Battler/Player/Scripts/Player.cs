@@ -57,6 +57,6 @@ public class Player : Battler
 
     public override void TakeDamage(int amount)
     {
-        throw new System.NotImplementedException();
+        Animation.SetTrigger("TakeDamage");
     }
 }
