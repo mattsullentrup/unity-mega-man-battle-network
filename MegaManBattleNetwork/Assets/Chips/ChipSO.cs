@@ -5,7 +5,7 @@ using UnityEngine;
 public class ChipSO : ScriptableObject
 {
     [SerializeField] private Texture _texture;
-    [SerializeField] private String _name;
+    [SerializeField] private string _name;
     [SerializeField] private ChipCommandSO _chipCommandSO;
     public ChipCommandSO ChipCommandSO => _chipCommandSO;
 }

@@ -336,8 +336,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3b63eb4e84ec67b69d93d6da0efd073, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Chips: []
-  Chip: {fileID: 11400000, guid: 9005a9674eed6f22a8ddfc6a3347681f, type: 2}
+  Chips:
+  - {fileID: 11400000, guid: 9005a9674eed6f22a8ddfc6a3347681f, type: 2}
 --- !u!114 &518180103
 MonoBehaviour:
   m_ObjectHideFlags: 0
