@@ -13,7 +13,8 @@ public class MoveCommand : ICommand
 
     public void Execute()
     {
-        if (_battler == null) return;
+        if (_battler == null)
+            return;
 
         Vector2 battlerPos = _battler.transform.position;
         var newPosition = battlerPos + _direction;
