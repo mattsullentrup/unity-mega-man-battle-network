@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerInput : MonoBehaviour
 {
+    public Player Player { private get; set; }
     public PlayerMovement PlayerMovement { private get; set; }
     public PlayerShootComponent PlayerShootComponent { private get; set; }
     public ChipComponent PlayerChipComponent { private get; set; }
@@ -32,7 +33,7 @@ public class PlayerInput : MonoBehaviour
 
         if (_primaryAction.WasPressedThisFrame())
         {
-            PlayerChipComponent.ExecuteChip();
+            Player.ExecuteChip();
         }
 
         if (_secondaryAction.WasPressedThisFrame())

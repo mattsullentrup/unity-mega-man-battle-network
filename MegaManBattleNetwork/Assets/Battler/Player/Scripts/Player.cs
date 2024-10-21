@@ -13,7 +13,7 @@ public class Player : Battler
     private PlayerShootComponent _playerShootComponent;
     private ChipComponent _playerChipComponent;
 
-    public override event Action BattlerAttacking;
+    public override event Action<ChipCommandSO> BattlerAttacking;
     public override List<List<Vector2Int>> ValidRows { get; set; }
     public override Animator Animation { get; set; }
     public override bool IsAttacking { get; set; }
@@ -34,13 +34,14 @@ public class Player : Battler
         _playerInput.PlayerShootComponent = _playerShootComponent;
 
         _playerMovement.Player = this;
-
+        _playerInput.Player = this;
         _playerChipComponent.Battler = this;
     }
 
     public void ExecuteChip()
     {
-        BattlerAttacking?.Invoke();
+        BattlerAttacking?.Invoke(_playerChipComponent.Chips[0].ChipCommandSO);
+        _playerChipComponent.ExecuteChip();
     }
 
     public void StartMoveCooldown()
@@ -54,7 +55,7 @@ public class Player : Battler
         CanMove = true;
     }
 
-    public override void TakeDamage()
+    public override void TakeDamage(int amount)
     {
         throw new System.NotImplementedException();
     }

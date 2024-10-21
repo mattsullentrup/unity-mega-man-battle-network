@@ -7,7 +7,7 @@ using UnityEngine;
 public class Enemy : Battler
 {
     public event Action<Enemy, ChipCommandSO> StartingAction;
-    public override event Action BattlerAttacking;
+    public override event Action<ChipCommandSO> BattlerAttacking;
 
     public override List<List<Vector2Int>> ValidRows { get; set; }
     public override Animator Animation { get; set; }
@@ -29,7 +29,7 @@ public class Enemy : Battler
     public void ExecuteChip()
     {
         _chipComponent.ExecuteChip();
-        BattlerAttacking?.Invoke();
+        BattlerAttacking?.Invoke(_chipComponent.Chips[0].ChipCommandSO);
         StartCoroutine(ActionRoutine());
     }
 
@@ -66,8 +66,8 @@ public class Enemy : Battler
         StartingAction?.Invoke(this, _chipComponent.Chips[0].ChipCommandSO);
     }
 
-    public override void TakeDamage()
+    public override void TakeDamage(int amount)
     {
-        throw new NotImplementedException();
+        Animation.SetTrigger("TakeDamage");
     }
 }
