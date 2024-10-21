@@ -5,13 +5,12 @@ public class PlayerChipComponent : MonoBehaviour
 {
     public Player Player { get; set; }
     public List<ChipSO> Chips;
+    public ChipSO Chip;
 
-    // private void Start()
-    // {
-    //     var swordChip = ScriptableObject.CreateInstance<ChipSO>();
-    //     swordChip.Init(null, "Chip", new SwordChipCommand());
-    //     Chips.Add(swordChip);
-    // }
+    private void Start()
+    {
+        Chips.Add(Chip);
+    }
 
     public void ExecuteChip()
     {

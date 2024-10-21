@@ -8,11 +8,4 @@ public class ChipSO : ScriptableObject
     [SerializeField] private String _name;
     [SerializeField] private ChipCommandSO _chipCommandSO;
     public ChipCommandSO ChipCommandSO => _chipCommandSO;
-
-    // public void Init(Texture texture = null, String name = "Chip", ChipCommand chipCommand = null)
-    // {
-    //     _texture = texture;
-    //     _name = name;
-    //     _chipCommand = chipCommand;
-    // }
 }
