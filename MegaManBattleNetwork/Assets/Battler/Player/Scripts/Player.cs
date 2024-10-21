@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,9 +12,13 @@ public class Player : Battler
     private PlayerInput _playerInput;
     private PlayerShootComponent _playerShootComponent;
     private ChipComponent _playerChipComponent;
+
+    public override event Action BattlerAttacking;
+
     public bool CanMove { get; set; } = true;
     public override List<List<Vector2Int>> ValidRows { get; set; }
     public override Animator Animator { get; set; }
+    public ChipComponent ChipComponent { get; }
 
     private void Awake()
     {
@@ -29,6 +34,11 @@ public class Player : Battler
         _playerInput.PlayerShootComponent = _playerShootComponent;
 
         _playerMovement.Player = this;
+    }
+
+    public void ExecuteChip()
+    {
+        BattlerAttacking?.Invoke();
     }
 
     public void StartMoveCooldown()

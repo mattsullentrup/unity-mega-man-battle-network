@@ -8,7 +8,8 @@ public class EnemyManager : MonoBehaviour
     private List<List<Vector2Int>> _allRows;
     private List<List<Vector2Int>> _enemyRows;
     private List<Enemy> _enemies;
-    public List<Enemy> Enemies { get; }
+    public List<Enemy> Enemies => _enemies;
+    public bool IsInitialized { get; private set; }
 
     private void Start()
     {
@@ -18,6 +19,8 @@ public class EnemyManager : MonoBehaviour
             enemy.StartingAction += OnEnemyStartingAction;
             enemy.ValidRows = _enemyRows;
         }
+
+        IsInitialized = true;
     }
 
     private void OnDisable()

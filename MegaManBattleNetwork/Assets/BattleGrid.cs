@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -41,6 +42,25 @@ public class BattleGrid : MonoBehaviour
 
         _player.transform.position = new Vector3(_playerStartPos.x, _playerStartPos.y, 0);
         _player.ValidRows = _playerRows;
+    }
+
+    private IEnumerator Start()
+    {
+        yield return new WaitUntil(() => _enemyManager.IsInitialized);
+        _player.BattlerAttacking += OnBattlerAttacking;
+        foreach (var enemy in _enemyManager.Enemies)
+        {
+            enemy.BattlerAttacking += OnBattlerAttacking;
+        }
+    }
+
+    private void OnDisable()
+    {
+        _player.BattlerAttacking -= OnBattlerAttacking;
+        foreach (var enemy in _enemyManager.Enemies)
+        {
+            enemy.BattlerAttacking -= OnBattlerAttacking;
+        }
     }
 
     public List<Battler> GetDamagableDefenders(ChipCommandSO chipCommand)
@@ -106,5 +126,10 @@ public class BattleGrid : MonoBehaviour
             var wholeRow = playerRow.Concat(enemyRow);
             _allRows.Add(wholeRow.ToList());
         }
+    }
+
+    private void OnBattlerAttacking()
+    {
+        Debug.Log("battler attacking");
     }
 }
