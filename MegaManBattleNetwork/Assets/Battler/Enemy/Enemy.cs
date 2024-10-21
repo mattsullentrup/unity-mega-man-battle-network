@@ -9,9 +9,11 @@ public class Enemy : Battler
     [SerializeField] private ChipCommandSO _currentChip;
     public event Action<Enemy> StartingAction;
     public override List<List<Vector2Int>> ValidRows { get; set; }
+    public override Animator Animator { get; set; }
 
     private void Start()
     {
+        Animator = GetComponentInChildren<Animator>();
         StartCoroutine(ActionRoutine());
     }
 
