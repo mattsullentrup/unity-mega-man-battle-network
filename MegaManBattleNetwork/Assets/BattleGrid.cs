@@ -57,6 +57,8 @@ public class BattleGrid : MonoBehaviour
         {
             enemy.BattlerAttacking += OnBattlerAttacking;
         }
+
+        ToggleBattlers(false);
     }
 
     private void OnDisable()
@@ -117,7 +119,7 @@ public class BattleGrid : MonoBehaviour
 
     public void OnChipsSelected(List<ChipSO> chips)
     {
-        return;
+        ToggleBattlers(true);
     }
 
     private void SetupRows()
@@ -147,6 +149,18 @@ public class BattleGrid : MonoBehaviour
         foreach (var defender in defenders)
         {
             defender.TakeDamage(chipCommand.Damage);
+        }
+    }
+
+    private void ToggleBattlers(bool value)
+    {
+        // Globals.ToggleScripts(_player.gameObject, false);
+        _player.Toggle(value);
+        foreach (var enemy in _enemyManager.Enemies)
+        {
+            // Globals.ToggleScripts(enemy.gameObject, false);
+            enemy.Toggle(value);
+
         }
     }
 }

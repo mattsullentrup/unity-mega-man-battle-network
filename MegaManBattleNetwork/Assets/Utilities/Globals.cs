@@ -15,4 +15,13 @@ public static class Globals
         var newPos = Vector2Int.RoundToInt(pos);
         return newPos;
     }
+
+    public static void ToggleScripts(GameObject entity, bool value)
+    {
+        var scripts = entity.GetComponents<MonoBehaviour>();
+        foreach (var script in scripts)
+        {
+            script.enabled = value;
+        }
+    }
 }

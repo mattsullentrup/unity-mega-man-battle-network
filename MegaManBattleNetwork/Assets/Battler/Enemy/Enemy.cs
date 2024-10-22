@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Enemy : Battler
@@ -23,7 +24,7 @@ public class Enemy : Battler
         Animation = GetComponentInChildren<Animator>();
         ChipComponent = GetComponent<ChipComponent>();
         ChipComponent.Battler = this;
-        StartCoroutine(ActionRoutine());
+        // StartCoroutine(ActionRoutine());
     }
 
     public void ExecuteChip()
@@ -72,5 +73,18 @@ public class Enemy : Battler
     public override void DealDamage()
     {
         BattlerAttacking?.Invoke(ChipComponent.Chips[0].ChipCommandSO);
+    }
+
+    public override void Toggle(bool value)
+    {
+        base.Toggle(value);
+        if (value == true)
+        {
+            StartCoroutine(ActionRoutine());
+        }
+        else
+        {
+            StopAllCoroutines();
+        }
     }
 }

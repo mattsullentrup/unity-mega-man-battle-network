@@ -11,4 +11,9 @@ public abstract class Battler : MonoBehaviour
     public abstract bool IsAttacking { get; set; }
     public abstract ChipComponent ChipComponent { get; protected set; }
     public abstract void DealDamage();
+    public virtual void Toggle(bool value)
+    {
+        Animation.enabled = value;
+        Globals.ToggleScripts(gameObject, value);
+    }
 }
