@@ -138,13 +138,23 @@ public class ChipSelection : MonoBehaviour
 
     private void CreateDummyChips()
     {
-
+        while (_chipContainer.transform.childCount < _maxChipContainerSize)
+        {
+            var blankChip = Instantiate(_chipButtonPrefab, Vector3.zero, Quaternion.identity);
+            blankChip.transform.SetParent(_chipContainer.transform);
+        }
     }
 
     // private void SelectChip(GameObject chipUI)
     private void SelectChip()
     {
+        var selectedChip = EventSystem.current.currentSelectedGameObject;
+        if (_selectedChipsContainer.transform.childCount >= _maxSelectedChips)
+            return;
 
+        var dummyChip = _dummyChips[0];
+        _dummyChips.RemoveAt(0);
+        var index = selectedChip.transform.GetSiblingIndex();
     }
 
     private void EndChipSelection()
