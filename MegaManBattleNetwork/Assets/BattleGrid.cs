@@ -108,6 +108,11 @@ public class BattleGrid : MonoBehaviour
         return damagableDefenders;
     }
 
+    public void OnChipsSelected()
+    {
+
+    }
+
     private void SetupRows()
     {
         for (int i = 0; i < _cells.GetLength(0); i++)

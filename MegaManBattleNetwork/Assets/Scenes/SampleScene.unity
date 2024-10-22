@@ -1832,6 +1832,7 @@ GameObject:
   - component: {fileID: 987968741}
   - component: {fileID: 987968740}
   - component: {fileID: 987968742}
+  - component: {fileID: 987968743}
   m_Layer: 0
   m_Name: BattleGrid
   m_TagString: Untagged
@@ -1882,6 +1883,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _player: {fileID: 518180099}
   _enemyManager: {fileID: 186852402}
+--- !u!114 &987968743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 987968739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b001c2b0acc34a40aaed10a8b0e4b4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 7dee1e49c1fd8d1ec97e813bf3165a9b, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 987968742}
+        m_TargetAssemblyTypeName: BattleGrid, Assembly-CSharp
+        m_MethodName: OnChipsSelected
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1019222651
 GameObject:
   m_ObjectHideFlags: 0
@@ -4441,6 +4470,7 @@ GameObject:
   - component: {fileID: 1636413606}
   - component: {fileID: 1636413605}
   - component: {fileID: 1636413608}
+  - component: {fileID: 1636413609}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -4545,13 +4575,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19350c1b03d914f49b7af2ce7b013418, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _chipButtonPrefab: {fileID: 0}
-  _possibleChips: []
-  _chipContainer: {fileID: 0}
-  _selectedChipsContainer: {fileID: 0}
-  _roundProgressBar: {fileID: 0}
-  _animationPlayer: {fileID: 0}
-  _focusedChipTextureRect: {fileID: 0}
+  chipsSelected: {fileID: 11400000, guid: 7dee1e49c1fd8d1ec97e813bf3165a9b, type: 2}
+  _chipButtonPrefab: {fileID: 6619435311934128721, guid: c5727034fd528335291628b6629bc5c4, type: 3}
+  _possibleChips:
+  - {fileID: 11400000, guid: 71a9f66b7cb4b0d0c94a8051b3d5e1f0, type: 2}
+  - {fileID: 11400000, guid: 9005a9674eed6f22a8ddfc6a3347681f, type: 2}
+  _chipContainer: {fileID: 808755948}
+  _selectedChipsContainer: {fileID: 1673720385}
+  _roundProgressBar: {fileID: 411591596}
+  _focusedChipTextureRect: {fileID: 710990628}
+--- !u!95 &1636413609
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1636413603}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1638887271
 GameObject:
   m_ObjectHideFlags: 0

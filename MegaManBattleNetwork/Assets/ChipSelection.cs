@@ -8,14 +8,16 @@ using Unity.Mathematics;
 
 public class ChipSelection : MonoBehaviour
 {
+    public GameEvent chipsSelected;
+    
     [SerializeField] private GameObject _chipButtonPrefab;
     [SerializeField] private List<ChipSO> _possibleChips;
     [SerializeField] private GameObject _chipContainer;
     [SerializeField] private GameObject _selectedChipsContainer;
     [SerializeField] private GameObject _roundProgressBar;
-    [SerializeField] private GameObject _animationPlayer;
     [SerializeField] private GameObject _focusedChipTextureRect;
 
+    private Animator _animationPlayer;
     private const int _initialMaxChips = 5;
     private const int _maxSelectedChips = 3;
     private const int _maxChipContainerSize = 10;
@@ -38,6 +40,7 @@ public class ChipSelection : MonoBehaviour
     private void Start()
     {
         _secondaryAction = InputSystem.actions.FindAction("Secondary");
+        _animationPlayer = GetComponent<Animator>();
         CreateDummyChips();
         CreateNewChips();
         _roundProgressBar.SetActive(false);
@@ -188,6 +191,7 @@ public class ChipSelection : MonoBehaviour
         }
 
         // Globals.ChipsSelected?.Invoke(_selectedChips.Duplicate());
+        chipsSelected.Raise();
         _selectedChips.Clear();
         EndChipSelection();
     }
