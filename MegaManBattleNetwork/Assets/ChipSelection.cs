@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -51,15 +53,27 @@ public class ChipSelection : MonoBehaviour
     {
         var chipUI = _selectedChipsContainer.transform.GetChild(-1);
         chipUI.parent = null;
-        foreach (Transform child in transform)
+        foreach (Transform child in _chipContainer.transform)
         {
-
+            Image image = child.gameObject.GetComponent("Image") as Image;
+            if (image != null && image.sprite == null)
+            {
+                var index = child.GetSiblingIndex();
+                chipUI.SetParent(_chipContainer.transform);
+                chipUI.SetSiblingIndex(index + 1);
+                child.SetParent(null);
+                _dummyChips.Add(child.gameObject);
+                chipUI.gameObject.GetComponent<Button>().onClick.AddListener(SelectChip);
+                EventSystem.current.SetSelectedGameObject(chipUI.gameObject);
+                return;
+            }
         }
     }
 
     private void OnChipSelectionStarting()
     {
-
+        _roundProgressBar.SetActive(false);
+        CreateNewChips();
     }
 
     private void CreateNewChips()
@@ -83,7 +97,8 @@ public class ChipSelection : MonoBehaviour
 
     }
 
-    private void SelectChip(GameObject chipUI)
+    // private void SelectChip(GameObject chipUI)
+    private void SelectChip()
     {
 
     }
