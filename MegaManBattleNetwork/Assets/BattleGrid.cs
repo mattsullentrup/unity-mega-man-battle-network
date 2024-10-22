@@ -160,7 +160,6 @@ public class BattleGrid : MonoBehaviour
         {
             // Globals.ToggleScripts(enemy.gameObject, false);
             enemy.Toggle(value);
-
         }
     }
 }
