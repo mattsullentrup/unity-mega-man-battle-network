@@ -10,10 +10,10 @@ using Unity.VisualScripting;
 public class ChipSelection : MonoBehaviour
 {
     public static event Action<List<ChipSO>> ChipsSelected;
-    
+
     [SerializeField] private GameObject _chipButtonPrefab;
-    [SerializeField] private List<ChipSO> _possibleChips;
-    [SerializeField] private GameObject _chipContainer;
+    [SerializeField] private List<ChipSO> _chipsPool;
+    [SerializeField] private GameObject _availableChipsContainer;
     [SerializeField] private GameObject _selectedChipsContainer;
     [SerializeField] private GameObject _roundProgressBar;
     [SerializeField] private GameObject _focusedChipTextureRect;
@@ -25,7 +25,8 @@ public class ChipSelection : MonoBehaviour
     private const int _maxChipContainerSize = 10;
     private int _maxAvailableChips = _initialMaxChips;
     private List<ChipSO> _selectedChips = new();
-    private List<GameObject> _dummyChips = new();
+    // private List<GameObject> _dummyChips = new();
+    // private List<GameObject> _chipButtons = new();
     private InputAction _secondaryAction;
     private Dictionary<GameObject, ChipSO> _buttonData = new();
 
@@ -43,7 +44,12 @@ public class ChipSelection : MonoBehaviour
     {
         _secondaryAction = InputSystem.actions.FindAction("Secondary");
         _animationPlayer = GetComponent<Animator>();
-        CreateDummyChips();
+        // CreateDummyChips();
+        foreach (Transform child in _availableChipsContainer.transform)
+        {
+            _buttonData[child.gameObject] = null;
+        }
+
         CreateNewChips();
         _roundProgressBar.SetActive(false);
     }
@@ -58,7 +64,6 @@ public class ChipSelection : MonoBehaviour
 
     public void OnOkButtonPressed()
     {
-        // _maxAvailableChips = _initialMaxChips;
         foreach (Transform child in _selectedChipsContainer.transform)
         {
             var chip = _buttonData[child.gameObject];
@@ -86,16 +91,16 @@ public class ChipSelection : MonoBehaviour
     {
         var chipUI = _selectedChipsContainer.transform.GetChild(-1);
         chipUI.parent = null;
-        foreach (Transform child in _chipContainer.transform)
+        foreach (Transform child in _availableChipsContainer.transform)
         {
             Image image = child.gameObject.GetComponent("Image") as Image;
             if (image != null && image.sprite == null)
             {
                 var index = child.GetSiblingIndex();
-                chipUI.SetParent(_chipContainer.transform);
+                chipUI.SetParent(_availableChipsContainer.transform);
                 chipUI.SetSiblingIndex(index + 1);
                 child.SetParent(null);
-                _dummyChips.Add(child.gameObject);
+                // _dummyChips.Add(child.gameObject);
                 chipUI.gameObject.GetComponent<Button>().onClick.AddListener(SelectChip);
                 EventSystem.current.SetSelectedGameObject(chipUI.gameObject);
                 return;
@@ -111,33 +116,48 @@ public class ChipSelection : MonoBehaviour
 
     private void CreateNewChips()
     {
-        var existingChips = new List<ChipSO>();
-        foreach (Transform child in _chipContainer.transform)
-        {
-            Image image = child.gameObject.GetComponent("Image") as Image;
-            if (image.sprite == null)
-                continue;
+        // var existingChips = new List<ChipSO>();
+        // foreach (Transform child in _availableChipsContainer.transform)
+        // {
+        //     Image image = child.gameObject.GetComponent("Image") as Image;
+        //     if (image.sprite == null)
+        //         continue;
 
-            if (_buttonData.TryGetValue(child.gameObject, out ChipSO chip))
+        //     if (_buttonData.TryGetValue(child.gameObject, out ChipSO chip))
+        //     {
+        //         existingChips.Add(chip);
+        //     }
+        // }
+
+        // var newChips = new List<ChipSO>();
+        // while (existingChips.Count + newChips.Count < _maxAvailableChips)
+        // {
+        //     int index = UnityEngine.Random.Range(0, _chipsPool.Count);
+        //     var randomChip = _chipsPool[index];
+        //     newChips.Add(randomChip);
+        // }
+        // SetupNewRound(newChips);
+
+        var buttons = new List<GameObject>(_buttonData.Keys);
+        for (int i = 0; i < _maxAvailableChips; i++)
+        {
+            var button = buttons[i];
+            Image image = button.GetComponent("Image") as Image;
+            if (image.sprite == _blankSprite)
             {
-                existingChips.Add(chip);
+                int index = UnityEngine.Random.Range(0, _chipsPool.Count);
+                var randomChip = _chipsPool[index];
+                _buttonData[button] = randomChip;
+                image.sprite = randomChip.Sprite;
             }
         }
 
-        var newChips = new List<ChipSO>();
-        while (existingChips.Count + newChips.Count < _maxAvailableChips)
-        {
-            int index = UnityEngine.Random.Range(0, _possibleChips.Count);
-            var randomChip = _possibleChips[index];
-            newChips.Add(randomChip);
-        }
-
-        SetupNewRound(newChips);
+        // SetupNewRound();
     }
 
     private void SetupNewRound(List<ChipSO> newChips)
     {
-        foreach (Transform child in _chipContainer.transform)
+        foreach (Transform child in _availableChipsContainer.transform)
         {
             Image image = child.gameObject.GetComponent("Image") as Image;
             if (image.sprite == null && newChips.Count > 0)
@@ -147,14 +167,14 @@ public class ChipSelection : MonoBehaviour
 
                 var chipUI = CreateNewChipUI(chip);
                 var index = child.GetSiblingIndex();
-                chipUI.transform.SetParent(_chipContainer.transform);
+                chipUI.transform.SetParent(_availableChipsContainer.transform);
                 chipUI.transform.SetSiblingIndex(index + 1);
                 child.SetParent(null);
-                _dummyChips.Add(child.gameObject);
+                // _dummyChips.Add(child.gameObject);
             }
         }
 
-        EventSystem.current.SetSelectedGameObject(_chipContainer.transform.GetChild(0).gameObject);
+        EventSystem.current.SetSelectedGameObject(_availableChipsContainer.transform.GetChild(0).gameObject);
         // _animationPlayer.Play("SlideChipSelectionContainer");
         // gameObject.SetActive(true);
     }
@@ -173,14 +193,14 @@ public class ChipSelection : MonoBehaviour
         return button;
     }
 
-    private void CreateDummyChips()
-    {
-        while (_chipContainer.transform.childCount < _maxChipContainerSize)
-        {
-            var blankChip = Instantiate(_chipButtonPrefab, Vector3.zero, Quaternion.identity);
-            blankChip.transform.SetParent(_chipContainer.transform);
-        }
-    }
+    // private void CreateDummyChips()
+    // {
+    //     while (_availableChipsContainer.transform.childCount < _maxChipContainerSize)
+    //     {
+    //         var blankChip = Instantiate(_chipButtonPrefab, Vector3.zero, Quaternion.identity);
+    //         blankChip.transform.SetParent(_availableChipsContainer.transform);
+    //     }
+    // }
 
     // private void SelectChip(GameObject chipUI)
     private void SelectChip()
@@ -189,13 +209,13 @@ public class ChipSelection : MonoBehaviour
         if (_selectedChipsContainer.transform.childCount >= _maxSelectedChips)
             return;
 
-        var dummyChip = _dummyChips[0];
-        _dummyChips.RemoveAt(0);
+        // var dummyChip = _dummyChips[0];
+        // _dummyChips.RemoveAt(0);
         var index = selectedChip.transform.GetSiblingIndex();
         selectedChip.transform.SetParent(_selectedChipsContainer.transform);
         selectedChip.transform.SetSiblingIndex(index + 1);
         selectedChip.GetComponent<Button>().onClick.RemoveAllListeners();
-        EventSystem.current.SetSelectedGameObject(dummyChip);
+        // EventSystem.current.SetSelectedGameObject(dummyChip);
     }
 
     private void EndChipSelection()
