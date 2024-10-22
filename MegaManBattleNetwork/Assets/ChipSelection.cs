@@ -3,6 +3,8 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Unity.VisualScripting;
+using Unity.Mathematics;
 
 public class ChipSelection : MonoBehaviour
 {
@@ -94,7 +96,7 @@ public class ChipSelection : MonoBehaviour
         var newChips = new List<ChipSO>();
         while (existingChips.Count + newChips.Count < _maxAvailableChips)
         {
-            int index = Random.Range(0, _possibleChips.Count);
+            int index = UnityEngine.Random.Range(0, _possibleChips.Count);
             var randomChip = _possibleChips[index];
             newChips.Add(randomChip);
         }
@@ -155,20 +157,48 @@ public class ChipSelection : MonoBehaviour
         var dummyChip = _dummyChips[0];
         _dummyChips.RemoveAt(0);
         var index = selectedChip.transform.GetSiblingIndex();
+        selectedChip.transform.SetParent(_selectedChipsContainer.transform);
+        selectedChip.transform.SetSiblingIndex(index + 1);
+        selectedChip.GetComponent<Button>().onClick.RemoveAllListeners();
+        EventSystem.current.SetSelectedGameObject(dummyChip);
     }
 
     private void EndChipSelection()
     {
+        gameObject.SetActive(false);
+        // _animationPlayer.PlayBackward("SlideChipSelectionContainer");
+        foreach (Transform child in _selectedChipsContainer.transform)
+        {
+            Destroy(child.gameObject);
+            // probably need to remove entry from dictionary here
+        }
 
+        _roundProgressBar.SetActive(true);
     }
 
     private void OnOkButtonPressed()
     {
+        _maxAvailableChips = _initialMaxChips;
+        foreach (Transform child in _selectedChipsContainer.transform)
+        {
+            var chip = _buttonData[child.gameObject];
+            _selectedChips.Add(chip);
+            Destroy(child.gameObject);
+            // might need to remove from dictionary here
+        }
 
+        // Globals.ChipsSelected?.Invoke(_selectedChips.Duplicate());
+        _selectedChips.Clear();
+        EndChipSelection();
     }
 
     private void OnAddButtonPressed()
     {
-
+        _maxAvailableChips += _selectedChipsContainer.transform.childCount;
+        _maxAvailableChips = math.clamp(_maxSelectedChips, 0, _maxChipContainerSize);
+        _selectedChips.Clear();
+        var dummyChips = new List<ChipSO>();
+        // Globals.ChipsSelected.Invoke(dummyChips)
+        EndChipSelection();
     }
 }
