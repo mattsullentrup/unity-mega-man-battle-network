@@ -4,10 +4,10 @@ using UnityEngine;
 
 public static class Globals
 {
-    public static event Action<int> PlayerTookDamage;
-    public static event Action ChipSelectionStarting;
-    public static event Action<List<ChipSO>> ChipsSelected;
-    public static event Action CanStartChipSelection;
+    // public static event Action<int> PlayerTookDamage;
+    // public static event Action ChipSelectionStarting;
+    // public static event Action<List<ChipSO>> ChipsSelected;
+    // public static event Action CanStartChipSelection;
     public const int CellSize = 32;
     public static Vector2Int WorldToCell2D(Vector3 cell)
     {

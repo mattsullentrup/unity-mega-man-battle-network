@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class BattleGrid : MonoBehaviour
 {
+    public static event Action ChipSelectionStarting;
+
     private enum Row
     {
         Top,
@@ -26,6 +28,7 @@ public class BattleGrid : MonoBehaviour
     private List<List<Vector2Int>> _enemyRows = new();
     private List<List<Vector2Int>> _playerRows = new();
     private List<List<Vector2Int>> _allRows = new();
+    private bool _canStartChipSelection;
 
     private Grid _grid;
     public Grid Grid => _grid;
@@ -46,8 +49,10 @@ public class BattleGrid : MonoBehaviour
 
     private IEnumerator Start()
     {
-        yield return new WaitUntil(() => _enemyManager.IsInitialized);
+        ChipSelection.ChipsSelected += OnChipsSelected;
         _player.BattlerAttacking += OnBattlerAttacking;
+
+        yield return new WaitUntil(() => _enemyManager.IsInitialized);
         foreach (var enemy in _enemyManager.Enemies)
         {
             enemy.BattlerAttacking += OnBattlerAttacking;
@@ -56,7 +61,9 @@ public class BattleGrid : MonoBehaviour
 
     private void OnDisable()
     {
+        ChipSelection.ChipsSelected -= OnChipsSelected;
         _player.BattlerAttacking -= OnBattlerAttacking;
+
         foreach (var enemy in _enemyManager.Enemies)
         {
             enemy.BattlerAttacking -= OnBattlerAttacking;
@@ -108,9 +115,9 @@ public class BattleGrid : MonoBehaviour
         return damagableDefenders;
     }
 
-    public void OnChipsSelected()
+    public void OnChipsSelected(List<ChipSO> chips)
     {
-
+        return;
     }
 
     private void SetupRows()

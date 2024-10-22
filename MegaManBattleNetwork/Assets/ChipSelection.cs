@@ -3,12 +3,12 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using Unity.VisualScripting;
 using Unity.Mathematics;
+using System;
 
 public class ChipSelection : MonoBehaviour
 {
-    public GameEvent chipsSelected;
+    public static event Action<List<ChipSO>> ChipsSelected;
     
     [SerializeField] private GameObject _chipButtonPrefab;
     [SerializeField] private List<ChipSO> _possibleChips;
@@ -29,12 +29,12 @@ public class ChipSelection : MonoBehaviour
 
     private void OnEnable()
     {
-        Globals.ChipSelectionStarting += OnChipSelectionStarting;
+        BattleGrid.ChipSelectionStarting += OnChipSelectionStarting;
     }
 
     private void OnDisable()
     {
-        Globals.ChipSelectionStarting -= OnChipSelectionStarting;
+        BattleGrid.ChipSelectionStarting -= OnChipSelectionStarting;
     }
 
     private void Start()
@@ -190,8 +190,7 @@ public class ChipSelection : MonoBehaviour
             // might need to remove from dictionary here
         }
 
-        // Globals.ChipsSelected?.Invoke(_selectedChips.Duplicate());
-        chipsSelected.Raise();
+        ChipsSelected?.Invoke(new List<ChipSO>(_selectedChips));
         _selectedChips.Clear();
         EndChipSelection();
     }
@@ -202,7 +201,7 @@ public class ChipSelection : MonoBehaviour
         _maxAvailableChips = math.clamp(_maxSelectedChips, 0, _maxChipContainerSize);
         _selectedChips.Clear();
         var dummyChips = new List<ChipSO>();
-        // Globals.ChipsSelected.Invoke(dummyChips)
+        ChipsSelected?.Invoke(dummyChips);
         EndChipSelection();
     }
 }
