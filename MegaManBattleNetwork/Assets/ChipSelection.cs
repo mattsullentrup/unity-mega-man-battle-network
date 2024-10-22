@@ -5,7 +5,6 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using Unity.Mathematics;
 using System;
-using Unity.VisualScripting;
 
 public class ChipSelection : MonoBehaviour
 {
@@ -48,9 +47,10 @@ public class ChipSelection : MonoBehaviour
         foreach (Transform child in _availableChipsContainer.transform)
         {
             _buttonData[child.gameObject] = null;
+            child.gameObject.GetComponent<Button>().onClick.AddListener(SelectChip);
         }
 
-        CreateNewChips();
+        FillInBlankChips();
         _roundProgressBar.SetActive(false);
     }
 
@@ -111,10 +111,10 @@ public class ChipSelection : MonoBehaviour
     private void OnChipSelectionStarting()
     {
         _roundProgressBar.SetActive(false);
-        CreateNewChips();
+        FillInBlankChips();
     }
 
-    private void CreateNewChips()
+    private void FillInBlankChips()
     {
         // var existingChips = new List<ChipSO>();
         // foreach (Transform child in _availableChipsContainer.transform)
@@ -146,12 +146,13 @@ public class ChipSelection : MonoBehaviour
             if (image.sprite == _blankSprite)
             {
                 int index = UnityEngine.Random.Range(0, _chipsPool.Count);
-                var randomChip = _chipsPool[index];
+                var randomChip = Instantiate(_chipsPool[index]);
                 _buttonData[button] = randomChip;
                 image.sprite = randomChip.Sprite;
             }
         }
 
+        EventSystem.current.SetSelectedGameObject(_availableChipsContainer.transform.GetChild(0).gameObject);
         // SetupNewRound();
     }
 
