@@ -3,8 +3,13 @@ using UnityEngine;
 
 public class ChipComponent : MonoBehaviour
 {
-    public List<ChipSO> Chips;
+    public List<ChipSO> Chips
+    {
+        get => _chips;
+        set => _chips = value;
+    }
     public Battler Battler { get; set; }
+    [SerializeField] private List<ChipSO> _chips = new();
 
     private void Start()
     {

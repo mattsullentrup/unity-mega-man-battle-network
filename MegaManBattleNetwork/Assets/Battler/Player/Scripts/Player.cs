@@ -37,6 +37,16 @@ public class Player : Battler
         ChipComponent.Battler = this;
     }
 
+    private void Start()
+    {
+        ChipSelection.ChipsSelected += OnChipsSelected;
+    }
+
+    private void OnDestroy()
+    {
+        ChipSelection.ChipsSelected -= OnChipsSelected;
+    }
+
     public void ExecuteChip()
     {
         ChipComponent.ExecuteChip();
@@ -47,19 +57,24 @@ public class Player : Battler
         StartCoroutine(MoveCooldownRoutine());
     }
 
-    private IEnumerator MoveCooldownRoutine()
-    {
-        yield return new WaitForSeconds(_moveCooldown);
-        CanMove = true;
-    }
-
     public override void TakeDamage(int amount)
     {
         Animation.SetTrigger("TakeDamage");
     }
 
+    public void OnChipsSelected(List<ChipSO> chips)
+    {
+        ChipComponent.Chips = chips;
+    }
+
     public override void DealDamage()
     {
         BattlerAttacking?.Invoke(ChipComponent.Chips[0].ChipCommandSO);
+    }
+
+    private IEnumerator MoveCooldownRoutine()
+    {
+        yield return new WaitForSeconds(_moveCooldown);
+        CanMove = true;
     }
 }
