@@ -1512,6 +1512,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a109cb81f09608eb0b0f30b3b9028bd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _chipQueuePanel: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1849,7 +1850,7 @@ GameObject:
   - component: {fileID: 710543932}
   - component: {fileID: 710543931}
   m_Layer: 5
-  m_Name: SelectionCanvas
+  m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5662,7 +5663,7 @@ Animator:
   m_GameObject: {fileID: 1636413603}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d5e8ebec0ef0f98c98aeba8bba5b0e3d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
