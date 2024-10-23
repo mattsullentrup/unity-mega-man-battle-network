@@ -13,6 +13,5 @@ public class ChipSO : ScriptableObject
     private void Awake()
     {
         Instantiate(_chipCommandSO);
-        // _chipCommandSO = CreateInstance<ChipCommandSO>();
     }
 }

@@ -152,11 +152,9 @@ public class BattleGrid : MonoBehaviour
 
     private void ToggleBattlers(bool value)
     {
-        // Globals.ToggleScripts(_player.gameObject, false);
         _player.Toggle(value);
         foreach (var enemy in _enemyManager.Enemies)
         {
-            // Globals.ToggleScripts(enemy.gameObject, false);
             enemy.Toggle(value);
         }
     }

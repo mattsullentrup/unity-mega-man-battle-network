@@ -19,7 +19,6 @@ public class Enemy : Battler
         Animation = GetComponentInChildren<Animator>();
         ChipComponent = GetComponent<ChipComponent>();
         ChipComponent.Battler = this;
-        // StartCoroutine(ActionRoutine());
     }
 
     public void ExecuteChip()
