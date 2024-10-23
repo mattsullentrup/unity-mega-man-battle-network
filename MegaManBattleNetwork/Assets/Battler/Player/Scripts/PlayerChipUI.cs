@@ -20,6 +20,9 @@ public class PlayerChipUI : MonoBehaviour
 
     public void CreateChipImages(List<ChipSO> chips)
     {
+        if (chips.Count == 0)
+            return;
+
         foreach (var chip in chips)
         {
             GameObject newObject = new();
@@ -29,8 +32,6 @@ public class PlayerChipUI : MonoBehaviour
             newImage.rectTransform.sizeDelta = new Vector2(1, 1);
             newImage.rectTransform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
             newObject.SetActive(true);
-
-            // chip.ChipCommandSO.ChipExecuting += OnChipExecuting;
         }
     }
 

@@ -158,11 +158,10 @@ public class ChipSelection : MonoBehaviour
 
     public void OnAddButtonPressed()
     {
-        _maxAvailableChips += _selectedChipsContainer.transform.childCount;
+        _maxAvailableChips += _selectedChips.Count();
         _maxAvailableChips = math.clamp(_maxSelectedChips, 0, _maxChipContainerSize);
         _selectedChips.Clear();
-        var dummyChips = new List<ChipSO>();
-        ChipsSelected?.Invoke(dummyChips);
+        ChipsSelected?.Invoke(null);
         EndChipSelection();
     }
 
