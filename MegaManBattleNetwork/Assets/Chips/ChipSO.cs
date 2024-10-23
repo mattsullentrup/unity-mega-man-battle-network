@@ -9,4 +9,10 @@ public class ChipSO : ScriptableObject
     [SerializeField] private ChipCommandSO _chipCommandSO;
     public ChipCommandSO ChipCommandSO => _chipCommandSO;
     public Sprite Sprite => _sprite;
+
+    private void Awake()
+    {
+        Instantiate(_chipCommandSO);
+        // _chipCommandSO = CreateInstance<ChipCommandSO>();
+    }
 }

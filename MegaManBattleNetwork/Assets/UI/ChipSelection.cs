@@ -143,16 +143,6 @@ public class ChipSelection : MonoBehaviour
             }
         }
 
-        // Reset selected chip container images
-        foreach (Transform child in _selectedChipsContainer.transform)
-        {
-            Image image = child.gameObject.GetComponent<Image>();
-            if (image != null && image.sprite != _blankSprite)
-            {
-                image.sprite = _blankSprite;
-            }
-        }
-
         ChipsSelected?.Invoke(new List<ChipSO>(_selectedChips));
         _selectedChips.Clear();
         EndChipSelection();
@@ -170,12 +160,16 @@ public class ChipSelection : MonoBehaviour
 
     private void EndChipSelection()
     {
-        // _animationPlayer.PlayBackward("SlideChipSelectionContainer");
         _animationPlayer.Play("SlideOut");
+
+        // Reset selected chip container images
         foreach (Transform child in _selectedChipsContainer.transform)
         {
-            Destroy(child.gameObject);
-            // probably need to remove entry from dictionary here
+            Image image = child.gameObject.GetComponent<Image>();
+            if (image != null && image.sprite != _blankSprite)
+            {
+                image.sprite = _blankSprite;
+            }
         }
 
         _roundProgressBar.SetActive(true);

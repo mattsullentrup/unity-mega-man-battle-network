@@ -74,12 +74,10 @@ public class BattleGrid : MonoBehaviour
 
     public List<Battler> GetDamagableDefenders(ChipCommandSO chipCommand)
     {
-        // var damagableCells = chipCommand.DamagableCells;
         var attacker = chipCommand.Battler;
         List<Battler> defenders = new();
         if (attacker is Player)
         {
-            // defenders = (List<Battler>)_enemyManager.Enemies.Cast<Battler>().OrderBy(x => x).Select(x => x);
             foreach (Enemy enemy in _enemyManager.Enemies)
             {
                 defenders.Add(enemy);

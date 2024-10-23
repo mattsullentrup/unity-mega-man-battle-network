@@ -69,10 +69,6 @@ public class Player : Battler
     {
         ChipComponent.Chips = chips;
         GetComponent<PlayerChipUI>().CreateChipImages(chips);
-        // foreach (var chip in chips)
-        // {
-        //     chip.ChipCommandSO.ChipExecuting += OnChipExecuting;
-        // }
     }
 
     private void OnChipExecuting(Battler battler, ChipCommandSO chipCommand)
@@ -80,7 +76,6 @@ public class Player : Battler
         if (battler is not Player)
             return;
 
-        // Destroy(ChipComponent.Chips[0]);
         _currentChip = ChipComponent.Chips[0];
         ChipComponent.Chips.RemoveAt(0);
     }

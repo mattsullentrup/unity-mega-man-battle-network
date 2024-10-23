@@ -9,14 +9,9 @@ public class Enemy : Battler
 {
     public event Action<Enemy, ChipCommandSO> StartingAction;
     public override event Action<ChipCommandSO> BattlerAttacking;
-
     public override List<List<Vector2Int>> ValidRows { get; set; }
     public override Animator Animation { get; set; }
     public override bool IsAttacking { get; set; }
-
-    // public AnimationClip AnimationClip { get; private set; }
-    // public override AnimationClip AnimationClip { get => throw new NotImplementedException(); protected set => throw new NotImplementedException(); }
-
     public override ChipComponent ChipComponent { get; protected set; }
 
     private void Awake()
@@ -61,8 +56,9 @@ public class Enemy : Battler
     private IEnumerator ActionRoutine()
     {
         yield return new WaitForSeconds(2);
-        var chipCommand = ChipComponent.Chips[0].ChipCommandSO;
-        StartingAction?.Invoke(this, ChipComponent.Chips[0].ChipCommandSO);
+        var chipCommand = Instantiate(ChipComponent.Chips[0].ChipCommandSO);
+        chipCommand.Battler = this;
+        StartingAction?.Invoke(this, chipCommand);
     }
 
     public override void TakeDamage(int amount)
