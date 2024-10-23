@@ -62,6 +62,7 @@ public class Enemy : Battler
     public override void TakeDamage(int amount)
     {
         Animation.SetTrigger("TakeDamage");
+        GetComponent<HealthComponent>().DecreaseHealth(amount);
     }
 
     public override void DealDamage()

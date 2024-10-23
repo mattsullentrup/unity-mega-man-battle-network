@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class ChipCommandSO : ScriptableObject, ICommand
 {
+    // TODO: flip DamagableCells sign depending on battler type.
     public static event Action<Battler, ChipCommandSO> ChipExecuting;
     public int Damage;
     public float Delay;

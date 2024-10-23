@@ -63,6 +63,7 @@ public class Player : Battler
     public override void TakeDamage(int amount)
     {
         Animation.SetTrigger("TakeDamage");
+        GetComponent<HealthComponent>().DecreaseHealth(amount);
     }
 
     private void OnChipsSelected(List<ChipSO> chips)

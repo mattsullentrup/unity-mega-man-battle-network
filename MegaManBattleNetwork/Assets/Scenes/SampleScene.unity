@@ -1259,6 +1259,7 @@ GameObject:
   - component: {fileID: 518180103}
   - component: {fileID: 518180102}
   - component: {fileID: 518180104}
+  - component: {fileID: 518180105}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1441,6 +1442,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _chipQueuePanel: {fileID: 32714421}
+--- !u!114 &518180105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 518180094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4138a7fd7dfb342c8fab34607ad1b4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth: 50
+  _healthText: {fileID: 1640404637}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -2605,6 +2620,25 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 861161120748103775, guid: c5727034fd528335291628b6629bc5c4, type: 3}
   m_PrefabInstance: {fileID: 1023538148}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1165886304 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3487658579154384507, guid: 607e46afec50bb2d0866e2bb21840979, type: 3}
+  m_PrefabInstance: {fileID: 3342805102257788193}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1165886311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1165886304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4138a7fd7dfb342c8fab34607ad1b4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth: 50
+  _healthText: {fileID: 1219765780}
 --- !u!1001 &1167440564
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2782,6 +2816,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1218049582}
   m_CullTransparentMesh: 1
+--- !u!114 &1219765780 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9003770064721912073, guid: 607e46afec50bb2d0866e2bb21840979, type: 3}
+  m_PrefabInstance: {fileID: 3342805102257788193}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1293899203
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6196,10 +6241,17 @@ PrefabInstance:
       propertyPath: m_AdditionalShaderChannelsFlag
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: 7653477866228048182, guid: 607e46afec50bb2d0866e2bb21840979, type: 3}
+      propertyPath: m_Name
+      value: EnemyHealthText
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3487658579154384507, guid: 607e46afec50bb2d0866e2bb21840979, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1165886311}
   m_SourcePrefab: {fileID: 100100000, guid: 607e46afec50bb2d0866e2bb21840979, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
