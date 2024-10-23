@@ -20,7 +20,7 @@ public class PlayerChipUI : MonoBehaviour
 
     public void CreateChipImages(List<ChipSO> chips)
     {
-        if (chips.Count == 0)
+        if (chips == null || chips.Count == 0)
             return;
 
         foreach (var chip in chips)

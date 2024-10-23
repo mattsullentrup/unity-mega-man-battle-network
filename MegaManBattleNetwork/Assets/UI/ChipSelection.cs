@@ -6,7 +6,6 @@ using UnityEngine.InputSystem;
 using Unity.Mathematics;
 using System;
 using System.Linq;
-using Unity.VisualScripting;
 
 public class ChipSelection : MonoBehaviour
 {
@@ -42,7 +41,6 @@ public class ChipSelection : MonoBehaviour
 
     private void Start()
     {
-        // TODO: connect focus entered signal to all available chip buttons to display their image in the upper panel
         _primaryAction = InputSystem.actions.FindAction("Primary");
         _secondaryAction = InputSystem.actions.FindAction("Secondary");
         _animationPlayer = GetComponent<Animation>();
@@ -58,14 +56,35 @@ public class ChipSelection : MonoBehaviour
 
     private void Update()
     {
-    //     if (_primaryAction.WasPressedThisFrame())
-    //     {
-    //         SelectChip();
-    //     }
+        //     if (_primaryAction.WasPressedThisFrame())
+        //     {
+        //         SelectChip();
+        //     }
 
         if (_secondaryAction.WasPressedThisFrame())
         {
             RemoveSelectedChip();
+        }
+
+        SetFocusedChipImage();
+    }
+
+    private void SetFocusedChipImage()
+    {
+        if (EventSystem.current == null)
+            return;
+
+        var selected = EventSystem.current.currentSelectedGameObject;
+        if (selected == null)
+            return;
+
+        var image = _focusedChipTextureRect.GetComponent<Image>().sprite; 
+        if (selected.GetComponent<Image>().sprite == image)
+            return;
+
+        if (_buttonData.ContainsKey(selected))
+        {
+            _focusedChipTextureRect.GetComponent<Image>().sprite = selected.GetComponent<Image>().sprite;
         }
     }
 
