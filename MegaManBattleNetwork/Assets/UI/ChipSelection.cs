@@ -5,6 +5,8 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using Unity.Mathematics;
 using System;
+using System.Linq;
+using Unity.VisualScripting;
 
 public class ChipSelection : MonoBehaviour
 {
@@ -111,20 +113,19 @@ public class ChipSelection : MonoBehaviour
 
     private void RemoveSelectedChip()
     {
-        var chipUI = _selectedChipsContainer.transform.GetChild(0);
-        chipUI.parent = null;
-        foreach (Transform child in _availableChipsContainer.transform)
+        for (int i = _selectedChipsContainer.transform.childCount - 1; i >= 0; i--)
         {
-            Image image = child.gameObject.GetComponent("Image") as Image;
-            if (image != null && image.sprite == _blankSprite)
+            var child = _selectedChipsContainer.transform.GetChild(i);
+            if (child.gameObject.GetComponent<Image>().sprite != _blankSprite)
             {
-                var index = child.GetSiblingIndex();
-                chipUI.SetParent(_availableChipsContainer.transform);
-                chipUI.SetSiblingIndex(index + 1);
-                child.SetParent(null);
-                chipUI.gameObject.GetComponent<Button>().onClick.AddListener(SelectChip);
-                EventSystem.current.SetSelectedGameObject(chipUI.gameObject);
-                return;
+                child.gameObject.GetComponent<Image>().sprite = _blankSprite;
+                var selectedChip = _selectedChips[child.GetSiblingIndex()];
+                _selectedChips.Remove(selectedChip);
+
+                var button = _buttonData.FirstOrDefault(x => x.Value == selectedChip).Key;
+                button.GetComponent<Image>().sprite = selectedChip.Sprite;
+                EventSystem.current.SetSelectedGameObject(button);
+                break;
             }
         }
     }
