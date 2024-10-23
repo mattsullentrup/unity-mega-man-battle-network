@@ -58,10 +58,10 @@ public class ChipSelection : MonoBehaviour
 
     private void Update()
     {
-        if (_primaryAction.WasPressedThisFrame())
-        {
-            SelectChip();
-        }
+    //     if (_primaryAction.WasPressedThisFrame())
+    //     {
+    //         SelectChip();
+    //     }
 
         if (_secondaryAction.WasPressedThisFrame())
         {
@@ -72,6 +72,7 @@ public class ChipSelection : MonoBehaviour
     private void OnChipSelectionStarting()
     {
         _roundProgressBar.SetActive(false);
+        EventSystem.current.enabled = true;
         FillInBlankChips();
     }
 
@@ -180,5 +181,6 @@ public class ChipSelection : MonoBehaviour
         }
 
         _roundProgressBar.SetActive(true);
+        EventSystem.current.enabled = false;
     }
 }
