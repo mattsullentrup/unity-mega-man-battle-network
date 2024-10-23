@@ -11,6 +11,7 @@ public class Player : Battler
     private PlayerMovement _playerMovement;
     private PlayerInput _playerInput;
     private PlayerShootComponent _playerShootComponent;
+    private ChipSO _currentChip;
 
     public override event Action<ChipCommandSO> BattlerAttacking;
     public override List<List<Vector2Int>> ValidRows { get; set; }
@@ -40,11 +41,13 @@ public class Player : Battler
     private void Start()
     {
         ChipSelection.ChipsSelected += OnChipsSelected;
+        ChipCommandSO.ChipExecuting += OnChipExecuting;
     }
 
     private void OnDestroy()
     {
         ChipSelection.ChipsSelected -= OnChipsSelected;
+        ChipCommandSO.ChipExecuting -= OnChipExecuting;
     }
 
     public void ExecuteChip()
@@ -62,14 +65,30 @@ public class Player : Battler
         Animation.SetTrigger("TakeDamage");
     }
 
-    public void OnChipsSelected(List<ChipSO> chips)
+    private void OnChipsSelected(List<ChipSO> chips)
     {
         ChipComponent.Chips = chips;
+        GetComponent<PlayerChipUI>().CreateChipImages(chips);
+        // foreach (var chip in chips)
+        // {
+        //     chip.ChipCommandSO.ChipExecuting += OnChipExecuting;
+        // }
+    }
+
+    private void OnChipExecuting(Battler battler, ChipCommandSO chipCommand)
+    {
+        if (battler is not Player)
+            return;
+
+        // Destroy(ChipComponent.Chips[0]);
+        _currentChip = ChipComponent.Chips[0];
+        ChipComponent.Chips.RemoveAt(0);
     }
 
     public override void DealDamage()
     {
-        BattlerAttacking?.Invoke(ChipComponent.Chips[0].ChipCommandSO);
+        BattlerAttacking?.Invoke(_currentChip.ChipCommandSO);
+        Destroy(_currentChip);
     }
 
     private IEnumerator MoveCooldownRoutine()

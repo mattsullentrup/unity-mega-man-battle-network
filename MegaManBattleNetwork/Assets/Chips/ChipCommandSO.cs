@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-// [CreateAssetMenu(fileName = "ChipCommand", menuName = "Chips/ChipCommand")]
-public class ChipCommandSO : ScriptableObject, ICommand
+public abstract class ChipCommandSO : ScriptableObject, ICommand
 {
+    public static event Action<Battler, ChipCommandSO> ChipExecuting;
     public int Damage;
     public float Delay;
     public List<Vector2Int> DamagableCells;
@@ -12,6 +12,6 @@ public class ChipCommandSO : ScriptableObject, ICommand
 
     public virtual void Execute()
     {
-        // BattlerAttacking?.Invoke(this);
+        ChipExecuting?.Invoke(Battler, this);
     }
 }

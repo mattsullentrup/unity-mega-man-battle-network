@@ -25,7 +25,9 @@ public class ChipComponent : MonoBehaviour
             return;
 
         var chip = Chips[0];
-        // chip.ChipCommandSO.Battler = Battler;
+        if (chip.ChipCommandSO.Battler == null)
+            chip.ChipCommandSO.Battler = Battler;
+
         chip.ChipCommandSO.Execute();
     }
 }
