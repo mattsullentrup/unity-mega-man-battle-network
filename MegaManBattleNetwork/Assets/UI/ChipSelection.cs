@@ -26,6 +26,7 @@ public class ChipSelection : MonoBehaviour
     private const int _maxChipContainerSize = 10;
     private int _maxAvailableChips = _initialMaxChips;
     private List<ChipSO> _selectedChips = new();
+    private InputAction _primaryAction;
     private InputAction _secondaryAction;
     private Dictionary<GameObject, ChipSO> _buttonData = new();
 
@@ -42,6 +43,7 @@ public class ChipSelection : MonoBehaviour
     private void Start()
     {
         // TODO: connect focus entered signal to all available chip buttons to display their image in the upper panel
+        _primaryAction = InputSystem.actions.FindAction("Primary");
         _secondaryAction = InputSystem.actions.FindAction("Secondary");
         _animationPlayer = GetComponent<Animation>();
         foreach (Transform child in _availableChipsContainer.transform)
@@ -56,6 +58,11 @@ public class ChipSelection : MonoBehaviour
 
     private void Update()
     {
+        if (_primaryAction.WasPressedThisFrame())
+        {
+            SelectChip();
+        }
+
         if (_secondaryAction.WasPressedThisFrame())
         {
             RemoveSelectedChip();
