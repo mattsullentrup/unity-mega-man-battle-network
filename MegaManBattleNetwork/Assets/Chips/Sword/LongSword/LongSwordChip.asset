@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 617c646dffa43a147a913a2269e96a46, type: 3}
   m_Name: LongSwordChip
   m_EditorClassIdentifier: 
-  _sprite: {fileID: 0}
+  _sprite: {fileID: 7365210539760897286, guid: 7779be8fc388574d7af24c51ef5d0c1f, type: 3}
   _name: LongSword
   _chipCommandSO: {fileID: 11400000, guid: b6fa73c1bca6f6957a69d88fc94a524d, type: 2}
