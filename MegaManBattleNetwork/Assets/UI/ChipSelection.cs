@@ -18,7 +18,7 @@ public class ChipSelection : MonoBehaviour
     [SerializeField] private GameObject _focusedChipTextureRect;
     [SerializeField] private Sprite _blankSprite;
 
-    private Animator _animationPlayer;
+    private Animation _animationPlayer;
     private const int _initialMaxChips = 5;
     private const int _maxSelectedChips = 3;
     private const int _maxChipContainerSize = 10;
@@ -41,7 +41,7 @@ public class ChipSelection : MonoBehaviour
     {
         // TODO: connect focus entered signal to all available chip buttons to display their image in the upper panel
         _secondaryAction = InputSystem.actions.FindAction("Secondary");
-        _animationPlayer = GetComponent<Animator>();
+        _animationPlayer = GetComponent<Animation>();
         foreach (Transform child in _availableChipsContainer.transform)
         {
             _buttonData[child.gameObject] = null;
@@ -142,7 +142,7 @@ public class ChipSelection : MonoBehaviour
         }
 
         EventSystem.current.SetSelectedGameObject(_availableChipsContainer.transform.GetChild(0).gameObject);
-        // _animationPlayer.Play("SlideChipSelectionContainer");
+        _animationPlayer.Play("SlideIn");
     }
 
     private void SelectChip()
@@ -170,8 +170,8 @@ public class ChipSelection : MonoBehaviour
 
     private void EndChipSelection()
     {
-        gameObject.SetActive(false);
         // _animationPlayer.PlayBackward("SlideChipSelectionContainer");
+        _animationPlayer.Play("SlideOut");
         foreach (Transform child in _selectedChipsContainer.transform)
         {
             Destroy(child.gameObject);
