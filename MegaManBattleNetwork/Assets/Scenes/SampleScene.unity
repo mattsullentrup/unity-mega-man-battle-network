@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 32714424}
   - component: {fileID: 32714423}
   m_Layer: 0
-  m_Name: Panel
+  m_Name: ChipQueuePanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1330,6 +1330,7 @@ GameObject:
   - component: {fileID: 518180100}
   - component: {fileID: 518180103}
   - component: {fileID: 518180102}
+  - component: {fileID: 518180104}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1486,8 +1487,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3b63eb4e84ec67b69d93d6da0efd073, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Chips:
-  - {fileID: 11400000, guid: 9005a9674eed6f22a8ddfc6a3347681f, type: 2}
+  _chips: []
 --- !u!114 &518180103
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1498,6 +1498,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 74c58dc1b90a672ba8abe3e8a45a3b56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &518180104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 518180094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a109cb81f09608eb0b0f30b3b9028bd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &519420028
@@ -6267,6 +6279,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3476922349017759204, guid: 607e46afec50bb2d0866e2bb21840979, type: 3}
+      propertyPath: _chips.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3476922349017759204, guid: 607e46afec50bb2d0866e2bb21840979, type: 3}
+      propertyPath: '_chips.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 71a9f66b7cb4b0d0c94a8051b3d5e1f0, type: 2}
     - target: {fileID: 3487658579154384507, guid: 607e46afec50bb2d0866e2bb21840979, type: 3}
       propertyPath: m_Name
       value: Skeleton
