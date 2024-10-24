@@ -17,7 +17,6 @@ namespace MegaManBattleNetwork
         [SerializeField] private List<ChipSO> _chipsPool;
         [SerializeField] private GameObject _availableChipsContainer;
         [SerializeField] private GameObject _selectedChipsContainer;
-        // [SerializeField] private GameObject _roundProgressBar;
         [SerializeField] private GameObject _focusedChipTextureRect;
         [SerializeField] private Sprite _blankSprite;
 
@@ -53,7 +52,6 @@ namespace MegaManBattleNetwork
             }
 
             FillInBlankChips();
-            // _roundProgressBar.SetActive(false);
         }
 
         private void Update()
@@ -92,7 +90,6 @@ namespace MegaManBattleNetwork
 
         private void OnRoundEnding()
         {
-            // _roundProgressBar.SetActive(false);
             // EventSystem.current.enabled = true;
             FillInBlankChips();
         }
@@ -203,7 +200,6 @@ namespace MegaManBattleNetwork
                 }
             }
 
-            // _roundProgressBar.SetActive(true);
             // EventSystem.current.enabled = false;
         }
     }

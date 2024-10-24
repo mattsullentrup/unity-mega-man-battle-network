@@ -28,7 +28,6 @@ namespace MegaManBattleNetwork
         private List<List<Vector2Int>> _enemyRows = new();
         private List<List<Vector2Int>> _playerRows = new();
         private List<List<Vector2Int>> _allRows = new();
-        private bool _canStartChipSelection;
 
         private Grid _grid;
         public Grid Grid => _grid;

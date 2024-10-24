@@ -11,10 +11,10 @@ namespace MegaManBattleNetwork
         public static GameManager Instance => _instance;
         public float ElapsedTime => _elapsedTime;
 
-        private float _elapsedTime;
         private static GameManager _instance;
         [SerializeField] private int _roundLength = 10;
         private bool _isRoundProgressing;
+        private float _elapsedTime;
 
         private void Awake()
         {
