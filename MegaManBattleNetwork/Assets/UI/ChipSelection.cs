@@ -82,9 +82,9 @@ namespace MegaManBattleNetwork
             if (selected.GetComponent<Image>().sprite == image)
                 return;
 
-            if (_buttonData.ContainsKey(selected))
+            if (_buttonData.ContainsKey(selected) && _buttonData[selected] != null)
             {
-                _focusedChipTextureRect.GetComponent<Image>().sprite = selected.GetComponent<Image>().sprite;
+                _focusedChipTextureRect.GetComponent<Image>().sprite = _buttonData[selected].Sprite;
             }
         }
 
