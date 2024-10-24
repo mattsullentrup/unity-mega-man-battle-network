@@ -8,6 +8,7 @@ namespace MegaManBattleNetwork
 {
     public class PlayerInput : MonoBehaviour
     {
+        public static event Action PlayerPressedSelect;
         public Player Player { private get; set; }
         public PlayerMovement PlayerMovement { private get; set; }
         public PlayerShootComponent PlayerShootComponent { private get; set; }
@@ -17,12 +18,14 @@ namespace MegaManBattleNetwork
         private InputAction _moveAction;
         private InputAction _primaryAction;
         private InputAction _secondaryAction;
+        private InputAction _selectAction;
 
         private void Start()
         {
             _moveAction = InputSystem.actions.FindAction("Move");
             _primaryAction = InputSystem.actions.FindAction("Primary");
             _secondaryAction = InputSystem.actions.FindAction("Secondary");
+            _selectAction = InputSystem.actions.FindAction("Select");
         }
 
         private void Update()
@@ -41,6 +44,11 @@ namespace MegaManBattleNetwork
             if (_secondaryAction.WasPressedThisFrame())
             {
                 PlayerShootComponent.Shoot();
+            }
+
+            if (_selectAction.WasPressedThisFrame())
+            {
+                PlayerPressedSelect?.Invoke();
             }
         }
     }

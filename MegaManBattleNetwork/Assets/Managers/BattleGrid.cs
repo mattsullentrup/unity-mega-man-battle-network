@@ -48,6 +48,7 @@ namespace MegaManBattleNetwork
         {
             ChipSelection.ChipsSelected += OnChipsSelected;
             _player.BattlerAttacking += OnBattlerAttacking;
+            GameManager.RoundEnding += OnRoundEnding;
 
             yield return new WaitUntil(() => _enemyManager.IsInitialized);
             foreach (var enemy in _enemyManager.Enemies)
@@ -62,6 +63,7 @@ namespace MegaManBattleNetwork
         {
             ChipSelection.ChipsSelected -= OnChipsSelected;
             _player.BattlerAttacking -= OnBattlerAttacking;
+            GameManager.RoundEnding -= OnRoundEnding;
 
             foreach (var enemy in _enemyManager.Enemies)
             {
@@ -115,6 +117,11 @@ namespace MegaManBattleNetwork
         public void OnChipsSelected(List<ChipSO> chips)
         {
             ToggleBattlers(true);
+        }
+
+        private void OnRoundEnding()
+        {
+            ToggleBattlers(false);
         }
 
         private void SetupRows()
