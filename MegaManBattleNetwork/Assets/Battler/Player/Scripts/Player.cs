@@ -61,6 +61,7 @@ namespace MegaManBattleNetwork
             Animation.SetTrigger("TakeDamage");
             GetComponent<HealthComponent>().DecreaseHealth(amount);
             StartCoroutine(_playerInput.TakeDamageRoutine());
+            base.TakeDamage(amount);
         }
 
         private void OnChipsSelected(List<ChipSO> chips)

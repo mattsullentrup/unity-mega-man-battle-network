@@ -73,6 +73,7 @@ namespace MegaManBattleNetwork
         {
             Animation.SetTrigger("TakeDamage");
             GetComponent<HealthComponent>().DecreaseHealth(amount);
+            base.TakeDamage(amount);
         }
 
         public override void DealDamage()
