@@ -106,6 +106,8 @@ public class ChipSelection : MonoBehaviour
             {
                 int index = UnityEngine.Random.Range(0, _chipsPool.Count);
                 var randomChip = Instantiate(_chipsPool[index]);
+                var chipCommand = Instantiate(randomChip.ChipCommandSO);
+                randomChip.ChipCommandSO = chipCommand;
                 _buttonData[button] = randomChip;
                 image.sprite = randomChip.Sprite;
             }

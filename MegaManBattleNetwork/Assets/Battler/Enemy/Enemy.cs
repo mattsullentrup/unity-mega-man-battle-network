@@ -18,15 +18,16 @@ public class Enemy : Battler
         Animation = GetComponentInChildren<Animator>();
         ChipComponent = GetComponent<ChipComponent>();
         ChipComponent.Battler = this;
-
-        var chipCommand = ChipComponent.Chips[0].ChipCommandSO;
+        var chip = Instantiate(ChipComponent.Chips[0]);
+        var chipCommand = Instantiate(ChipComponent.Chips[0].ChipCommandSO);
         chipCommand.Battler = this;
-        // chipCommand.DamagableCells = chipCommand.DamagableCells.Select(c => c *= Vector2Int.left).ToList();
         for (int i = 0; i < chipCommand.DamagableCells.Count; i++)
         {
             chipCommand.DamagableCells[i] *= Vector2Int.left;
         }
-        ChipComponent.Chips[0].ChipCommandSO = chipCommand;
+
+        chip.ChipCommandSO = chipCommand;
+        ChipComponent.Chips[0] = chip;
     }
 
     public void ExecuteChip()
@@ -62,7 +63,7 @@ public class Enemy : Battler
 
     private IEnumerator ActionRoutine()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(5);
         StartingAction?.Invoke(this, ChipComponent.Chips[0].ChipCommandSO);
     }
 

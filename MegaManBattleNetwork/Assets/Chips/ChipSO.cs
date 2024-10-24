@@ -11,8 +11,8 @@ public class ChipSO : ScriptableObject
     public ChipCommandSO ChipCommandSO { get; set; }
     public Sprite Sprite => _sprite;
 
-    private void OnEnable()
-    {
-        Instantiate(ChipCommandSO);
-    }
+//     private void OnEnable()
+//     {
+//         ChipCommandSO = Instantiate(ChipCommandSO);
+//     }
 }
