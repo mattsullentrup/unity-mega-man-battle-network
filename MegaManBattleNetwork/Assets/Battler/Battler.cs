@@ -11,6 +11,7 @@ namespace MegaManBattleNetwork
         public float InvulnerableCooldown { get; private set; } = 3.0f;
         public float DamageTakenMoveCooldown { get; private set; } = 1.0f;
         public bool CanMove { get; set; } = true;
+        public bool IsTakingDamage { get; set; }
 
         public abstract event Action<ChipCommandSO> BattlerAttacking;
         public abstract List<List<Vector2Int>> ValidRows { get; set; }
@@ -30,6 +31,7 @@ namespace MegaManBattleNetwork
             CanMove = false;
             Animation.SetTrigger("TakeDamage");
             GetComponent<HealthComponent>().DecreaseHealth(amount);
+            StartCoroutine(TakeDamageRoutine());
             StartCoroutine(InvulnerableRoutine());
             GetComponent<SpriteFlash>().Flash();
         }
@@ -39,6 +41,13 @@ namespace MegaManBattleNetwork
             _isInvulnerable = true;
             yield return new WaitForSeconds(InvulnerableCooldown);
             _isInvulnerable = false;
+        }
+
+        private IEnumerator TakeDamageRoutine()
+        {
+            IsTakingDamage = true;
+            yield return new WaitForSeconds(DamageTakenMoveCooldown);
+            IsTakingDamage = false;
         }
     }
 }

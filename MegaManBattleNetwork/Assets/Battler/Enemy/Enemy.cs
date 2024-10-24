@@ -14,6 +14,8 @@ namespace MegaManBattleNetwork
         public override Animator Animation { get; set; }
         public override ChipComponent ChipComponent { get; protected set; }
 
+        [SerializeField] private float _actionCooldown = 4.0f;
+
         private void Awake()
         {
             Animation = GetComponentInChildren<Animator>();
@@ -64,7 +66,7 @@ namespace MegaManBattleNetwork
 
         private IEnumerator ActionRoutine()
         {
-            yield return new WaitForSeconds(4.5f);
+            yield return new WaitForSeconds(_actionCooldown);
             StartingAction?.Invoke(this, ChipComponent.Chips[0].ChipCommandSO);
         }
 
@@ -75,7 +77,6 @@ namespace MegaManBattleNetwork
 
             base.TakeDamage(amount);
             StopCoroutine(ActionRoutine());
-            StartCoroutine(TakeDamageRoutine());
         }
 
         public override void DealDamage()
@@ -94,13 +95,6 @@ namespace MegaManBattleNetwork
             {
                 StopAllCoroutines();
             }
-        }
-
-        private IEnumerator TakeDamageRoutine()
-        {
-            CanMove = false;
-            yield return new WaitForSeconds(DamageTakenMoveCooldown);
-            CanMove = true;
         }
     }
 }

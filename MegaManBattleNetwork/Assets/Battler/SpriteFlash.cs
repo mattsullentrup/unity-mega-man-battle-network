@@ -42,7 +42,7 @@ public class SpriteFlash : MonoBehaviour
 
     private IEnumerator SwapMaterialRoutine()
     {
-        if (!_battler.CanMove)
+        if (_battler.IsTakingDamage)
         {
             ChangeFlashMaterial();
         }

@@ -61,7 +61,7 @@ namespace MegaManBattleNetwork
                 return;
 
             base.TakeDamage(amount);
-            StartCoroutine(_playerInput.TakeDamageRoutine());
+            StartCoroutine(_playerMovement.TakeDamageRoutine());
         }
 
         public override void DealDamage()
