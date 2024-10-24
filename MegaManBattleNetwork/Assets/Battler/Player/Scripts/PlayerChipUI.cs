@@ -8,13 +8,13 @@ public class PlayerChipUI : MonoBehaviour
 
     private void Start()
     {
-        BattleGrid.ChipSelectionStarting += OnChipSelectionStarting;
+        GameManager.RoundEnding += OnRoundEnding;
         ChipCommandSO.ChipExecuting += OnChipExecuting;
     }
 
     private void OnDestroy()
     {
-        BattleGrid.ChipSelectionStarting -= OnChipSelectionStarting;
+        GameManager.RoundEnding -= OnRoundEnding;
         ChipCommandSO.ChipExecuting -= OnChipExecuting;
     }
 
@@ -43,7 +43,7 @@ public class PlayerChipUI : MonoBehaviour
         Destroy(_chipQueuePanel.transform.GetChild(0).gameObject);
     }
 
-    private void OnChipSelectionStarting()
+    private void OnRoundEnding()
     {
         foreach (Transform child in _chipQueuePanel.transform)
         {

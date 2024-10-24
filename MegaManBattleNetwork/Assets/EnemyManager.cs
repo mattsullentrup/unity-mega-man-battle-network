@@ -37,7 +37,7 @@ public class EnemyManager : MonoBehaviour
 
     private void OnEnemyStartingAction(Enemy enemy, ChipCommandSO chipCommand)
     {
-        if (BattleGrid.Instance.GetDamagableDefenders(chipCommand).Count != 0)
+        if (GameManager.Instance.GetDamagableDefenders(chipCommand).Count != 0)
         {
             enemy.ExecuteChip();
         }

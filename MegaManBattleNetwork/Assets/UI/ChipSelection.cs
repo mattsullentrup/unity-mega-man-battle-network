@@ -31,12 +31,12 @@ public class ChipSelection : MonoBehaviour
 
     private void OnEnable()
     {
-        BattleGrid.ChipSelectionStarting += OnChipSelectionStarting;
+        GameManager.RoundEnding += OnRoundEnding;
     }
 
     private void OnDisable()
     {
-        BattleGrid.ChipSelectionStarting -= OnChipSelectionStarting;
+        GameManager.RoundEnding -= OnRoundEnding;
     }
 
     private void Start()
@@ -88,7 +88,7 @@ public class ChipSelection : MonoBehaviour
         }
     }
 
-    private void OnChipSelectionStarting()
+    private void OnRoundEnding()
     {
         _roundProgressBar.SetActive(false);
         EventSystem.current.enabled = true;

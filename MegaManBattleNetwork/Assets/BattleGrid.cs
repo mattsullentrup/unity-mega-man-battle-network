@@ -4,10 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class BattleGrid : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
-    public static event Action ChipSelectionStarting;
-
     private enum Row
     {
         Top,
@@ -32,8 +30,8 @@ public class BattleGrid : MonoBehaviour
 
     private Grid _grid;
     public Grid Grid => _grid;
-    private static BattleGrid _instance;
-    public static BattleGrid Instance => _instance;
+    private static GameManager _instance;
+    public static GameManager Instance => _instance;
 
     private void Awake()
     {

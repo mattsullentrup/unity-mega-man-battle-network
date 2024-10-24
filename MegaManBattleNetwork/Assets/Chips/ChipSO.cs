@@ -10,9 +10,4 @@ public class ChipSO : ScriptableObject
     [field: SerializeField]
     public ChipCommandSO ChipCommandSO { get; set; }
     public Sprite Sprite => _sprite;
-
-//     private void OnEnable()
-//     {
-//         ChipCommandSO = Instantiate(ChipCommandSO);
-//     }
 }
