@@ -58,10 +58,19 @@ namespace MegaManBattleNetwork
 
         public override void TakeDamage(int amount)
         {
+            if (_isInvulnerable)
+                return;
+
+            base.TakeDamage(amount);
             Animation.SetTrigger("TakeDamage");
             GetComponent<HealthComponent>().DecreaseHealth(amount);
             StartCoroutine(_playerInput.TakeDamageRoutine());
-            base.TakeDamage(amount);
+        }
+
+        public override void DealDamage()
+        {
+            BattlerAttacking?.Invoke(_currentChip.ChipCommandSO);
+            Destroy(_currentChip);
         }
 
         private void OnChipsSelected(List<ChipSO> chips)
@@ -79,10 +88,9 @@ namespace MegaManBattleNetwork
             ChipComponent.Chips.RemoveAt(0);
         }
 
-        public override void DealDamage()
+        private void InvulnerableRoutine()
         {
-            BattlerAttacking?.Invoke(_currentChip.ChipCommandSO);
-            Destroy(_currentChip);
+
         }
     }
 }

@@ -65,15 +65,18 @@ namespace MegaManBattleNetwork
 
         private IEnumerator ActionRoutine()
         {
-            yield return new WaitForSeconds(5);
+            yield return new WaitForSeconds(1.5f);
             StartingAction?.Invoke(this, ChipComponent.Chips[0].ChipCommandSO);
         }
 
         public override void TakeDamage(int amount)
         {
+            if (_isInvulnerable)
+                return;
+
+            base.TakeDamage(amount);
             Animation.SetTrigger("TakeDamage");
             GetComponent<HealthComponent>().DecreaseHealth(amount);
-            base.TakeDamage(amount);
         }
 
         public override void DealDamage()

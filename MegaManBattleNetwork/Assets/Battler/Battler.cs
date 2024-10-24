@@ -18,6 +18,7 @@ namespace MegaManBattleNetwork
         public virtual void TakeDamage(int amount)
         {
             GetComponent<SpriteFlash>().Flash();
+            StartCoroutine(InvulnerableRoutine());
         }
         public abstract void DealDamage();
 
@@ -25,6 +26,14 @@ namespace MegaManBattleNetwork
         {
             Animation.enabled = value;
             Globals.ToggleScripts(gameObject, value);
+        }
+
+        protected bool _isInvulnerable;
+        private IEnumerator InvulnerableRoutine()
+        {
+            _isInvulnerable = true;
+            yield return new WaitForSeconds(InvulnerableCooldown);
+            _isInvulnerable = false;
         }
     }
 }
