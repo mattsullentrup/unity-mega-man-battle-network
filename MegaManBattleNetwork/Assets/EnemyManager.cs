@@ -13,22 +13,20 @@ public class EnemyManager : MonoBehaviour
 
     private void Start()
     {
+        Enemy.StartingAction += OnEnemyStartingAction;
+
         _enemies = FindObjectsByType<Enemy>(FindObjectsSortMode.InstanceID).ToList();
         foreach (var enemy in _enemies)
         {
-            enemy.StartingAction += OnEnemyStartingAction;
             enemy.ValidRows = _enemyRows;
         }
 
         IsInitialized = true;
     }
 
-    private void OnDisable()
+    private void OnDestroy()
     {
-        foreach (var enemy in _enemies)
-        {
-            enemy.StartingAction -= OnEnemyStartingAction;
-        }
+        Enemy.StartingAction -= OnEnemyStartingAction;
     }
 
     public void Initialize(List<List<Vector2Int>> allRows, List<List<Vector2Int>> enemyRows)

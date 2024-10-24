@@ -6,12 +6,13 @@ public class ChipSO : ScriptableObject
 {
     [SerializeField] private Sprite _sprite;
     [SerializeField] private string _name;
-    [SerializeField] private ChipCommandSO _chipCommandSO;
-    public ChipCommandSO ChipCommandSO => _chipCommandSO;
+
+    [field: SerializeField]
+    public ChipCommandSO ChipCommandSO { get; set; }
     public Sprite Sprite => _sprite;
 
-    private void Awake()
+    private void OnEnable()
     {
-        Instantiate(_chipCommandSO);
+        Instantiate(ChipCommandSO);
     }
 }
