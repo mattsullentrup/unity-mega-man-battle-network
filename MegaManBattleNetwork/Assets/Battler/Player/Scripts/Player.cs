@@ -9,7 +9,6 @@ namespace MegaManBattleNetwork
     [RequireComponent(typeof(ChipComponent))]
     public class Player : Battler
     {
-        private const float _moveCooldown = 0.1f;
         private PlayerMovement _playerMovement;
         private PlayerInput _playerInput;
         private PlayerShootComponent _playerShootComponent;
@@ -57,15 +56,11 @@ namespace MegaManBattleNetwork
             ChipComponent.ExecuteChip();
         }
 
-        public void StartMoveCooldown()
-        {
-            StartCoroutine(MoveCooldownRoutine());
-        }
-
         public override void TakeDamage(int amount)
         {
             Animation.SetTrigger("TakeDamage");
             GetComponent<HealthComponent>().DecreaseHealth(amount);
+            StartCoroutine(_playerInput.TakeDamageRoutine());
         }
 
         private void OnChipsSelected(List<ChipSO> chips)
@@ -87,12 +82,6 @@ namespace MegaManBattleNetwork
         {
             BattlerAttacking?.Invoke(_currentChip.ChipCommandSO);
             Destroy(_currentChip);
-        }
-
-        private IEnumerator MoveCooldownRoutine()
-        {
-            yield return new WaitForSeconds(_moveCooldown);
-            CanMove = true;
         }
     }
 }

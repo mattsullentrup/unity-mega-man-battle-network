@@ -16,8 +16,10 @@ namespace MegaManBattleNetwork
         public ChipComponent PlayerChipComponent { private get; set; }
 
         [SerializeField] private float _chipCooldown = 1.0f;
-        private bool _justUsedChip;
+        [SerializeField] private float _moveCooldown = 0.1f;
         private readonly Vector2[] _directions = { Vector2.up, Vector2.right, Vector2.left, Vector2.down };
+        private bool _justUsedChip;
+        private bool _canMove = true;
         private InputAction _moveAction;
         private InputAction _primaryAction;
         private InputAction _secondaryAction;
@@ -34,9 +36,10 @@ namespace MegaManBattleNetwork
         private void Update()
         {
             Vector2 moveValue = _moveAction.ReadValue<Vector2>();
-            if (_directions.Contains(moveValue))
+            if (_canMove && _directions.Contains(moveValue))
             {
                 PlayerMovement.Move(Vector2Int.RoundToInt(moveValue));
+                StartCoroutine(MoveCooldownRoutine());
             }
 
             if (_primaryAction.WasPressedThisFrame() && !_justUsedChip)
@@ -56,11 +59,26 @@ namespace MegaManBattleNetwork
             }
         }
 
+        public IEnumerator TakeDamageRoutine()
+        {
+            _canMove = false;
+            StopCoroutine(MoveCooldownRoutine());
+            yield return new WaitForSeconds(Player.DamageTakenCooldown);
+            _canMove = true;
+        }
+
         private IEnumerator ChipCooldownRoutine()
         {
             _justUsedChip = true;
             yield return new WaitForSeconds(_chipCooldown);
             _justUsedChip = false;
+        }
+
+        private IEnumerator MoveCooldownRoutine()
+        {
+            _canMove = false;
+            yield return new WaitForSeconds(_moveCooldown);
+            _canMove = true;
         }
     }
 }

@@ -18,8 +18,6 @@ namespace MegaManBattleNetwork
 
             var moveCommand = new MoveCommand(direction, Player);
             moveCommand.Execute();
-            Player.CanMove = false;
-            Player.StartMoveCooldown();
         }
 
         private bool IsValidPosition(Vector2Int cell)

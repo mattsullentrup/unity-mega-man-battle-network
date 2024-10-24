@@ -1,18 +1,23 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 namespace MegaManBattleNetwork
 {
-    public abstract class Battler : MonoBehaviour
+    public abstract class Battler : MonoBehaviour, IDamagable
     {
         public abstract event Action<ChipCommandSO> BattlerAttacking;
         public abstract List<List<Vector2Int>> ValidRows { get; set; }
         public abstract Animator Animation { get; set; }
-        public abstract void TakeDamage(int amount);
         public abstract bool IsAttacking { get; set; }
+        public float DamageTakenCooldown { get; private set; } = 1.0f;
+        public float InvulnerableCooldown { get; private set; } = 4.0f;
         public abstract ChipComponent ChipComponent { get; protected set; }
+        public abstract void TakeDamage(int amount);
         public abstract void DealDamage();
+
         public virtual void Toggle(bool value)
         {
             Animation.enabled = value;
