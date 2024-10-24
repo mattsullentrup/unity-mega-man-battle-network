@@ -1,24 +1,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChipComponent : MonoBehaviour
+namespace MegaManBattleNetwork
 {
-    public List<ChipSO> Chips
+    public class ChipComponent : MonoBehaviour
     {
-        get => _chips;
-        set => _chips = value;
-    }
-    public Battler Battler { get; set; }
-    [SerializeField] private List<ChipSO> _chips = new();
+        public List<ChipSO> Chips
+        {
+            get => _chips;
+            set => _chips = value;
+        }
+        public Battler Battler { get; set; }
+        [SerializeField] private List<ChipSO> _chips = new();
 
-    public void ExecuteChip()
-    {
-        if (Chips.Count == 0)
-            return;
+        public void ExecuteChip()
+        {
+            if (Chips.Count == 0)
+                return;
 
-        var chip = Chips[0];
-        chip.ChipCommandSO.Battler = Battler;
+            var chip = Chips[0];
+            chip.ChipCommandSO.Battler = Battler;
 
-       chip.ChipCommandSO.Execute();
+           chip.ChipCommandSO.Execute();
+        }
     }
 }

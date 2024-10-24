@@ -1,6 +1,9 @@
 using System;
 
-public interface ICommand
+namespace MegaManBattleNetwork
 {
-    public void Execute();
+    public interface ICommand
+    {
+        public void Execute();
+    }
 }

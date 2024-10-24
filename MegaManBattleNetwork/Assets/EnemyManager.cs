@@ -2,48 +2,54 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class EnemyManager : MonoBehaviour
+namespace MegaManBattleNetwork
 {
-    [SerializeField] private Player _player;
-    private List<List<Vector2Int>> _allRows;
-    private List<List<Vector2Int>> _enemyRows;
-    private List<Enemy> _enemies;
-    public List<Enemy> Enemies => _enemies;
-    public bool IsInitialized { get; private set; }
-
-    private void Start()
+    public class EnemyManager : MonoBehaviour
     {
-        Enemy.StartingAction += OnEnemyStartingAction;
+        [SerializeField] private Player _player;
+        private List<List<Vector2Int>> _allRows;
+        private List<List<Vector2Int>> _enemyRows;
+        private List<Enemy> _enemies;
+        private BattleGrid _battleGrid;
+        public List<Enemy> Enemies => _enemies;
+        public bool IsInitialized { get; private set; }
 
-        _enemies = FindObjectsByType<Enemy>(FindObjectsSortMode.InstanceID).ToList();
-        foreach (var enemy in _enemies)
+        private void Start()
         {
-            enemy.ValidRows = _enemyRows;
+            _battleGrid = FindFirstObjectByType<BattleGrid>();
+
+            Enemy.StartingAction += OnEnemyStartingAction;
+
+            _enemies = FindObjectsByType<Enemy>(FindObjectsSortMode.InstanceID).ToList();
+            foreach (var enemy in _enemies)
+            {
+                enemy.ValidRows = _enemyRows;
+            }
+
+            IsInitialized = true;
         }
 
-        IsInitialized = true;
-    }
-
-    private void OnDestroy()
-    {
-        Enemy.StartingAction -= OnEnemyStartingAction;
-    }
-
-    public void Initialize(List<List<Vector2Int>> allRows, List<List<Vector2Int>> enemyRows)
-    {
-        _allRows = allRows;
-        _enemyRows = enemyRows;
-    }
-
-    private void OnEnemyStartingAction(Enemy enemy, ChipCommandSO chipCommand)
-    {
-        if (GameManager.Instance.GetDamagableDefenders(chipCommand).Count != 0)
+        private void OnDestroy()
         {
-            enemy.ExecuteChip();
+            Enemy.StartingAction -= OnEnemyStartingAction;
         }
-        else
+
+        public void Initialize(List<List<Vector2Int>> allRows, List<List<Vector2Int>> enemyRows)
         {
-            enemy.Move(_player);
+            _allRows = allRows;
+            _enemyRows = enemyRows;
+        }
+
+        private void OnEnemyStartingAction(Enemy enemy, ChipCommandSO chipCommand)
+        {
+            if (_battleGrid.GetDamagableDefenders(chipCommand).Count != 0)
+            {
+                enemy.ExecuteChip();
+            }
+            else
+            {
+                enemy.Move(_player);
+            }
         }
     }
 }

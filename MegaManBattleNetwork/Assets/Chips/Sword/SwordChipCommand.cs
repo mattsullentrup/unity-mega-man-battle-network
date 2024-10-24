@@ -2,12 +2,15 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "SwordChipCommand", menuName = "Chips/SwordChipCommand")]
-public class SwordChipCommand : ChipCommandSO
+namespace MegaManBattleNetwork
 {
-    public override void Execute()
+    [CreateAssetMenu(fileName = "SwordChipCommand", menuName = "Chips/SwordChipCommand")]
+    public class SwordChipCommand : ChipCommandSO
     {
-        base.Execute();
-        Battler.Animation.SetTrigger("Attack");
+        public override void Execute()
+        {
+            base.Execute();
+            Battler.Animation.SetTrigger("Attack");
+        }
     }
 }

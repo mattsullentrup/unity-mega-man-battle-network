@@ -1,23 +1,26 @@
 using UnityEngine;
 
-public class MoveCommand : ICommand
+namespace MegaManBattleNetwork
 {
-    private Vector2Int _direction;
-    private Battler _battler;
-
-    public MoveCommand(Vector2Int direction, Battler battler)
+    public class MoveCommand : ICommand
     {
-        _direction = direction;
-        _battler = battler;
-    }
+        private Vector2Int _direction;
+        private Battler _battler;
 
-    public void Execute()
-    {
-        if (_battler == null)
-            return;
+        public MoveCommand(Vector2Int direction, Battler battler)
+        {
+            _direction = direction;
+            _battler = battler;
+        }
 
-        Vector2 battlerPos = _battler.transform.position;
-        var newPosition = battlerPos + _direction;
-        _battler.transform.position = newPosition;
+        public void Execute()
+        {
+            if (_battler == null)
+                return;
+
+            Vector2 battlerPos = _battler.transform.position;
+            var newPosition = battlerPos + _direction;
+            _battler.transform.position = newPosition;
+        }
     }
 }

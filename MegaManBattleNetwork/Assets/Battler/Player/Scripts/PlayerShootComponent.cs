@@ -1,9 +1,12 @@
 using UnityEngine;
 
-public class PlayerShootComponent : MonoBehaviour
+namespace MegaManBattleNetwork
 {
-    public void Shoot()
+    public class PlayerShootComponent : MonoBehaviour
     {
-        Debug.Log("shoot");
+        public void Shoot()
+        {
+            Debug.Log("shoot");
+        }
     }
 }

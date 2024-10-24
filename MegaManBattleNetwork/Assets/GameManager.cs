@@ -3,28 +3,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+namespace MegaManBattleNetwork
 {
-    public static event Action RoundEnding;
-    [SerializeField] private int _roundLength = 10;
-
-    private void OnEnable()
+    public class GameManager : MonoBehaviour
     {
-        ChipSelection.ChipsSelected += OnChipsSelected;
-    }
+        public static event Action RoundEnding;
+        [SerializeField] private int _roundLength = 10;
 
-    private void OnDisable()
-    {
-        ChipSelection.ChipsSelected -= OnChipsSelected;
-    }
+        private void OnEnable()
+        {
+            ChipSelection.ChipsSelected += OnChipsSelected;
+        }
 
-    private void OnChipsSelected(List<ChipSO> chips)
-    {
-        StartCoroutine(RoundRoutine());
-    }
+        private void OnDisable()
+        {
+            ChipSelection.ChipsSelected -= OnChipsSelected;
+        }
 
-    private IEnumerator RoundRoutine()
-    {
-        yield return new WaitForSeconds(_roundLength);
+        private void OnChipsSelected(List<ChipSO> chips)
+        {
+            StartCoroutine(RoundRoutine());
+        }
+
+        private IEnumerator RoundRoutine()
+        {
+            yield return new WaitForSeconds(_roundLength);
+        }
     }
 }

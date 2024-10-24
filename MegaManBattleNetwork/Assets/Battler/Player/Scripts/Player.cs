@@ -3,93 +3,96 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(PlayerInput), typeof(PlayerMovement), typeof(PlayerShootComponent))]
-[RequireComponent(typeof(ChipComponent))]
-public class Player : Battler
+namespace MegaManBattleNetwork
 {
-    private const float _moveCooldown = 0.1f;
-    private PlayerMovement _playerMovement;
-    private PlayerInput _playerInput;
-    private PlayerShootComponent _playerShootComponent;
-    private ChipSO _currentChip;
-
-    public override event Action<ChipCommandSO> BattlerAttacking;
-    public override List<List<Vector2Int>> ValidRows { get; set; }
-    public override Animator Animation { get; set; }
-    public override bool IsAttacking { get; set; }
-    public override ChipComponent ChipComponent { get; protected set; }
-    public bool CanMove { get; set; } = true;
-
-    private void Awake()
+    [RequireComponent(typeof(PlayerInput), typeof(PlayerMovement), typeof(PlayerShootComponent))]
+    [RequireComponent(typeof(ChipComponent))]
+    public class Player : Battler
     {
-        Animation = GetComponentInChildren<Animator>();
+        private const float _moveCooldown = 0.1f;
+        private PlayerMovement _playerMovement;
+        private PlayerInput _playerInput;
+        private PlayerShootComponent _playerShootComponent;
+        private ChipSO _currentChip;
 
-        _playerMovement = GetComponent<PlayerMovement>();
-        _playerInput = GetComponent<PlayerInput>();
-        _playerShootComponent = GetComponent<PlayerShootComponent>();
-        ChipComponent = GetComponent<ChipComponent>();
+        public override event Action<ChipCommandSO> BattlerAttacking;
+        public override List<List<Vector2Int>> ValidRows { get; set; }
+        public override Animator Animation { get; set; }
+        public override bool IsAttacking { get; set; }
+        public override ChipComponent ChipComponent { get; protected set; }
+        public bool CanMove { get; set; } = true;
 
-        _playerInput.PlayerMovement = _playerMovement;
-        _playerInput.PlayerChipComponent = ChipComponent;
-        _playerInput.PlayerShootComponent = _playerShootComponent;
+        private void Awake()
+        {
+            Animation = GetComponentInChildren<Animator>();
 
-        _playerMovement.Player = this;
-        _playerInput.Player = this;
-        ChipComponent.Battler = this;
-    }
+            _playerMovement = GetComponent<PlayerMovement>();
+            _playerInput = GetComponent<PlayerInput>();
+            _playerShootComponent = GetComponent<PlayerShootComponent>();
+            ChipComponent = GetComponent<ChipComponent>();
 
-    private void Start()
-    {
-        ChipSelection.ChipsSelected += OnChipsSelected;
-        ChipCommandSO.ChipExecuting += OnChipExecuting;
-    }
+            _playerInput.PlayerMovement = _playerMovement;
+            _playerInput.PlayerChipComponent = ChipComponent;
+            _playerInput.PlayerShootComponent = _playerShootComponent;
 
-    private void OnDestroy()
-    {
-        ChipSelection.ChipsSelected -= OnChipsSelected;
-        ChipCommandSO.ChipExecuting -= OnChipExecuting;
-    }
+            _playerMovement.Player = this;
+            _playerInput.Player = this;
+            ChipComponent.Battler = this;
+        }
 
-    public void ExecuteChip()
-    {
-        ChipComponent.ExecuteChip();
-    }
+        private void Start()
+        {
+            ChipSelection.ChipsSelected += OnChipsSelected;
+            ChipCommandSO.ChipExecuting += OnChipExecuting;
+        }
 
-    public void StartMoveCooldown()
-    {
-        StartCoroutine(MoveCooldownRoutine());
-    }
+        private void OnDestroy()
+        {
+            ChipSelection.ChipsSelected -= OnChipsSelected;
+            ChipCommandSO.ChipExecuting -= OnChipExecuting;
+        }
 
-    public override void TakeDamage(int amount)
-    {
-        Animation.SetTrigger("TakeDamage");
-        GetComponent<HealthComponent>().DecreaseHealth(amount);
-    }
+        public void ExecuteChip()
+        {
+            ChipComponent.ExecuteChip();
+        }
 
-    private void OnChipsSelected(List<ChipSO> chips)
-    {
-        ChipComponent.Chips = chips;
-        GetComponent<PlayerChipUI>().CreateChipImages(chips);
-    }
+        public void StartMoveCooldown()
+        {
+            StartCoroutine(MoveCooldownRoutine());
+        }
 
-    private void OnChipExecuting(Battler battler, ChipCommandSO chipCommand)
-    {
-        if (battler is not Player)
-            return;
+        public override void TakeDamage(int amount)
+        {
+            Animation.SetTrigger("TakeDamage");
+            GetComponent<HealthComponent>().DecreaseHealth(amount);
+        }
 
-        _currentChip = ChipComponent.Chips[0];
-        ChipComponent.Chips.RemoveAt(0);
-    }
+        private void OnChipsSelected(List<ChipSO> chips)
+        {
+            ChipComponent.Chips = chips;
+            GetComponent<PlayerChipUI>().CreateChipImages(chips);
+        }
 
-    public override void DealDamage()
-    {
-        BattlerAttacking?.Invoke(_currentChip.ChipCommandSO);
-        Destroy(_currentChip);
-    }
+        private void OnChipExecuting(Battler battler, ChipCommandSO chipCommand)
+        {
+            if (battler is not Player)
+                return;
 
-    private IEnumerator MoveCooldownRoutine()
-    {
-        yield return new WaitForSeconds(_moveCooldown);
-        CanMove = true;
+            _currentChip = ChipComponent.Chips[0];
+            ChipComponent.Chips.RemoveAt(0);
+        }
+
+        public override void DealDamage()
+        {
+            BattlerAttacking?.Invoke(_currentChip.ChipCommandSO);
+            Destroy(_currentChip);
+        }
+
+        private IEnumerator MoveCooldownRoutine()
+        {
+            yield return new WaitForSeconds(_moveCooldown);
+            CanMove = true;
+        }
     }
 }
