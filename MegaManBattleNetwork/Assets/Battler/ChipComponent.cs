@@ -5,13 +5,9 @@ namespace MegaManBattleNetwork
 {
     public class ChipComponent : MonoBehaviour
     {
-        public List<ChipSO> Chips
-        {
-            get => _chips;
-            set => _chips = value;
-        }
+        [field: SerializeField]
+        public List<ChipSO> Chips { get; set; } = new();
         public Battler Battler { get; set; }
-        [SerializeField] private List<ChipSO> _chips = new();
 
         public void ExecuteChip()
         {

@@ -49,5 +49,16 @@ namespace MegaManBattleNetwork
             yield return new WaitForSeconds(DamageTakenMoveCooldown);
             IsTakingDamage = false;
         }
+
+        private IEnumerator DamageDelayRoutine(float delay)
+        {
+            yield return new WaitForSeconds(delay);
+            DealDamage();
+        }
+    
+        protected virtual void OnChipExecuting(Battler battler, ChipCommandSO chipCommand)
+        {
+            StartCoroutine(DamageDelayRoutine(chipCommand.Delay));
+        }
     }
 }

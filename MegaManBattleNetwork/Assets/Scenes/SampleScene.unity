@@ -1529,6 +1529,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e133dc820116f8e6f8052276d6b9f8a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _moveCooldown: 0.1
 --- !u!114 &518180101
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1542,7 +1543,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _chipCooldown: 1
-  _moveCooldown: 0.1
 --- !u!114 &518180102
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2907,38 +2907,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 861161120748103775, guid: c5727034fd528335291628b6629bc5c4, type: 3}
   m_PrefabInstance: {fileID: 1023538148}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1165886304 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3487658579154384507, guid: 607e46afec50bb2d0866e2bb21840979, type: 3}
-  m_PrefabInstance: {fileID: 3342805102257788193}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1165886311
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1165886304}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4138a7fd7dfb342c8fab34607ad1b4b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _maxHealth: 50
-  _healthText: {fileID: 1219765780}
---- !u!114 &1165886312
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1165886304}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16ca2d5bd7a295183a9b5a2cae73a124, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _flashMaterial: {fileID: 2100000, guid: 25db75330760db6b6874b5faeb152749, type: 2}
 --- !u!1001 &1167440564
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3116,17 +3084,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1218049582}
   m_CullTransparentMesh: 1
---- !u!114 &1219765780 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 9003770064721912073, guid: 607e46afec50bb2d0866e2bb21840979, type: 3}
-  m_PrefabInstance: {fileID: 3342805102257788193}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1293899203
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6484,14 +6441,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3476922349017759204, guid: 607e46afec50bb2d0866e2bb21840979, type: 3}
-      propertyPath: _chips.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3476922349017759204, guid: 607e46afec50bb2d0866e2bb21840979, type: 3}
-      propertyPath: '_chips.Array.data[0]'
-      value: 
-      objectReference: {fileID: 11400000, guid: 71a9f66b7cb4b0d0c94a8051b3d5e1f0, type: 2}
     - target: {fileID: 3487658579154384507, guid: 607e46afec50bb2d0866e2bb21840979, type: 3}
       propertyPath: m_Name
       value: Skeleton
@@ -6536,24 +6485,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6684707929314644788, guid: 607e46afec50bb2d0866e2bb21840979, type: 3}
-      propertyPath: m_AdditionalShaderChannelsFlag
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 7653477866228048182, guid: 607e46afec50bb2d0866e2bb21840979, type: 3}
-      propertyPath: m_Name
-      value: EnemyHealthText
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3487658579154384507, guid: 607e46afec50bb2d0866e2bb21840979, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1165886311}
-    - targetCorrespondingSourceObject: {fileID: 3487658579154384507, guid: 607e46afec50bb2d0866e2bb21840979, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1165886312}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 607e46afec50bb2d0866e2bb21840979, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

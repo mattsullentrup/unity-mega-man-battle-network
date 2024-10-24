@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Build;
 using UnityEngine;
 
 namespace MegaManBattleNetwork
@@ -76,11 +77,12 @@ namespace MegaManBattleNetwork
             GetComponent<PlayerChipUI>().CreateChipImages(chips);
         }
 
-        private void OnChipExecuting(Battler battler, ChipCommandSO chipCommand)
+        protected override void OnChipExecuting(Battler battler, ChipCommandSO chipCommand)
         {
             if (battler is not Player)
                 return;
 
+            base.OnChipExecuting(battler, chipCommand);
             _currentChip = ChipComponent.Chips[0];
             ChipComponent.Chips.RemoveAt(0);
         }

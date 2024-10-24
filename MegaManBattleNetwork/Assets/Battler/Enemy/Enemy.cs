@@ -33,6 +33,16 @@ namespace MegaManBattleNetwork
             ChipComponent.Chips[0] = chip;
         }
 
+        private void Start()
+        {
+            ChipCommandSO.ChipExecuting += OnChipExecuting;
+        }
+
+        private void OnDestroy()
+        {
+            ChipCommandSO.ChipExecuting -= OnChipExecuting;
+        }
+
         public void ExecuteChip()
         {
             ChipComponent.ExecuteChip();
@@ -95,6 +105,14 @@ namespace MegaManBattleNetwork
             {
                 StopAllCoroutines();
             }
+        }
+
+        protected override void OnChipExecuting(Battler battler, ChipCommandSO chipCommand)
+        {
+            if (battler is not Enemy)
+                return;
+
+            base.OnChipExecuting(battler, chipCommand);
         }
     }
 }

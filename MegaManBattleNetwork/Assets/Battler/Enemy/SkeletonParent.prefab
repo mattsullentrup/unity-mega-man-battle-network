@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 3476922349017759204}
   - component: {fileID: 9013538435229584543}
   - component: {fileID: 5609218970131499116}
+  - component: {fileID: 695525057393945998}
+  - component: {fileID: 545290628926987714}
   m_Layer: 0
   m_Name: SkeletonParent
   m_TagString: Untagged
@@ -112,7 +114,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3b63eb4e84ec67b69d93d6da0efd073, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _chips: []
+  _chips:
+  - {fileID: 11400000, guid: 71a9f66b7cb4b0d0c94a8051b3d5e1f0, type: 2}
 --- !u!114 &9013538435229584543
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,6 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: faaecbf10f026646696195d1bd8913ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _actionCooldown: 4
 --- !u!95 &5609218970131499116
 Animator:
   serializedVersion: 7
@@ -147,6 +151,33 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &695525057393945998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3487658579154384507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4138a7fd7dfb342c8fab34607ad1b4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth: 50
+  _healthText: {fileID: 9003770064721912073}
+--- !u!114 &545290628926987714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3487658579154384507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16ca2d5bd7a295183a9b5a2cae73a124, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _flashMaterial: {fileID: 2100000, guid: 25db75330760db6b6874b5faeb152749, type: 2}
 --- !u!1 &6825873358984791174
 GameObject:
   m_ObjectHideFlags: 0
@@ -258,7 +289,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
@@ -275,7 +306,7 @@ GameObject:
   - component: {fileID: 3096982476197640863}
   - component: {fileID: 9003770064721912073}
   m_Layer: 0
-  m_Name: Text (TMP)
+  m_Name: EnemyHealthText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

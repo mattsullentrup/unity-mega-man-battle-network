@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 617c646dffa43a147a913a2269e96a46, type: 3}
+  m_Name: PlayerLongSwordChip
+  m_EditorClassIdentifier: 
+  _sprite: {fileID: 7365210539760897286, guid: 7779be8fc388574d7af24c51ef5d0c1f, type: 3}
+  _name: LongSword
+  <ChipCommandSO>k__BackingField: {fileID: 11400000, guid: 2775b92f0574a2f848d66528526f2e53, type: 2}
