@@ -9,9 +9,6 @@ namespace MegaManBattleNetwork
 
         public void Move(Vector2Int direction)
         {
-            if (!Player.CanMove)
-                return;
-
             var playerCell = Globals.WorldToCell2D(Player.transform.position);
             if (!IsValidPosition(playerCell + direction))
                 return;

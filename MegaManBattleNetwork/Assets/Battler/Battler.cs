@@ -8,19 +8,16 @@ namespace MegaManBattleNetwork
 {
     public abstract class Battler : MonoBehaviour, IDamagable
     {
+        public float InvulnerableCooldown { get; private set; } = 3.0f;
+        public float DamageTakenMoveCooldown { get; private set; } = 1.0f;
+        public bool CanMove { get; set; } = true;
+
         public abstract event Action<ChipCommandSO> BattlerAttacking;
         public abstract List<List<Vector2Int>> ValidRows { get; set; }
         public abstract Animator Animation { get; set; }
-        public abstract bool IsAttacking { get; set; }
-        public float DamageTakenCooldown { get; private set; } = 2.0f;
-        public float InvulnerableCooldown { get; private set; } = 4.0f;
         public abstract ChipComponent ChipComponent { get; protected set; }
-        public virtual void TakeDamage(int amount)
-        {
-            GetComponent<SpriteFlash>().Flash();
-            StartCoroutine(InvulnerableRoutine());
-        }
         public abstract void DealDamage();
+        protected bool _isInvulnerable;
 
         public virtual void Toggle(bool value)
         {
@@ -28,7 +25,15 @@ namespace MegaManBattleNetwork
             Globals.ToggleScripts(gameObject, value);
         }
 
-        protected bool _isInvulnerable;
+        public virtual void TakeDamage(int amount)
+        {
+            CanMove = false;
+            Animation.SetTrigger("TakeDamage");
+            GetComponent<HealthComponent>().DecreaseHealth(amount);
+            StartCoroutine(InvulnerableRoutine());
+            GetComponent<SpriteFlash>().Flash();
+        }
+
         private IEnumerator InvulnerableRoutine()
         {
             _isInvulnerable = true;

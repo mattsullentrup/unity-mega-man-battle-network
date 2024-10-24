@@ -17,9 +17,8 @@ namespace MegaManBattleNetwork
         public override event Action<ChipCommandSO> BattlerAttacking;
         public override List<List<Vector2Int>> ValidRows { get; set; }
         public override Animator Animation { get; set; }
-        public override bool IsAttacking { get; set; }
         public override ChipComponent ChipComponent { get; protected set; }
-        public bool CanMove { get; set; } = true;
+        // public bool CanMove { get; set; } = true;
 
         private void Awake()
         {
@@ -62,8 +61,6 @@ namespace MegaManBattleNetwork
                 return;
 
             base.TakeDamage(amount);
-            Animation.SetTrigger("TakeDamage");
-            GetComponent<HealthComponent>().DecreaseHealth(amount);
             StartCoroutine(_playerInput.TakeDamageRoutine());
         }
 
@@ -86,11 +83,6 @@ namespace MegaManBattleNetwork
 
             _currentChip = ChipComponent.Chips[0];
             ChipComponent.Chips.RemoveAt(0);
-        }
-
-        private void InvulnerableRoutine()
-        {
-
         }
     }
 }
