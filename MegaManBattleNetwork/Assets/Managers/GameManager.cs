@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace MegaManBattleNetwork
@@ -10,11 +11,13 @@ namespace MegaManBattleNetwork
         public static event Action RoundEnding;
         public static GameManager Instance => _instance;
         public float ElapsedTime => _elapsedTime;
+        public bool IsSelectingChips => _isSelectingChips;
 
         private static GameManager _instance;
         [SerializeField] private int _roundLength = 10;
         private bool _isRoundProgressing;
         private float _elapsedTime;
+        private bool _isSelectingChips = true;
 
         private void Awake()
         {
@@ -46,12 +49,14 @@ namespace MegaManBattleNetwork
             if (!_isRoundProgressing)
             {
                 RoundEnding?.Invoke();
+                _isSelectingChips = true;
             }
         }
 
         private void OnChipsSelected(List<ChipSO> chips)
         {
             StartCoroutine(RoundRoutine());
+            _isSelectingChips = false;
         }
 
         private IEnumerator RoundRoutine()
@@ -61,5 +66,16 @@ namespace MegaManBattleNetwork
             yield return new WaitForSeconds(_roundLength);
             _isRoundProgressing = false;
         }
+
+        // public static void ToggleBattlers(bool value)
+        // {
+        //     IToggleable[] toggleables = FindObjectsByType<MonoBehaviour>(
+        //             FindObjectsInactive.Include, FindObjectsSortMode.None
+        //             ).OfType<IToggleable>().ToArray();
+        //     foreach (var toggleable in toggleables)
+        //     {
+        //         toggleable.Toggle(value);
+        //     }
+        // }
     }
 }

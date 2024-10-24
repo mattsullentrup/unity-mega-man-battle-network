@@ -21,7 +21,7 @@ namespace MegaManBattleNetwork
         public override ChipComponent ChipComponent { get; protected set; }
         // public bool CanMove { get; set; } = true;
 
-        private void Awake()
+        protected override void Awake()
         {
             Animation = GetComponentInChildren<Animator>();
 
@@ -37,6 +37,7 @@ namespace MegaManBattleNetwork
             _playerMovement.Player = this;
             _playerInput.Player = this;
             ChipComponent.Battler = this;
+            base.Awake();
         }
 
         private void Start()

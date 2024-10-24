@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using MegaManBattleNetwork;
 using UnityEngine;
 
@@ -12,12 +13,22 @@ public class SpriteFlash : MonoBehaviour
     private Material _originalMaterial;
     private Coroutine _flashRoutine;
 
+    public bool IsToggledOff => throw new System.NotImplementedException();
+
     private void Start()
     {
         _battler = GetComponent<Battler>();
         _duration = _battler.InvulnerableCooldown;
         _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         _originalMaterial = _spriteRenderer.material;
+        ChipSelection.ChipsSelected += OnChipsSelected;
+        GameManager.RoundEnding += OnRoundEnding;
+    }
+
+    private void OnDestroy()
+    {
+        ChipSelection.ChipsSelected -= OnChipsSelected;
+        GameManager.RoundEnding -= OnRoundEnding;
     }
 
     public void Flash()
@@ -80,5 +91,15 @@ public class SpriteFlash : MonoBehaviour
         {
             _spriteRenderer.color = Color.white;
         }
+    }
+
+    private void OnChipsSelected(List<ChipSO> chips)
+    {
+
+    }
+
+    private void OnRoundEnding()
+    {
+
     }
 }

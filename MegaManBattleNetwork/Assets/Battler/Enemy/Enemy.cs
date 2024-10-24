@@ -16,7 +16,7 @@ namespace MegaManBattleNetwork
 
         [SerializeField] private float _actionCooldown = 4.0f;
 
-        private void Awake()
+        protected override void Awake()
         {
             Animation = GetComponentInChildren<Animator>();
             ChipComponent = GetComponent<ChipComponent>();
@@ -31,6 +31,9 @@ namespace MegaManBattleNetwork
 
             chip.ChipCommandSO = chipCommand;
             ChipComponent.Chips[0] = chip;
+
+            StartCoroutine(ActionRoutine());
+            base.Awake();
         }
 
         private void Start()
@@ -46,7 +49,6 @@ namespace MegaManBattleNetwork
         public void ExecuteChip()
         {
             ChipComponent.ExecuteChip();
-            StartCoroutine(ActionRoutine());
         }
 
         public void Move(Player player)
@@ -91,21 +93,22 @@ namespace MegaManBattleNetwork
 
         public override void DealDamage()
         {
+            StartCoroutine(ActionRoutine());
             BattlerAttacking?.Invoke(ChipComponent.Chips[0].ChipCommandSO);
         }
 
-        public override void Toggle(bool value)
-        {
-            base.Toggle(value);
-            if (value == true)
-            {
-                StartCoroutine(ActionRoutine());
-            }
-            else
-            {
-                StopAllCoroutines();
-            }
-        }
+        // public override void Toggle(bool value)
+        // {
+        //     base.Toggle(value);
+        //     if (value == true)
+        //     {
+        //         StartCoroutine(ActionRoutine());
+        //     }
+        //     else
+        //     {
+        //         StopAllCoroutines();
+        //     }
+        // }
 
         protected override void OnChipExecuting(Battler battler, ChipCommandSO chipCommand)
         {

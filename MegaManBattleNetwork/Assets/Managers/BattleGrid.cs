@@ -45,9 +45,9 @@ namespace MegaManBattleNetwork
 
         private IEnumerator Start()
         {
-            ChipSelection.ChipsSelected += OnChipsSelected;
+            // ChipSelection.ChipsSelected += OnChipsSelected;
             _player.BattlerAttacking += OnBattlerAttacking;
-            GameManager.RoundEnding += OnRoundEnding;
+            // GameManager.RoundEnding += OnRoundEnding;
 
             yield return new WaitUntil(() => _enemyManager.IsInitialized);
             foreach (var enemy in _enemyManager.Enemies)
@@ -55,14 +55,14 @@ namespace MegaManBattleNetwork
                 enemy.BattlerAttacking += OnBattlerAttacking;
             }
 
-            ToggleBattlers(false);
+            // ToggleBattlers(false);
         }
 
         private void OnDisable()
         {
-            ChipSelection.ChipsSelected -= OnChipsSelected;
+            // ChipSelection.ChipsSelected -= OnChipsSelected;
             _player.BattlerAttacking -= OnBattlerAttacking;
-            GameManager.RoundEnding -= OnRoundEnding;
+            // GameManager.RoundEnding -= OnRoundEnding;
 
             foreach (var enemy in _enemyManager.Enemies)
             {
@@ -113,15 +113,15 @@ namespace MegaManBattleNetwork
             return damagableDefenders;
         }
 
-        public void OnChipsSelected(List<ChipSO> chips)
-        {
-            ToggleBattlers(true);
-        }
+        // public void OnChipsSelected(List<ChipSO> chips)
+        // {
+        //     ToggleBattlers(true);
+        // }
 
-        private void OnRoundEnding()
-        {
-            ToggleBattlers(false);
-        }
+        // private void OnRoundEnding()
+        // {
+        //     ToggleBattlers(false);
+        // }
 
         private void SetupRows()
         {
@@ -153,13 +153,13 @@ namespace MegaManBattleNetwork
             }
         }
 
-        private void ToggleBattlers(bool value)
-        {
-            _player.Toggle(value);
-            foreach (var enemy in _enemyManager.Enemies)
-            {
-                enemy.Toggle(value);
-            }
-        }
+        // private void ToggleBattlers(bool value)
+        // {
+        //     _player.Toggle(value);
+        //     foreach (var enemy in _enemyManager.Enemies)
+        //     {
+        //         enemy.Toggle(value);
+        //     }
+        // }
     }
 }

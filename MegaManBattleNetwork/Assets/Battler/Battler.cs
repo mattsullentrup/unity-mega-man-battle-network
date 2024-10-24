@@ -20,10 +20,11 @@ namespace MegaManBattleNetwork
         public abstract void DealDamage();
         protected bool _isInvulnerable;
 
-        public virtual void Toggle(bool value)
+        protected virtual void Awake()
         {
-            Animation.enabled = value;
-            Globals.ToggleScripts(gameObject, value);
+            GameManager.RoundEnding += () => Toggle(false);
+            ChipSelection.ChipsSelected += (List<ChipSO> chips) => Toggle(true);
+            Toggle(false);
         }
 
         public virtual void TakeDamage(int amount)
@@ -34,6 +35,15 @@ namespace MegaManBattleNetwork
             StartCoroutine(TakeDamageRoutine());
             StartCoroutine(InvulnerableRoutine());
             GetComponent<SpriteFlash>().Flash();
+        }
+
+        protected void Toggle(bool value)
+        {
+            Animation.enabled = value;
+            foreach (var script in GetComponents<MonoBehaviour>())
+            {
+                script.enabled = value;
+            }
         }
 
         private IEnumerator InvulnerableRoutine()
