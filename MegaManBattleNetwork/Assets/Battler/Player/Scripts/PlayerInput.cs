@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -14,6 +15,8 @@ namespace MegaManBattleNetwork
         public PlayerShootComponent PlayerShootComponent { private get; set; }
         public ChipComponent PlayerChipComponent { private get; set; }
 
+        [SerializeField] private float _chipCooldown = 1.0f;
+        private bool _justUsedChip;
         private readonly Vector2[] _directions = { Vector2.up, Vector2.right, Vector2.left, Vector2.down };
         private InputAction _moveAction;
         private InputAction _primaryAction;
@@ -36,9 +39,10 @@ namespace MegaManBattleNetwork
                 PlayerMovement.Move(Vector2Int.RoundToInt(moveValue));
             }
 
-            if (_primaryAction.WasPressedThisFrame())
+            if (_primaryAction.WasPressedThisFrame() && !_justUsedChip)
             {
                 Player.ExecuteChip();
+                StartCoroutine(ChipCooldownRoutine());
             }
 
             if (_secondaryAction.WasPressedThisFrame())
@@ -50,6 +54,13 @@ namespace MegaManBattleNetwork
             {
                 PlayerPressedSelect?.Invoke();
             }
+        }
+
+        private IEnumerator ChipCooldownRoutine()
+        {
+            _justUsedChip = true;
+            yield return new WaitForSeconds(_chipCooldown);
+            _justUsedChip = false;
         }
     }
 }
