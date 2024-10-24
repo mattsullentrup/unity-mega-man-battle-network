@@ -8,8 +8,18 @@ namespace MegaManBattleNetwork
     public class GameManager : MonoBehaviour
     {
         public static event Action RoundEnding;
+        public static GameManager Instance => _instance;
+        public float ElapsedTime => _elapsedTime;
+
+        private float _elapsedTime;
+        private static GameManager _instance;
         [SerializeField] private int _roundLength = 10;
         private bool _isRoundProgressing;
+
+        private void Awake()
+        {
+            _instance = this;
+        }
 
         private void OnEnable()
         {
@@ -21,6 +31,14 @@ namespace MegaManBattleNetwork
         {
             PlayerInput.PlayerPressedSelect -= OnPlayerPressedSelect;
             ChipSelection.ChipsSelected -= OnChipsSelected;
+        }
+
+        private void Update()
+        {
+            if (_isRoundProgressing)
+            {
+                _elapsedTime += Time.deltaTime;
+            }
         }
 
         private void OnPlayerPressedSelect()
@@ -38,6 +56,7 @@ namespace MegaManBattleNetwork
 
         private IEnumerator RoundRoutine()
         {
+            _elapsedTime = 0;
             _isRoundProgressing = true;
             yield return new WaitForSeconds(_roundLength);
             _isRoundProgressing = false;
