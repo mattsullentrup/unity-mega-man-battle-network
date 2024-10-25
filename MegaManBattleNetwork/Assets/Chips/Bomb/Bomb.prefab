@@ -80,6 +80,7 @@ GameObject:
   - component: {fileID: 1665227056001764076}
   - component: {fileID: 509444566712626234}
   - component: {fileID: 4382662587007864085}
+  - component: {fileID: 760509056276782645}
   m_Layer: 0
   m_Name: BombVisual
   m_TagString: Untagged
@@ -179,3 +180,15 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &760509056276782645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1750501698843137118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1361a79e7e94bee0dac377fc79446df6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
