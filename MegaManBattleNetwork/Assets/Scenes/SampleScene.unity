@@ -5683,7 +5683,6 @@ GameObject:
   - component: {fileID: 1636413605}
   - component: {fileID: 1636413608}
   - component: {fileID: 1636413609}
-  - component: {fileID: 1636413610}
   m_Layer: 5
   m_Name: UIPanel
   m_TagString: Untagged
@@ -5818,24 +5817,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!111 &1636413610
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1636413603}
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Animation: {fileID: 7400000, guid: 98583c5c61523a835939d0ace0225ab1, type: 2}
-  m_Animations:
-  - {fileID: 7400000, guid: 98583c5c61523a835939d0ace0225ab1, type: 2}
-  - {fileID: 7400000, guid: 98bde6352a66e169595acf4f398bbf6b, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 0
-  m_AnimatePhysics: 0
-  m_UpdateMode: 0
-  m_CullingType: 0
 --- !u!1 &1638887271
 GameObject:
   m_ObjectHideFlags: 0
