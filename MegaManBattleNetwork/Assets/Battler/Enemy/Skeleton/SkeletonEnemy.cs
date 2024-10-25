@@ -29,7 +29,7 @@ namespace MegaManBattleNetwork
                 direction.x = -1;
             }
 
-            ValidateNewPosition(direction);
+            GetComponentInParent<EnemyManager>().ValidateNewPosition(direction, this);
             StartCoroutine(ActionRoutine());
         }
     }

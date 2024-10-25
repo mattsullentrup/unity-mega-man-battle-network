@@ -37,6 +37,21 @@ namespace MegaManBattleNetwork
             _enemyRows = enemyRows;
         }
 
+        public void ValidateNewPosition(Vector2Int direction, Enemy enemy)
+        {
+            // TODO: Change x or y position to zero when movement on that axis is invalid but not the other
+
+            var newPos = Globals.WorldToCell2D(enemy.transform.position) + direction;
+            if (!enemy.ValidRows.Any(list => list.Contains(newPos)))
+                return;
+
+            if (_enemies.Any(enemy => Globals.WorldToCell2D(enemy.transform.position) == newPos))
+                return;
+
+            var moveCommand = new MoveCommand(direction, enemy);
+            moveCommand.Execute();
+        }
+
         private void OnEnemyStartingAction(Enemy enemy, ChipCommandSO chipCommand)
         {
             if (_battleGrid.GetDamagableDefenders(chipCommand).Count != 0)

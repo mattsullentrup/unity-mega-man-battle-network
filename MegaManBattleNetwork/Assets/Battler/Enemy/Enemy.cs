@@ -67,23 +67,6 @@ namespace MegaManBattleNetwork
             BattlerAttacking?.Invoke(ChipComponent.Chips[0].ChipCommandSO);
         }
 
-        protected void ValidateNewPosition(Vector2Int direction)
-        {
-            // TODO: Change x or y position to zero when movement on that axis is invalid but not the other
-
-            var newPos = Globals.WorldToCell2D(transform.position) + direction;
-            if (!ValidRows.Any(list => list.Contains(newPos)))
-                return;
-
-            if (FindObjectsByType<Enemy>(FindObjectsSortMode.None).Any(
-                    enemy => Globals.WorldToCell2D(enemy.transform.position) == newPos))
-                return;
-
-            var moveCommand = new MoveCommand(direction, this);
-            moveCommand.Execute();
-            
-        }
-
         protected IEnumerator ActionRoutine()
         {
             yield return new WaitForSeconds(_actionCooldown);
