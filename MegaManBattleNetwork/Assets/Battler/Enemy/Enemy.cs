@@ -75,7 +75,7 @@ namespace MegaManBattleNetwork
 
         protected override void OnChipExecuting(Battler battler, ChipCommandSO chipCommand)
         {
-            if (battler is not Enemy)
+            if (battler is not Enemy || this != battler)
                 return;
 
             base.OnChipExecuting(battler, chipCommand);
