@@ -7,7 +7,6 @@ namespace MegaManBattleNetwork
     public class EnemyManager : MonoBehaviour
     {
         [SerializeField] private Player _player;
-        private List<List<Vector2Int>> _allRows;
         private List<List<Vector2Int>> _enemyRows;
         private List<Enemy> _enemies;
         private BattleGrid _battleGrid;
@@ -34,9 +33,8 @@ namespace MegaManBattleNetwork
             Enemy.StartingAction -= OnEnemyStartingAction;
         }
 
-        public void Initialize(List<List<Vector2Int>> allRows, List<List<Vector2Int>> enemyRows)
+        public void Initialize(List<List<Vector2Int>> enemyRows)
         {
-            _allRows = allRows;
             _enemyRows = enemyRows;
         }
 

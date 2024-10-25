@@ -97,19 +97,6 @@ namespace MegaManBattleNetwork
             BattlerAttacking?.Invoke(ChipComponent.Chips[0].ChipCommandSO);
         }
 
-        // public override void Toggle(bool value)
-        // {
-        //     base.Toggle(value);
-        //     if (value == true)
-        //     {
-        //         StartCoroutine(ActionRoutine());
-        //     }
-        //     else
-        //     {
-        //         StopAllCoroutines();
-        //     }
-        // }
-
         protected override void OnChipExecuting(Battler battler, ChipCommandSO chipCommand)
         {
             if (battler is not Enemy)

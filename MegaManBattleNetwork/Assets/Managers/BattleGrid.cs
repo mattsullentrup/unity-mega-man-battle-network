@@ -37,7 +37,7 @@ namespace MegaManBattleNetwork
             _grid = GetComponent<Grid>();
 
             SetupRows();
-            _enemyManager.Initialize(_allRows, _enemyRows);
+            _enemyManager.Initialize(_enemyRows);
 
             _player.transform.position = new Vector3(_playerStartPos.x, _playerStartPos.y, 0);
             _player.ValidRows = _playerRows;
@@ -45,24 +45,18 @@ namespace MegaManBattleNetwork
 
         private IEnumerator Start()
         {
-            // ChipSelection.ChipsSelected += OnChipsSelected;
             _player.BattlerAttacking += OnBattlerAttacking;
-            // GameManager.RoundEnding += OnRoundEnding;
 
             yield return new WaitUntil(() => _enemyManager.IsInitialized);
             foreach (var enemy in _enemyManager.Enemies)
             {
                 enemy.BattlerAttacking += OnBattlerAttacking;
             }
-
-            // ToggleBattlers(false);
         }
 
         private void OnDisable()
         {
-            // ChipSelection.ChipsSelected -= OnChipsSelected;
             _player.BattlerAttacking -= OnBattlerAttacking;
-            // GameManager.RoundEnding -= OnRoundEnding;
 
             foreach (var enemy in _enemyManager.Enemies)
             {
@@ -113,16 +107,6 @@ namespace MegaManBattleNetwork
             return damagableDefenders;
         }
 
-        // public void OnChipsSelected(List<ChipSO> chips)
-        // {
-        //     ToggleBattlers(true);
-        // }
-
-        // private void OnRoundEnding()
-        // {
-        //     ToggleBattlers(false);
-        // }
-
         private void SetupRows()
         {
             for (int i = 0; i < _cells.GetLength(0); i++)
@@ -152,14 +136,5 @@ namespace MegaManBattleNetwork
                 defender.TakeDamage(chipCommand.Damage);
             }
         }
-
-        // private void ToggleBattlers(bool value)
-        // {
-        //     _player.Toggle(value);
-        //     foreach (var enemy in _enemyManager.Enemies)
-        //     {
-        //         enemy.Toggle(value);
-        //     }
-        // }
     }
 }
