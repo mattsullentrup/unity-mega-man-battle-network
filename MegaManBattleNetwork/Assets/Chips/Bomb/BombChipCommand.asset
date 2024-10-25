@@ -7,7 +7,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 399e555ef3fc761d5a376bd0ffc6c370, type: 3}
   m_Name: BombChipCommand
@@ -17,3 +17,4 @@ MonoBehaviour:
   DamagableCells:
   - {x: 3, y: 0}
   _bombPrefab: {fileID: 70073897175311260, guid: d9f6a8a8abd20f460bf5fad89dd377e9, type: 3}
+  _throwAnimation: {fileID: 7400000, guid: 0cd13c4ebd89a8401b617aa37e1efc52, type: 2}
