@@ -50,6 +50,7 @@ namespace MegaManBattleNetwork
             {
                 RoundEnding?.Invoke();
                 _isSelectingChips = true;
+                // Time.timeScale = 0;
             }
         }
 

@@ -20,7 +20,7 @@ namespace MegaManBattleNetwork
         {
             Animation = GetComponentInChildren<Animator>();
             ChipComponent = GetComponent<ChipComponent>();
-            ChipComponent.Battler = this;
+            // ChipComponent.Battler = this;
             var chip = Instantiate(ChipComponent.Chips[0]);
             var chipCommand = Instantiate(ChipComponent.Chips[0].ChipCommandSO);
             chipCommand.Battler = this;
@@ -32,13 +32,13 @@ namespace MegaManBattleNetwork
             chip.ChipCommandSO = chipCommand;
             ChipComponent.Chips[0] = chip;
 
-            StartCoroutine(ActionRoutine());
             base.Awake();
         }
 
         private void Start()
         {
             ChipCommandSO.ChipExecuting += OnChipExecuting;
+            StartCoroutine(ActionRoutine());
         }
 
         private void OnDestroy()

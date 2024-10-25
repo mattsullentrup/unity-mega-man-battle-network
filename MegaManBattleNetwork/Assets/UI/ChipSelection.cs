@@ -20,7 +20,7 @@ namespace MegaManBattleNetwork
         [SerializeField] private GameObject _focusedChipTextureRect;
         [SerializeField] private Sprite _blankSprite;
 
-        private Animation _animationPlayer;
+        private Animator _animationPlayer;
         private const int _initialMaxChips = 5;
         private const int _maxSelectedChips = 3;
         private const int _maxChipContainerSize = 10;
@@ -44,7 +44,7 @@ namespace MegaManBattleNetwork
         {
             _primaryAction = InputSystem.actions.FindAction("Primary");
             _secondaryAction = InputSystem.actions.FindAction("Secondary");
-            _animationPlayer = GetComponent<Animation>();
+            _animationPlayer = GetComponent<Animator>();
             foreach (Transform child in _availableChipsContainer.transform)
             {
                 _buttonData[child.gameObject] = null;
@@ -113,7 +113,7 @@ namespace MegaManBattleNetwork
             }
 
             EventSystem.current.SetSelectedGameObject(_availableChipsContainer.transform.GetChild(0).gameObject);
-            _animationPlayer.Play("SlideIn");
+            _animationPlayer.SetTrigger("SlideIn");
         }
 
         private void SelectChip()
@@ -188,7 +188,7 @@ namespace MegaManBattleNetwork
 
         private void EndChipSelection()
         {
-            _animationPlayer.Play("SlideOut");
+            _animationPlayer.SetTrigger("SlideOut");
 
             // Reset selected chip container images
             foreach (Transform child in _selectedChipsContainer.transform)

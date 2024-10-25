@@ -38,9 +38,7 @@ namespace MegaManBattleNetwork
             ChipCommandSO.ChipExecuting += OnChipExecuting;
 
             base.Awake();
-            
         }
-
 
         private void OnDestroy()
         {

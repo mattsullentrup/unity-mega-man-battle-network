@@ -21,14 +21,14 @@ public class SpriteFlash : MonoBehaviour
         _duration = _battler.InvulnerableCooldown;
         _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         _originalMaterial = _spriteRenderer.material;
-        ChipSelection.ChipsSelected += OnChipsSelected;
-        GameManager.RoundEnding += OnRoundEnding;
+        // ChipSelection.ChipsSelected += OnChipsSelected;
+        // GameManager.RoundEnding += OnRoundEnding;
     }
 
     private void OnDestroy()
     {
-        ChipSelection.ChipsSelected -= OnChipsSelected;
-        GameManager.RoundEnding -= OnRoundEnding;
+        // ChipSelection.ChipsSelected -= OnChipsSelected;
+        // GameManager.RoundEnding -= OnRoundEnding;
     }
 
     public void Flash()
@@ -91,15 +91,5 @@ public class SpriteFlash : MonoBehaviour
         {
             _spriteRenderer.color = Color.white;
         }
-    }
-
-    private void OnChipsSelected(List<ChipSO> chips)
-    {
-
-    }
-
-    private void OnRoundEnding()
-    {
-
     }
 }
