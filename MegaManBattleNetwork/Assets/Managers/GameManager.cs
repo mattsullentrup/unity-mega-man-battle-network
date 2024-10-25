@@ -50,12 +50,13 @@ namespace MegaManBattleNetwork
             {
                 RoundEnding?.Invoke();
                 _isSelectingChips = true;
-                // Time.timeScale = 0;
+                Time.timeScale = 0;
             }
         }
 
         private void OnChipsSelected(List<ChipSO> chips)
         {
+            Time.timeScale = 1;
             StartCoroutine(RoundRoutine());
             _isSelectingChips = false;
         }
