@@ -14,16 +14,11 @@ public class BombCommandSO : ChipCommandSO
 
     public override void Execute()
     {
+        // TODO: Refactor so the enemy can delay execution until it's bomb throw animation finishes.
         base.Execute();
         if (Battler is IBombAttacker bombAttacker)
         {
             bombAttacker.ThrowBomb();
         }
-        // var bomb = Instantiate(_bombPrefab);
-        // bomb.transform.position = Battler.transform.position + new Vector3(0.5f, 0, 0);
-        // if (Battler is Enemy)
-        // {
-        //     bomb.transform.localScale = new(-1, 1, 1);
-        // }
     }
 }

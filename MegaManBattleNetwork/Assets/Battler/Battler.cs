@@ -46,6 +46,12 @@ namespace MegaManBattleNetwork
             }
         }
 
+        protected IEnumerator DamageDelayRoutine(float delay)
+        {
+            yield return new WaitForSeconds(delay);
+            DealDamage();
+        }
+
         private IEnumerator InvulnerableRoutine()
         {
             _isInvulnerable = true;
@@ -58,12 +64,6 @@ namespace MegaManBattleNetwork
             IsTakingDamage = true;
             yield return new WaitForSeconds(DamageTakenMoveCooldown);
             IsTakingDamage = false;
-        }
-
-        private IEnumerator DamageDelayRoutine(float delay)
-        {
-            yield return new WaitForSeconds(delay);
-            DealDamage();
         }
     
         protected virtual void OnChipExecuting(Battler battler, ChipCommandSO chipCommand)

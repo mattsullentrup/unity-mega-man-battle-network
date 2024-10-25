@@ -48,6 +48,7 @@ namespace MegaManBattleNetwork
             var bomb = Instantiate(_bombPrefab);
             bomb.transform.position = transform.position + new Vector3(0.5f, 0, 0);
             bomb.transform.localScale = new(-1, 1, 1);
+            // StartCoroutine(DamageDelayRoutine());
         }
     }
 }
