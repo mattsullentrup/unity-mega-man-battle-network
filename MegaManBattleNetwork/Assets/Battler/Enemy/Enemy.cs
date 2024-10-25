@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.Collections;
 using UnityEngine;
 
 namespace MegaManBattleNetwork
@@ -68,11 +69,19 @@ namespace MegaManBattleNetwork
 
         protected void ValidateNewPosition(Vector2Int direction)
         {
-            if (ValidRows.Any(list => list.Contains(Globals.WorldToCell2D(transform.position) + direction)))
-            {
-                var moveCommand = new MoveCommand(direction, this);
-                moveCommand.Execute();
-            }
+            // TODO: Change x or y position to zero when movement on that axis is invalid but not the other
+
+            var newPos = Globals.WorldToCell2D(transform.position) + direction;
+            if (!ValidRows.Any(list => list.Contains(newPos)))
+                return;
+
+            if (FindObjectsByType<Enemy>(FindObjectsSortMode.None).Any(
+                    enemy => Globals.WorldToCell2D(enemy.transform.position) == newPos))
+                return;
+
+            var moveCommand = new MoveCommand(direction, this);
+            moveCommand.Execute();
+            
         }
 
         protected IEnumerator ActionRoutine()

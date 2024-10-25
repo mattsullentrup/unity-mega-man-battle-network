@@ -24,8 +24,7 @@ namespace MegaManBattleNetwork
             }
 
             // Global horizontal movement
-            var playerXPos = Mathf.Abs(player.transform.position.x);
-            if (playerXPos - transform.position.x > 2)
+            if (Mathf.Abs(player.transform.position.x - transform.position.x) > 2)
             {
                 direction.x = -1;
             }
