@@ -8,8 +8,9 @@ namespace MegaManBattleNetwork
 {
     [RequireComponent(typeof(PlayerInput), typeof(PlayerMovement), typeof(PlayerShootComponent))]
     [RequireComponent(typeof(ChipComponent))]
-    public class Player : Battler
+    public class Player : Battler, IBombAttacker
     {
+    [SerializeField] private GameObject _bombPrefab;
         private PlayerMovement _playerMovement;
         private PlayerInput _playerInput;
         private PlayerShootComponent _playerShootComponent;
@@ -80,6 +81,12 @@ namespace MegaManBattleNetwork
             base.OnChipExecuting(battler, chipCommand);
             _currentChip = ChipComponent.Chips[0];
             ChipComponent.Chips.RemoveAt(0);
+        }
+
+        public void ThrowBomb()
+        {
+            var bomb = Instantiate(_bombPrefab);
+            bomb.transform.position = transform.position + new Vector3(0.5f, 0, 0);
         }
     }
 }

@@ -42,10 +42,10 @@ AnimationClip:
       value: {fileID: 8207475063323733418, guid: 5f82581d9c19518968e4d7b6c1cf6778, type: 3}
     - time: 1
       value: {fileID: 1426644166534133090, guid: 5f82581d9c19518968e4d7b6c1cf6778, type: 3}
-    - time: 1.1
-      value: {fileID: -4962669575770028407, guid: 5f82581d9c19518968e4d7b6c1cf6778, type: 3}
+    - time: 1.0833334
+      value: {fileID: 8226914660933313673, guid: 5f82581d9c19518968e4d7b6c1cf6778, type: 3}
     - time: 1.2
-      value: {fileID: -4962669575770028407, guid: 5f82581d9c19518968e4d7b6c1cf6778, type: 3}
+      value: {fileID: 0}
     attribute: m_Sprite
     path: GoblinVisual
     classID: 212
@@ -79,8 +79,8 @@ AnimationClip:
     - {fileID: 8067879071682038392, guid: 5f82581d9c19518968e4d7b6c1cf6778, type: 3}
     - {fileID: 8207475063323733418, guid: 5f82581d9c19518968e4d7b6c1cf6778, type: 3}
     - {fileID: 1426644166534133090, guid: 5f82581d9c19518968e4d7b6c1cf6778, type: 3}
-    - {fileID: -4962669575770028407, guid: 5f82581d9c19518968e4d7b6c1cf6778, type: 3}
-    - {fileID: -4962669575770028407, guid: 5f82581d9c19518968e4d7b6c1cf6778, type: 3}
+    - {fileID: 8226914660933313673, guid: 5f82581d9c19518968e4d7b6c1cf6778, type: 3}
+    - {fileID: 0}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
@@ -105,4 +105,11 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 1.0833334
+    functionName: CreateBomb
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
