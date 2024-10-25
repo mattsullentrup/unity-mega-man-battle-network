@@ -16,11 +16,10 @@ public class BombCommandSO : ChipCommandSO
     {
         base.Execute();
         var bomb = Instantiate(_bombPrefab);
+        bomb.transform.position = Battler.transform.position + new Vector3(0.5f, 0, 0);
         if (Battler is Enemy)
         {
             bomb.transform.localScale = new(-1, 1, 1);
         }
-
-        bomb.transform.position = Battler.transform.position;
     }
 }
