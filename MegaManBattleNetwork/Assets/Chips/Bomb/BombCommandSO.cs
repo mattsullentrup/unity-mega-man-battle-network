@@ -6,10 +6,11 @@ using UnityEngine;
 public class BombCommandSO : ChipCommandSO
 {
     [SerializeField] private GameObject _bombPrefab;
+    [SerializeField] private AnimationClip _throwAnimation;
 
     private void Awake()
     {
-        Debug.Log("bomb awake");
+        Delay = _throwAnimation.length;
     }
 
     public override void Execute()
