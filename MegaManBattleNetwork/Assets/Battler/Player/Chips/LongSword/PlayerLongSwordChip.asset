@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: PlayerLongSwordChip
   m_EditorClassIdentifier: 
   _sprite: {fileID: 7365210539760897286, guid: 7779be8fc388574d7af24c51ef5d0c1f, type: 3}
-  _name: LongSword
+  _name: Long Sword
   <ChipCommandSO>k__BackingField: {fileID: 11400000, guid: 2775b92f0574a2f848d66528526f2e53, type: 2}

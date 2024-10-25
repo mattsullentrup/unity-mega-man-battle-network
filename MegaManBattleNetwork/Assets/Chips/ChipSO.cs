@@ -12,5 +12,6 @@ namespace MegaManBattleNetwork
         [field: SerializeField]
         public ChipCommandSO ChipCommandSO { get; set; }
         public Sprite Sprite => _sprite;
+        public string ChipName => _name;
     }
 }

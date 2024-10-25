@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 using Unity.Mathematics;
 using System;
 using System.Linq;
+using TMPro;
 
 namespace MegaManBattleNetwork
 {
@@ -17,8 +18,9 @@ namespace MegaManBattleNetwork
         [SerializeField] private List<ChipSO> _chipsPool;
         [SerializeField] private GameObject _availableChipsContainer;
         [SerializeField] private GameObject _selectedChipsContainer;
-        [SerializeField] private GameObject _focusedChipTextureRect;
+        [SerializeField] private GameObject _focusedChipImage;
         [SerializeField] private Sprite _blankSprite;
+        [SerializeField] private TextMeshProUGUI _highlightedChipText;
 
         private Animator _animationPlayer;
         private const int _initialMaxChips = 5;
@@ -78,13 +80,14 @@ namespace MegaManBattleNetwork
             if (selected == null)
                 return;
 
-            var image = _focusedChipTextureRect.GetComponent<Image>().sprite; 
+            var image = _focusedChipImage.GetComponent<Image>().sprite; 
             if (selected.GetComponent<Image>().sprite == image)
                 return;
 
             if (_buttonData.ContainsKey(selected) && _buttonData[selected] != null)
             {
-                _focusedChipTextureRect.GetComponent<Image>().sprite = _buttonData[selected].Sprite;
+                _focusedChipImage.GetComponent<Image>().sprite = _buttonData[selected].Sprite;
+                _highlightedChipText.text = _buttonData[selected].ChipName;
             }
         }
 
