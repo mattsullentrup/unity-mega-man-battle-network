@@ -16,7 +16,6 @@ namespace MegaManBattleNetwork
         private void Start()
         {
             _battleGrid = FindFirstObjectByType<BattleGrid>();
-
             Enemy.StartingAction += OnEnemyStartingAction;
 
             _enemies = FindObjectsByType<Enemy>(FindObjectsSortMode.InstanceID).ToList();
@@ -44,9 +43,10 @@ namespace MegaManBattleNetwork
             {
                 enemy.ExecuteChip();
             }
-            else
+            else if (enemy is IMoveableEnemy)
             {
-                enemy.Move(_player);
+                var moveableEnemy = enemy as IMoveableEnemy;
+                moveableEnemy?.Move(_player);
             }
         }
     }
