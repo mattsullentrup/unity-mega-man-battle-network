@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 8186872887460923321}
   - component: {fileID: 6113840121832190923}
   - component: {fileID: 3476922349017759204}
-  - component: {fileID: 9013538435229584543}
   - component: {fileID: 5609218970131499116}
   - component: {fileID: 695525057393945998}
   - component: {fileID: 545290628926987714}
+  - component: {fileID: 8999765318557810545}
   m_Layer: 0
   m_Name: SkeletonParent
   m_TagString: Untagged
@@ -114,20 +114,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3b63eb4e84ec67b69d93d6da0efd073, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Chips>k__BackingField: []
---- !u!114 &9013538435229584543
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3487658579154384507}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: faaecbf10f026646696195d1bd8913ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _actionCooldown: 4
+  <Chips>k__BackingField:
+  - {fileID: 11400000, guid: 22ee018a13f4fedcb8ca0a49b94ec214, type: 2}
 --- !u!95 &5609218970131499116
 Animator:
   serializedVersion: 7
@@ -177,6 +165,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _flashMaterial: {fileID: 2100000, guid: 25db75330760db6b6874b5faeb152749, type: 2}
+--- !u!114 &8999765318557810545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3487658579154384507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77c59135ded25008f82b13c1fbb5363f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _actionCooldown: 3
 --- !u!1 &6825873358984791174
 GameObject:
   m_ObjectHideFlags: 0
