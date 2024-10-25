@@ -9,6 +9,11 @@ namespace MegaManBattleNetwork
         public List<ChipSO> Chips { get; set; } = new();
         public Battler Battler { get; set; }
 
+        private void Start()
+        {
+            Battler = GetComponent<Battler>();
+        }
+
         public void ExecuteChip()
         {
             if (Chips.Count == 0)

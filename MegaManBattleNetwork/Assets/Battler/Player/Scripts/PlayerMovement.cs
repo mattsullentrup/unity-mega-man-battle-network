@@ -6,23 +6,28 @@ namespace MegaManBattleNetwork
 {
     public class PlayerMovement : MonoBehaviour
     {
-        public Player Player { get; set; }
+        private Player _player;
         [SerializeField] private float _moveCooldown = 0.1f;
+
+        private void Start()
+        {
+            _player = GetComponent<Player>();
+        }
 
         public void Move(Vector2Int direction)
         {
-            var playerCell = Globals.WorldToCell2D(Player.transform.position);
-            if (!IsValidPosition(playerCell + direction) || !Player.CanMove)
+            var playerCell = Globals.WorldToCell2D(_player.transform.position);
+            if (!IsValidPosition(playerCell + direction) || !_player.CanMove)
                 return;
 
-            var moveCommand = new MoveCommand(direction, Player);
+            var moveCommand = new MoveCommand(direction, _player);
             moveCommand.Execute();
             StartCoroutine(MoveCooldownRoutine());
         }
 
         private bool IsValidPosition(Vector2Int cell)
         {
-            var result = Player.ValidRows.Any(list => list.Contains(cell));
+            var result = _player.ValidRows.Any(list => list.Contains(cell));
             return result;
         }
 
@@ -31,15 +36,15 @@ namespace MegaManBattleNetwork
             // Player.CanMove = false;
             // StopCoroutine(MoveCooldownRoutine());
             StopAllCoroutines();
-            yield return new WaitForSeconds(Player.DamageTakenMoveCooldown);
-            Player.CanMove = true;
+            yield return new WaitForSeconds(_player.DamageTakenMoveCooldown);
+            _player.CanMove = true;
         }
 
         private IEnumerator MoveCooldownRoutine()
         {
-            Player.CanMove = false;
+            _player.CanMove = false;
             yield return new WaitForSeconds(_moveCooldown);
-            Player.CanMove = true;
+            _player.CanMove = true;
         }
     }
 }

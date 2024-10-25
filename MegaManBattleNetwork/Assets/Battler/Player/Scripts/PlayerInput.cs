@@ -10,7 +10,6 @@ namespace MegaManBattleNetwork
     public class PlayerInput : MonoBehaviour
     {
         public static event Action PlayerPressedSelect;
-        public Player Player { private get; set; }
         public PlayerMovement PlayerMovement { private get; set; }
         public PlayerShootComponent PlayerShootComponent { private get; set; }
         public ChipComponent PlayerChipComponent { private get; set; }
@@ -22,9 +21,11 @@ namespace MegaManBattleNetwork
         private InputAction _primaryAction;
         private InputAction _secondaryAction;
         private InputAction _selectAction;
+        private Player _player;
 
         private void Start()
         {
+            _player = GetComponent<Player>();
             _moveAction = InputSystem.actions.FindAction("Move");
             _primaryAction = InputSystem.actions.FindAction("Primary");
             _secondaryAction = InputSystem.actions.FindAction("Secondary");
@@ -41,7 +42,7 @@ namespace MegaManBattleNetwork
 
             if (_primaryAction.WasPressedThisFrame() && !_justUsedChip)
             {
-                Player.ExecuteChip();
+                _player.ExecuteChip();
                 StartCoroutine(ChipCooldownRoutine());
             }
 

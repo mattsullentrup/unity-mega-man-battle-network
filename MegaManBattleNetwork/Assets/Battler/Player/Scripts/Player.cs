@@ -34,17 +34,13 @@ namespace MegaManBattleNetwork
             _playerInput.PlayerChipComponent = ChipComponent;
             _playerInput.PlayerShootComponent = _playerShootComponent;
 
-            _playerMovement.Player = this;
-            _playerInput.Player = this;
-            ChipComponent.Battler = this;
-            base.Awake();
-        }
-
-        private void Start()
-        {
             ChipSelection.ChipsSelected += OnChipsSelected;
             ChipCommandSO.ChipExecuting += OnChipExecuting;
+
+            base.Awake();
+            
         }
+
 
         private void OnDestroy()
         {
