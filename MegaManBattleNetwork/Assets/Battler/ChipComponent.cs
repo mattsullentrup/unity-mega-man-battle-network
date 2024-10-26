@@ -19,10 +19,10 @@ namespace MegaManBattleNetwork
             if (Chips.Count == 0)
                 return;
 
-            var chip = Chips[0];
+            var chip = Instantiate(Chips[0]);
             chip.ChipCommandSO.Battler = Battler;
 
-           chip.ChipCommandSO.Execute();
+            chip.ChipCommandSO.Execute();
         }
     }
 }

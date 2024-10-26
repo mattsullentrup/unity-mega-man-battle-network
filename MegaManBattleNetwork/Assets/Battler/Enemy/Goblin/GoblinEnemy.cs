@@ -1,14 +1,25 @@
+using System.Collections;
 using UnityEngine;
 
 namespace MegaManBattleNetwork
 {
     public class GoblinEnemy : Enemy, IMoveableEnemy, IBombAttacker
     {
-    [SerializeField] private GameObject _bombPrefab;
+        public float InstantiationDelay => _instantiationDelay;
+        [SerializeField] private GameObject _bombPrefab;
+        [SerializeField] private float _instantiationDelay = 2;
+        private GameObject _bombSpawnPosition;
+
+        public override void Start()
+        {
+            _bombSpawnPosition = transform.GetChild(1).gameObject;
+            base.Start();
+        }
+
         public void Move(Player player)
         {
             var direction = new Vector2Int();
-            
+
             // Global vertical movement
             if (player.transform.position.y > transform.position.y)
             {
@@ -41,14 +52,15 @@ namespace MegaManBattleNetwork
         {
             var animator = GetComponent<Animator>();
             animator.SetTrigger("ThrowBomb");
+            StartCoroutine(DelayBombThrowRoutine());
         }
 
-        public void CreateBomb()
+        public IEnumerator DelayBombThrowRoutine()
         {
+            yield return new WaitForSeconds(_instantiationDelay);
             var bomb = Instantiate(_bombPrefab);
-            bomb.transform.position = transform.position + new Vector3(0.5f, 0, 0);
+            bomb.transform.position = _bombSpawnPosition.transform.position + new Vector3(0.5f, 0, 0);
             bomb.transform.localScale = new(-1, 1, 1);
-            // StartCoroutine(DamageDelayRoutine());
         }
     }
 }

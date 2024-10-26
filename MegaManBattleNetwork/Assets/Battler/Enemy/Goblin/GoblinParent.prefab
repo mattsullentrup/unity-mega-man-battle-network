@@ -181,6 +181,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _actionCooldown: 4.5
   _bombPrefab: {fileID: 70073897175311260, guid: d9f6a8a8abd20f460bf5fad89dd377e9, type: 3}
+  _instantiationDelay: 1.09
 --- !u!212 &2318630445055942187
 SpriteRenderer:
   m_ObjectHideFlags: 0

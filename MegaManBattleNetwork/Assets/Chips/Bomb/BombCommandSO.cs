@@ -14,11 +14,15 @@ public class BombCommandSO : ChipCommandSO
 
     public override void Execute()
     {
-        // TODO: Refactor so the enemy can delay execution until it's bomb throw animation finishes.
-        base.Execute();
-        if (Battler is IBombAttacker bombAttacker)
+        if (Battler is not IBombAttacker bombAttacker)
+            return;
+
+        if (bombAttacker is GoblinEnemy goblin)
         {
-            bombAttacker.ThrowBomb();
+            Delay += goblin.InstantiationDelay;
         }
+
+        base.Execute();
+        bombAttacker.ThrowBomb();
     }
 }

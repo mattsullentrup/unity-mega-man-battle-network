@@ -36,7 +36,7 @@ namespace MegaManBattleNetwork
             base.Awake();
         }
 
-        private void Start()
+        public virtual void Start()
         {
             ChipCommandSO.ChipExecuting += OnChipExecuting;
             StartCoroutine(ActionRoutine());
