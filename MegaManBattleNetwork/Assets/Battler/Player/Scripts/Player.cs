@@ -85,7 +85,7 @@ namespace MegaManBattleNetwork
         public void ThrowBomb()
         {
             var bomb = Instantiate(_bombPrefab);
-            bomb.transform.position = transform.position + new Vector3(0.5f, 0, 0);
+            bomb.transform.position = transform.position + new Vector3(0.75f, 0, 0);
         }
     }
 }
