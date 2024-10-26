@@ -14,7 +14,7 @@ namespace MegaManBattleNetwork
         private PlayerMovement _playerMovement;
         private PlayerInput _playerInput;
         private PlayerShootComponent _playerShootComponent;
-        private ChipSO _currentChip;
+        private ChipCommandSO _currentChipCommand;
 
         public override event Action<ChipCommandSO> BattlerAttacking;
         public override List<List<Vector2Int>> ValidRows { get; set; }
@@ -61,8 +61,8 @@ namespace MegaManBattleNetwork
 
         public override void DealDamage()
         {
-            BattlerAttacking?.Invoke(_currentChip.ChipCommandSO);
-            Destroy(_currentChip);
+            BattlerAttacking?.Invoke(_currentChipCommand);
+            Destroy(_currentChipCommand);
         }
 
         private void OnChipsSelected(List<ChipSO> chips)
@@ -77,7 +77,7 @@ namespace MegaManBattleNetwork
                 return;
 
             base.OnChipExecuting(battler, chipCommand);
-            _currentChip = ChipComponent.Chips[0];
+            _currentChipCommand = chipCommand;
             ChipComponent.Chips.RemoveAt(0);
             GetComponent<PlayerChipUI>().DestroyChipImage();
         }

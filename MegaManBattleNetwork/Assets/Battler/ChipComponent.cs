@@ -8,11 +8,13 @@ namespace MegaManBattleNetwork
     {
         [field: SerializeField]
         public List<ChipSO> Chips { get; set; } = new();
-        public Battler Battler { get; set; }
+        // public Battler Battler { get; set; }
+        private Player _player;
 
         private void Start()
         {
-            Battler = GetComponent<Battler>();
+            // Battler = GetComponent<Battler>();
+            _player = GetComponent<Player>();
         }
 
         public void ExecuteChip()
@@ -21,8 +23,8 @@ namespace MegaManBattleNetwork
                 return;
 
             var chipCommand = Instantiate(Chips[0].ChipCommandSO);
-            chipCommand.Battler = Battler;
-            chipCommand.ChipExecuting += Battler.OnChipExecuting;
+            chipCommand.Battler = _player;
+            chipCommand.ChipExecuting += _player.OnChipExecuting;
             chipCommand.Execute();
         }
     }
