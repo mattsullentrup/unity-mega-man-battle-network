@@ -11,13 +11,13 @@ namespace MegaManBattleNetwork
         private void Start()
         {
             GameManager.RoundEnding += OnRoundEnding;
-            ChipCommandSO.ChipExecuting += OnChipExecuting;
+            // ChipCommandSO.ChipExecuting += OnChipExecuting;
         }
 
         private void OnDestroy()
         {
             GameManager.RoundEnding -= OnRoundEnding;
-            ChipCommandSO.ChipExecuting -= OnChipExecuting;
+            // ChipCommandSO.ChipExecuting -= OnChipExecuting;
         }
 
         public void CreateChipImages(List<ChipSO> chips)
@@ -37,13 +37,19 @@ namespace MegaManBattleNetwork
             }
         }
 
-        private void OnChipExecuting(Battler battler, ChipCommandSO chipCommand)
+        public void DestroyChipImage()
         {
-            if (battler is not Player)
-                return;
 
             Destroy(_chipQueuePanel.transform.GetChild(0).gameObject);
+
         }
+
+        // private void OnChipExecuting(Battler battler, ChipCommandSO chipCommand)
+        // {
+        //     if (battler is not Player)
+        //         return;
+        // Destroy(_chipQueuePanel.transform.GetChild(0).gameObject);
+        // }
 
         private void OnRoundEnding()
         {

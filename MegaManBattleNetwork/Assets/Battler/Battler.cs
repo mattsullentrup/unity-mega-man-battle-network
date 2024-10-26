@@ -27,6 +27,11 @@ namespace MegaManBattleNetwork
             Toggle(false);
         }
 
+        public void ExecuteChip()
+        {
+            ChipComponent.ExecuteChip();
+        }
+
         public virtual void TakeDamage(int amount)
         {
             CanMove = false;
@@ -35,6 +40,11 @@ namespace MegaManBattleNetwork
             StartCoroutine(TakeDamageRoutine());
             StartCoroutine(InvulnerableRoutine());
             GetComponent<SpriteFlash>().Flash();
+        }
+
+        public virtual void OnChipExecuting(Battler battler, ChipCommandSO chipCommand)
+        {
+            StartCoroutine(DamageDelayRoutine(chipCommand.Delay));
         }
 
         protected void Toggle(bool value)
@@ -64,11 +74,6 @@ namespace MegaManBattleNetwork
             IsTakingDamage = true;
             yield return new WaitForSeconds(DamageTakenMoveCooldown);
             IsTakingDamage = false;
-        }
-
-        protected virtual void OnChipExecuting(Battler battler, ChipCommandSO chipCommand)
-        {
-            StartCoroutine(DamageDelayRoutine(chipCommand.Delay));
         }
     }
 }

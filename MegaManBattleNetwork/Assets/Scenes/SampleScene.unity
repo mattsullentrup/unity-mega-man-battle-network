@@ -6097,8 +6097,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _chipButtonPrefab: {fileID: 6619435311934128721, guid: c5727034fd528335291628b6629bc5c4, type: 3}
   _chipsPool:
-  - {fileID: 11400000, guid: 2eee4ebb40df5c8bbbbb72fc5762c181, type: 2}
-  - {fileID: 11400000, guid: 817c1ed9a4c1965e6897f167d247fbc7, type: 2}
+  - {fileID: 11400000, guid: 71a9f66b7cb4b0d0c94a8051b3d5e1f0, type: 2}
+  - {fileID: 11400000, guid: 9005a9674eed6f22a8ddfc6a3347681f, type: 2}
   - {fileID: 11400000, guid: b8e6b3b9c855aa03586532d52e882371, type: 2}
   _availableChipsContainer: {fileID: 808755948}
   _selectedChipsContainer: {fileID: 1673720385}
@@ -6737,13 +6737,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 186852401}
     m_Modifications:
+    - target: {fileID: 3476922349017759204, guid: 607e46afec50bb2d0866e2bb21840979, type: 3}
+      propertyPath: <Chips>k__BackingField.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3476922349017759204, guid: 607e46afec50bb2d0866e2bb21840979, type: 3}
+      propertyPath: '<Chips>k__BackingField.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 71a9f66b7cb4b0d0c94a8051b3d5e1f0, type: 2}
     - target: {fileID: 3487658579154384507, guid: 607e46afec50bb2d0866e2bb21840979, type: 3}
       propertyPath: m_Name
       value: Skeleton
       objectReference: {fileID: 0}
     - target: {fileID: 3487658579154384507, guid: 607e46afec50bb2d0866e2bb21840979, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6485547718680499317, guid: 607e46afec50bb2d0866e2bb21840979, type: 3}
       propertyPath: m_LocalPosition.x

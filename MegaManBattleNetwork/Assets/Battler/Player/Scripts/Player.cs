@@ -10,7 +10,7 @@ namespace MegaManBattleNetwork
     [RequireComponent(typeof(ChipComponent))]
     public class Player : Battler, IBombAttacker
     {
-    [SerializeField] private GameObject _bombPrefab;
+        [SerializeField] private GameObject _bombPrefab;
         private PlayerMovement _playerMovement;
         private PlayerInput _playerInput;
         private PlayerShootComponent _playerShootComponent;
@@ -36,7 +36,7 @@ namespace MegaManBattleNetwork
             _playerInput.PlayerShootComponent = _playerShootComponent;
 
             ChipSelection.ChipsSelected += OnChipsSelected;
-            ChipCommandSO.ChipExecuting += OnChipExecuting;
+            // ChipCommandSO.ChipExecuting += OnChipExecuting;
 
             base.Awake();
         }
@@ -44,13 +44,13 @@ namespace MegaManBattleNetwork
         private void OnDestroy()
         {
             ChipSelection.ChipsSelected -= OnChipsSelected;
-            ChipCommandSO.ChipExecuting -= OnChipExecuting;
+            // ChipCommandSO.ChipExecuting -= OnChipExecuting;
         }
 
-        public void ExecuteChip()
-        {
-            ChipComponent.ExecuteChip();
-        }
+        // public void ExecuteChip()
+        // {
+        //     ChipComponent.ExecuteChip();
+        // }
 
         public override void TakeDamage(int amount)
         {
@@ -73,7 +73,7 @@ namespace MegaManBattleNetwork
             GetComponent<PlayerChipUI>().CreateChipImages(chips);
         }
 
-        protected override void OnChipExecuting(Battler battler, ChipCommandSO chipCommand)
+        public override void OnChipExecuting(Battler battler, ChipCommandSO chipCommand)
         {
             if (battler is not Player)
                 return;
@@ -81,6 +81,7 @@ namespace MegaManBattleNetwork
             base.OnChipExecuting(battler, chipCommand);
             _currentChip = ChipComponent.Chips[0];
             ChipComponent.Chips.RemoveAt(0);
+            GetComponent<PlayerChipUI>().DestroyChipImage();
         }
 
         public void ThrowBomb()

@@ -21,18 +21,9 @@ namespace MegaManBattleNetwork
                 return;
 
             var chipCommand = Instantiate(Chips[0].ChipCommandSO);
-            // var ogChipCommand = Chips[0].ChipCommandSO;
-            // var commandName = ogChipCommand.GetType().Name;
-            // var so = ScriptableObject.CreateInstance(commandName);
-            // var chipCommand = so as ChipCommandSO;
-            if (chipCommand != null)
-            {
-                chipCommand.Battler = Battler;
-                chipCommand.Execute();
-            }
-
-            // chip.ChipCommandSO.Battler = Battler;
-            // chip.ChipCommandSO.Execute();
+            chipCommand.Battler = Battler;
+            chipCommand.ChipExecuting += Battler.OnChipExecuting;
+            chipCommand.Execute();
         }
     }
 }
