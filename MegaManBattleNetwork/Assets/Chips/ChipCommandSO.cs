@@ -15,14 +15,6 @@ namespace MegaManBattleNetwork
 
         public virtual void Execute()
         {
-            if (Battler is Enemy)
-            {
-                for (int i = 0; i < DamagableCells.Count; i++)
-                {
-                    DamagableCells[i] *= Vector2Int.left;
-                }
-            }
-
             ChipExecuting?.Invoke(Battler, this);
         }
     }

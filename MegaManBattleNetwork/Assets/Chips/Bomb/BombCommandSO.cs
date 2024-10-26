@@ -17,11 +17,6 @@ public class BombCommandSO : ChipCommandSO
         if (Battler is not IBombAttacker bombAttacker)
             return;
 
-        if (bombAttacker is GoblinEnemy goblin)
-        {
-            Delay += goblin.InstantiationDelay;
-        }
-
         base.Execute();
         bombAttacker.ThrowBomb();
     }

@@ -19,7 +19,7 @@ namespace MegaManBattleNetwork
         public override event Action<ChipCommandSO> BattlerAttacking;
         public override List<List<Vector2Int>> ValidRows { get; set; }
         public override Animator Animation { get; set; }
-        public override ChipComponent ChipComponent { get; protected set; }
+        public ChipComponent ChipComponent { get; protected set; }
         // public bool CanMove { get; set; } = true;
 
         protected override void Awake()
@@ -36,7 +36,6 @@ namespace MegaManBattleNetwork
             _playerInput.PlayerShootComponent = _playerShootComponent;
 
             ChipSelection.ChipsSelected += OnChipsSelected;
-            // ChipCommandSO.ChipExecuting += OnChipExecuting;
 
             base.Awake();
         }
@@ -44,13 +43,12 @@ namespace MegaManBattleNetwork
         private void OnDestroy()
         {
             ChipSelection.ChipsSelected -= OnChipsSelected;
-            // ChipCommandSO.ChipExecuting -= OnChipExecuting;
         }
 
-        // public void ExecuteChip()
-        // {
-        //     ChipComponent.ExecuteChip();
-        // }
+        public override void ExecuteChip()
+        {
+            ChipComponent.ExecuteChip();
+        }
 
         public override void TakeDamage(int amount)
         {

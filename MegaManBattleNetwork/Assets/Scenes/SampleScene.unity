@@ -830,13 +830,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 186852401}
     m_Modifications:
-    - target: {fileID: 490545335791335907, guid: 238fda662255db089a46b72d32638b38, type: 3}
-      propertyPath: _actionCooldown
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 3487658579154384507, guid: 238fda662255db089a46b72d32638b38, type: 3}
       propertyPath: m_Name
       value: GoblinParent
+      objectReference: {fileID: 0}
+    - target: {fileID: 3487658579154384507, guid: 238fda662255db089a46b72d32638b38, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6485547718680499317, guid: 238fda662255db089a46b72d32638b38, type: 3}
       propertyPath: m_LocalPosition.x

@@ -5,7 +5,7 @@ namespace MegaManBattleNetwork
 {
     public class GoblinEnemy : Enemy, IMoveableEnemy, IBombAttacker
     {
-        public float InstantiationDelay => _instantiationDelay;
+        // public float InstantiationDelay => _instantiationDelay;
         [SerializeField] private GameObject _bombPrefab;
         [SerializeField] private float _instantiationDelay = 2;
         private GameObject _bombSpawnPosition;
@@ -13,6 +13,7 @@ namespace MegaManBattleNetwork
         public override void Start()
         {
             _bombSpawnPosition = transform.GetChild(1).gameObject;
+            _chipCommand.Delay += _instantiationDelay;
             base.Start();
         }
 

@@ -5,10 +5,16 @@ namespace MegaManBattleNetwork
 {
     public class SkeletonEnemy : Enemy, IMoveableEnemy
     {
+        public override void Start()
+        {
+            _chipCommand.Delay = 0.5f;
+            base.Start();
+        }
+
         public void Move(Player player)
         {
             var direction = new Vector2Int();
-            
+
             // Global vertical movement
             if (player.transform.position.y > transform.position.y)
             {

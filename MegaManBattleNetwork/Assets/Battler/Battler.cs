@@ -16,7 +16,6 @@ namespace MegaManBattleNetwork
         public abstract event Action<ChipCommandSO> BattlerAttacking;
         public abstract List<List<Vector2Int>> ValidRows { get; set; }
         public abstract Animator Animation { get; set; }
-        public abstract ChipComponent ChipComponent { get; protected set; }
         public abstract void DealDamage();
         protected bool _isInvulnerable;
 
@@ -27,10 +26,8 @@ namespace MegaManBattleNetwork
             Toggle(false);
         }
 
-        public void ExecuteChip()
-        {
-            ChipComponent.ExecuteChip();
-        }
+        public abstract void ExecuteChip();
+
 
         public virtual void TakeDamage(int amount)
         {

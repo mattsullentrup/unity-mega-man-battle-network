@@ -13,25 +13,25 @@ namespace MegaManBattleNetwork
         public override event Action<ChipCommandSO> BattlerAttacking;
         public override List<List<Vector2Int>> ValidRows { get; set; }
         public override Animator Animation { get; set; }
-        public override ChipComponent ChipComponent { get; protected set; }
+        // public override ChipComponent ChipComponent { get; protected set; }
 
         [SerializeField] private float _actionCooldown = 4.0f;
+        [SerializeField] protected ChipCommandSO _chipCommand;
 
         protected override void Awake()
         {
             Animation = GetComponentInChildren<Animator>();
-            ChipComponent = GetComponent<ChipComponent>();
-            // var chip = Instantiate(ChipComponent.Chips[0]);
-            // var chipCommand = Instantiate(ChipComponent.Chips[0].ChipCommandSO);
-            // chipCommand.Battler = this;
 
-            // for (int i = 0; i < chipCommand.DamagableCells.Count; i++)
-            // {
-            //     chipCommand.DamagableCells[i] *= Vector2Int.left;
-            // }
+            _chipCommand = Instantiate(_chipCommand);
+            _chipCommand.Battler = this;
 
-            // chip.ChipCommandSO = chipCommand;
-            // ChipComponent.Chips[0] = chip;
+            for (int i = 0; i < _chipCommand.DamagableCells.Count; i++)
+            {
+                _chipCommand.DamagableCells[i] *= Vector2Int.left;
+            }
+
+            _chipCommand.ChipExecuting += OnChipExecuting;
+
 
             base.Awake();
         }
@@ -42,15 +42,15 @@ namespace MegaManBattleNetwork
             StartCoroutine(ActionRoutine());
         }
 
-        // private void OnDestroy()
-        // {
-        //     ChipCommandSO.ChipExecuting -= OnChipExecuting;
-        // }
+        private void OnDestroy()
+        {
+            _chipCommand.ChipExecuting -= OnChipExecuting;
+        }
 
-        // public void ExecuteChip()
-        // {
-        //     ChipComponent.ExecuteChip();
-        // }
+        public override void ExecuteChip()
+        {
+            _chipCommand.Execute();
+        }
 
         public override void TakeDamage(int amount)
         {
@@ -63,23 +63,22 @@ namespace MegaManBattleNetwork
 
         public override void DealDamage()
         {
+            BattlerAttacking?.Invoke(_chipCommand);
             StartCoroutine(ActionRoutine());
-            BattlerAttacking?.Invoke(ChipComponent.Chips[0].ChipCommandSO);
-            Destroy(ChipComponent.Chips[0].ChipCommandSO);
         }
 
         protected IEnumerator ActionRoutine()
         {
             yield return new WaitForSeconds(_actionCooldown);
-            StartingAction?.Invoke(this, ChipComponent.Chips[0].ChipCommandSO);
+            StartingAction?.Invoke(this, _chipCommand);
         }
 
-        public override void OnChipExecuting(Battler battler, ChipCommandSO chipCommand)
-        {
-            if (battler is not Enemy || this != battler)
-                return;
+        // public override void OnChipExecuting(Battler battler, ChipCommandSO chipCommand)
+        // {
+        //     if (battler is not Enemy || this != battler)
+        //         return;
 
-            base.OnChipExecuting(battler, chipCommand);
-        }
+        //     base.OnChipExecuting(battler, chipCommand);
+        // }
     }
 }
