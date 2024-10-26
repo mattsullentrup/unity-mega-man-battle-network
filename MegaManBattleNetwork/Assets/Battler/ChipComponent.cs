@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 namespace MegaManBattleNetwork
 {
@@ -19,10 +20,19 @@ namespace MegaManBattleNetwork
             if (Chips.Count == 0)
                 return;
 
-            var chip = Instantiate(Chips[0]);
-            chip.ChipCommandSO.Battler = Battler;
+            var chipCommand = Instantiate(Chips[0].ChipCommandSO);
+            // var ogChipCommand = Chips[0].ChipCommandSO;
+            // var commandName = ogChipCommand.GetType().Name;
+            // var so = ScriptableObject.CreateInstance(commandName);
+            // var chipCommand = so as ChipCommandSO;
+            if (chipCommand != null)
+            {
+                chipCommand.Battler = Battler;
+                chipCommand.Execute();
+            }
 
-            chip.ChipCommandSO.Execute();
+            // chip.ChipCommandSO.Battler = Battler;
+            // chip.ChipCommandSO.Execute();
         }
     }
 }

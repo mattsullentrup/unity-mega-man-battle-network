@@ -80,7 +80,7 @@ namespace MegaManBattleNetwork
             if (selected == null)
                 return;
 
-            var image = _focusedChipImage.GetComponent<Image>().sprite; 
+            var image = _focusedChipImage.GetComponent<Image>().sprite;
             if (selected.GetComponent<Image>().sprite == image)
                 return;
 
@@ -108,8 +108,8 @@ namespace MegaManBattleNetwork
                 {
                     int index = UnityEngine.Random.Range(0, _chipsPool.Count);
                     var randomChip = Instantiate(_chipsPool[index]);
-                    var chipCommand = Instantiate(randomChip.ChipCommandSO);
-                    randomChip.ChipCommandSO = chipCommand;
+                    // var chipCommand = Instantiate(randomChip.ChipCommandSO);
+                    // randomChip.ChipCommandSO = chipCommand;
                     _buttonData[button] = randomChip;
                     image.sprite = randomChip.Sprite;
                 }
@@ -202,8 +202,6 @@ namespace MegaManBattleNetwork
                     image.sprite = _blankSprite;
                 }
             }
-
-            // EventSystem.current.enabled = false;
         }
     }
 }
