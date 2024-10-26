@@ -23,7 +23,9 @@ namespace MegaManBattleNetwork
             if (chips == null || chips.Count == 0)
                 return;
 
-            foreach (var chip in chips)
+            var reversedChips = new List<ChipSO>(chips);
+            reversedChips.Reverse();
+            foreach (var chip in reversedChips)
             {
                 GameObject newObject = new();
                 Image newImage = newObject.AddComponent<Image>();
@@ -38,7 +40,7 @@ namespace MegaManBattleNetwork
         public void DestroyChipImage()
         {
 
-            Destroy(_chipQueuePanel.transform.GetChild(0).gameObject);
+            Destroy(_chipQueuePanel.transform.GetChild(_chipQueuePanel.transform.childCount - 1).gameObject);
 
         }
 
