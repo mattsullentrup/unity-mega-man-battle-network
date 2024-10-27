@@ -23,6 +23,7 @@ namespace MegaManBattleNetwork
             var chipCommand = Instantiate(Chips[0].ChipCommandSO);
             chipCommand.Battler = _player;
             chipCommand.ChipExecuting += _player.OnChipExecuting;
+            chipCommand.StartPosition = Globals.WorldToCell2D(_player.transform.position);
             chipCommand.Execute();
         }
     }

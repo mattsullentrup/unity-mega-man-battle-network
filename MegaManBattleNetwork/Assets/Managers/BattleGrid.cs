@@ -70,10 +70,6 @@ namespace MegaManBattleNetwork
             List<Battler> defenders;
             if (attacker is Player)
             {
-                // foreach (Enemy enemy in _enemyManager.Enemies)
-                // {
-                //     defenders.Add(enemy);
-                // }
                 defenders = new(_enemyManager.Enemies);
             }
             else
@@ -90,7 +86,7 @@ namespace MegaManBattleNetwork
             var globalDamagableCells = new List<Vector2Int>();
             foreach (var cell in chipCommand.DamagableCells)
             {
-                globalDamagableCells.Add(cell + Globals.WorldToCell2D(attacker.transform.position));
+                globalDamagableCells.Add(cell + chipCommand.StartPosition);
             }
 
             var damagableDefenders = new List<Battler>();

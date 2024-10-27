@@ -46,6 +46,7 @@ namespace MegaManBattleNetwork
 
         public override void ExecuteChip()
         {
+            _chipCommand.StartPosition = Globals.WorldToCell2D(transform.position);
             _chipCommand.Execute();
         }
 
@@ -70,6 +71,7 @@ namespace MegaManBattleNetwork
         protected IEnumerator ActionRoutine()
         {
             yield return new WaitForSeconds(_actionCooldown);
+            _chipCommand.StartPosition = Globals.WorldToCell2D(transform.position);
             StartingAction?.Invoke(this, _chipCommand);
         }
     }

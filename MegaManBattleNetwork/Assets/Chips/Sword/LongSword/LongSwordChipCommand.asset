@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9e9ae1c865b626b1a4defc2fccb6825, type: 3}
   m_Name: LongSwordChipCommand
   m_EditorClassIdentifier: 
-  Damage: 8
-  Delay: 0.2
+  Damage: 15
+  Delay: 0.3
   DamagableCells:
   - {x: 1, y: 0}
   - {x: 2, y: 0}

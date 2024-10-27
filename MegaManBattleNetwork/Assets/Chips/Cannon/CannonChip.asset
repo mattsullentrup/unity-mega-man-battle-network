@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sprite: {fileID: -5333349321414413341, guid: f1dae240cf45065fda4cce2c8b88628f, type: 3}
   _name: Cannon
-  <ChipCommandSO>k__BackingField: {fileID: 0}
+  <ChipCommandSO>k__BackingField: {fileID: 11400000, guid: 196d9a3c9b2490e8796d06f410d3e3c5, type: 2}

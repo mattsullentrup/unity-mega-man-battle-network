@@ -12,6 +12,7 @@ namespace MegaManBattleNetwork
         public float Delay;
         public List<Vector2Int> DamagableCells;
         public Battler Battler { get; set; }
+        public Vector2Int StartPosition { get; set; }
 
         public virtual void Execute()
         {
