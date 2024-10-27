@@ -14,13 +14,14 @@ namespace MegaManBattleNetwork
     {
         public static event Action<List<ChipSO>> ChipsSelected;
 
-        [SerializeField] private GameObject _chipButtonPrefab;
         [SerializeField] private List<ChipSO> _chipsPool;
+        [SerializeField] private GameObject _chipButtonPrefab;
         [SerializeField] private GameObject _availableChipsContainer;
         [SerializeField] private GameObject _selectedChipsContainer;
         [SerializeField] private GameObject _focusedChipImage;
         [SerializeField] private Sprite _blankSprite;
         [SerializeField] private TextMeshProUGUI _highlightedChipText;
+        [SerializeField] private Button _addButton;
 
         private Animator _animationPlayer;
         private const int _initialMaxChips = 5;
@@ -58,6 +59,9 @@ namespace MegaManBattleNetwork
 
         private void Update()
         {
+            if (!GameManager.Instance.IsSelectingChips)
+                return;
+
             if (_primaryAction.WasPressedThisFrame())
             {
                 if (EventSystem.current.currentSelectedGameObject.name == "OkButton")
@@ -104,6 +108,10 @@ namespace MegaManBattleNetwork
         private void OnRoundEnding()
         {
             FillInBlankChips();
+            if (_maxAvailableChips >= _maxChipContainerSize)
+            {
+                _addButton.enabled = false;
+            }
         }
 
         private void FillInBlankChips()
@@ -128,6 +136,9 @@ namespace MegaManBattleNetwork
 
         private void SelectChip()
         {
+            if (!GameManager.Instance.IsSelectingChips)
+                return;
+
             var selectedButton = EventSystem.current.currentSelectedGameObject;
             if (_selectedChips.Count >= _maxSelectedChips)
                 return;
@@ -170,6 +181,9 @@ namespace MegaManBattleNetwork
 
         public void OnOkButtonPressed()
         {
+            if (!GameManager.Instance.IsSelectingChips)
+                return;
+
             UpdateButtonData();
             ChipsSelected?.Invoke(new List<ChipSO>(_selectedChips));
             _selectedChips.Clear();
@@ -178,6 +192,9 @@ namespace MegaManBattleNetwork
 
         public void OnAddButtonPressed()
         {
+            if (!GameManager.Instance.IsSelectingChips)
+                return;
+
             UpdateButtonData();
             _maxAvailableChips += _selectedChips.Count();
             _maxAvailableChips = Mathf.Clamp(_maxAvailableChips, 0, _maxChipContainerSize);

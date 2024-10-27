@@ -17,7 +17,7 @@ namespace MegaManBattleNetwork
 
         public void ExecuteChip()
         {
-            if (Chips.Count == 0)
+            if (Chips == null || Chips.Count == 0)
                 return;
 
             var chipCommand = Instantiate(Chips[0].ChipCommandSO);
