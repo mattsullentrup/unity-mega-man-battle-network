@@ -42,6 +42,20 @@ namespace MegaManBattleNetwork
             StartCoroutine(DamageDelayRoutine(chipCommand.Delay));
         }
 
+        protected void Toggle(bool value)
+        {
+            Animation.enabled = value;
+            foreach (var script in GetComponents<MonoBehaviour>())
+            {
+                script.enabled = value;
+            }
+        }
+
+        // private void OnHealthComponentHealthDepleted(Battler battler)
+        // {
+        //     Animation.SetTrigger("Die");
+        // }
+
         protected IEnumerator DamageDelayRoutine(float delay)
         {
             yield return new WaitForSeconds(delay);
@@ -61,5 +75,10 @@ namespace MegaManBattleNetwork
             yield return new WaitForSeconds(DamageTakenMoveCooldown);
             IsTakingDamage = false;
         }
+
+        // private void OnRoundEnding()
+        // {
+        //     Toggle(false);
+        // }
     }
 }
