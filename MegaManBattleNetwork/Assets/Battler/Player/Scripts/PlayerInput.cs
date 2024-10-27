@@ -26,7 +26,7 @@ namespace MegaManBattleNetwork
             _player = GetComponent<Player>();
             _moveAction = InputSystem.actions.FindAction("Move");
             _primaryAction = InputSystem.actions.FindAction("Primary");
-            _selectAction = InputSystem.actions.FindAction("Select");
+            _selectAction = InputSystem.actions.FindAction("Secondary");
         }
 
         private void Update()
