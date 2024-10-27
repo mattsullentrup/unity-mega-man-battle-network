@@ -11,7 +11,6 @@ namespace MegaManBattleNetwork
     {
         public static event Action PlayerPressedSelect;
         public PlayerMovement PlayerMovement { private get; set; }
-        public PlayerShootComponent PlayerShootComponent { private get; set; }
         public ChipComponent PlayerChipComponent { private get; set; }
 
         [SerializeField] private float _chipCooldown = 1.0f;
@@ -19,7 +18,6 @@ namespace MegaManBattleNetwork
         private bool _justUsedChip;
         private InputAction _moveAction;
         private InputAction _primaryAction;
-        private InputAction _secondaryAction;
         private InputAction _selectAction;
         private Player _player;
 
@@ -28,7 +26,6 @@ namespace MegaManBattleNetwork
             _player = GetComponent<Player>();
             _moveAction = InputSystem.actions.FindAction("Move");
             _primaryAction = InputSystem.actions.FindAction("Primary");
-            _secondaryAction = InputSystem.actions.FindAction("Secondary");
             _selectAction = InputSystem.actions.FindAction("Select");
         }
 
@@ -44,11 +41,6 @@ namespace MegaManBattleNetwork
             {
                 _player.ExecuteChip();
                 StartCoroutine(ChipCooldownRoutine());
-            }
-
-            if (_secondaryAction.WasPressedThisFrame())
-            {
-                PlayerShootComponent.Shoot();
             }
 
             if (_selectAction.WasPressedThisFrame())

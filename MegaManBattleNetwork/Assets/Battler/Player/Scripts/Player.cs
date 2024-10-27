@@ -6,14 +6,13 @@ using UnityEngine;
 
 namespace MegaManBattleNetwork
 {
-    [RequireComponent(typeof(PlayerInput), typeof(PlayerMovement), typeof(PlayerShootComponent))]
+    [RequireComponent(typeof(PlayerInput), typeof(PlayerMovement))]
     [RequireComponent(typeof(ChipComponent))]
     public class Player : Battler, IBombAttacker
     {
         [SerializeField] private GameObject _bombPrefab;
         private PlayerMovement _playerMovement;
         private PlayerInput _playerInput;
-        private PlayerShootComponent _playerShootComponent;
         private ChipCommandSO _currentChipCommand;
 
         public override event Action<ChipCommandSO> BattlerAttacking;
@@ -27,12 +26,10 @@ namespace MegaManBattleNetwork
 
             _playerMovement = GetComponent<PlayerMovement>();
             _playerInput = GetComponent<PlayerInput>();
-            _playerShootComponent = GetComponent<PlayerShootComponent>();
             ChipComponent = GetComponent<ChipComponent>();
 
             _playerInput.PlayerMovement = _playerMovement;
             _playerInput.PlayerChipComponent = ChipComponent;
-            _playerInput.PlayerShootComponent = _playerShootComponent;
 
             ChipSelection.ChipsSelected += OnChipsSelected;
             GameManager.RoundEnding += OnRoundEnding;

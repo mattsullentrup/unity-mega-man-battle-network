@@ -29,7 +29,7 @@ namespace MegaManBattleNetwork
         private int _maxAvailableChips = _initialMaxChips;
         private List<ChipSO> _selectedChips = new();
         private InputAction _primaryAction;
-        private InputAction _secondaryAction;
+        private InputAction _selectAction;
         private Dictionary<GameObject, ChipSO> _buttonData = new();
 
         private void OnEnable()
@@ -45,7 +45,7 @@ namespace MegaManBattleNetwork
         private void Start()
         {
             _primaryAction = InputSystem.actions.FindAction("Primary");
-            _secondaryAction = InputSystem.actions.FindAction("Secondary");
+            _selectAction = InputSystem.actions.FindAction("Select");
             _animationPlayer = GetComponent<Animator>();
             foreach (Transform child in _availableChipsContainer.transform)
             {
@@ -63,7 +63,7 @@ namespace MegaManBattleNetwork
             //         SelectChip();
             //     }
 
-            if (_secondaryAction.WasPressedThisFrame())
+            if (_selectAction.WasPressedThisFrame())
             {
                 RemoveSelectedChip();
             }
