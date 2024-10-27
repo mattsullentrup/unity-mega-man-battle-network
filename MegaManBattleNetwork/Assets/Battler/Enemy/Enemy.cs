@@ -18,7 +18,7 @@ namespace MegaManBattleNetwork
         [SerializeField] private float _actionCooldown = 4.0f;
         [SerializeField] protected ChipCommandSO _chipCommand;
 
-        protected override void Awake()
+        private void Awake()
         {
             Animation = GetComponentInChildren<Animator>();
 
@@ -31,9 +31,6 @@ namespace MegaManBattleNetwork
             }
 
             _chipCommand.ChipExecuting += OnChipExecuting;
-
-
-            base.Awake();
         }
 
         public virtual void Start()

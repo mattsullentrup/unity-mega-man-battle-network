@@ -22,7 +22,7 @@ namespace MegaManBattleNetwork
         public ChipComponent ChipComponent { get; protected set; }
         // public bool CanMove { get; set; } = true;
 
-        protected override void Awake()
+        private void Awake()
         {
             Animation = GetComponentInChildren<Animator>();
 
@@ -36,13 +36,13 @@ namespace MegaManBattleNetwork
             _playerInput.PlayerShootComponent = _playerShootComponent;
 
             ChipSelection.ChipsSelected += OnChipsSelected;
-
-            base.Awake();
+            GameManager.RoundEnding += OnRoundEnding;
         }
 
         private void OnDestroy()
         {
             ChipSelection.ChipsSelected -= OnChipsSelected;
+            GameManager.RoundEnding -= OnRoundEnding;
         }
 
         public override void ExecuteChip()
@@ -65,12 +65,6 @@ namespace MegaManBattleNetwork
             Destroy(_currentChipCommand);
         }
 
-        private void OnChipsSelected(List<ChipSO> chips)
-        {
-            ChipComponent.Chips = chips;
-            GetComponent<PlayerChipUI>().CreateChipImages(chips);
-        }
-
         public override void OnChipExecuting(Battler battler, ChipCommandSO chipCommand)
         {
             if (battler is not Player)
@@ -86,6 +80,30 @@ namespace MegaManBattleNetwork
         {
             var bomb = Instantiate(_bombPrefab);
             bomb.transform.position = transform.position + new Vector3(0.75f, 0, 0);
+        }
+
+        private void ToggleInput(bool value)
+        {
+            // Animation.enabled = value;
+            // foreach (var script in GetComponents<MonoBehaviour>())
+            // {
+            //     script.enabled = value;
+            // }
+
+            var input = GetComponent<PlayerInput>();
+            input.enabled = value;
+        }
+
+        private void OnChipsSelected(List<ChipSO> chips)
+        {
+            ToggleInput(true);
+            ChipComponent.Chips = chips;
+            GetComponent<PlayerChipUI>().CreateChipImages(chips);
+        }
+
+        private void OnRoundEnding()
+        {
+            ToggleInput(false);
         }
     }
 }

@@ -20,12 +20,18 @@ namespace MegaManBattleNetwork
         public abstract void DealDamage();
         protected bool _isInvulnerable;
 
-        protected virtual void Awake()
-        {
-            GameManager.RoundEnding += () => Toggle(false);
-            ChipSelection.ChipsSelected += (List<ChipSO> chips) => Toggle(true);
-            Toggle(false);
-        }
+        // protected virtual void Awake()
+        // {
+        //     GameManager.RoundEnding += OnRoundEnding;
+        //     ChipSelection.ChipsSelected += OnChipsSelected;
+        //     // Toggle(false);
+        // }
+
+        // protected virtual void OnDestroy()
+        // {
+        //     GameManager.RoundEnding -= OnRoundEnding;
+        //     ChipSelection.ChipsSelected -= OnChipsSelected;
+        // }
 
         public abstract void ExecuteChip();
 
@@ -50,19 +56,6 @@ namespace MegaManBattleNetwork
             StartCoroutine(DamageDelayRoutine(chipCommand.Delay));
         }
 
-        protected void Toggle(bool value)
-        {
-            Animation.enabled = value;
-            foreach (var script in GetComponents<MonoBehaviour>())
-            {
-                script.enabled = value;
-            }
-        }
-
-        // private void OnHealthComponentHealthDepleted(Battler battler)
-        // {
-        //     Animation.SetTrigger("Die");
-        // }
 
         protected IEnumerator DamageDelayRoutine(float delay)
         {
@@ -83,5 +76,10 @@ namespace MegaManBattleNetwork
             yield return new WaitForSeconds(DamageTakenMoveCooldown);
             IsTakingDamage = false;
         }
+
+        // private void OnRoundEnding()
+        // {
+        //     Toggle(false);
+        // }
     }
 }
