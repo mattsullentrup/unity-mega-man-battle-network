@@ -28,12 +28,14 @@ namespace MegaManBattleNetwork
         {
             PlayerInput.PlayerPressedSelect += OnPlayerPressedSelect;
             ChipSelection.ChipsSelected += OnChipsSelected;
+            HealthComponent.HealthDepleted += OnHealthComponentHealthDepleted;
         }
 
         private void OnDisable()
         {
             PlayerInput.PlayerPressedSelect -= OnPlayerPressedSelect;
             ChipSelection.ChipsSelected -= OnChipsSelected;
+            HealthComponent.HealthDepleted -= OnHealthComponentHealthDepleted;
         }
 
         private void Update()
@@ -69,15 +71,14 @@ namespace MegaManBattleNetwork
             _isRoundProgressing = false;
         }
 
-        // public static void ToggleBattlers(bool value)
-        // {
-        //     IToggleable[] toggleables = FindObjectsByType<MonoBehaviour>(
-        //             FindObjectsInactive.Include, FindObjectsSortMode.None
-        //             ).OfType<IToggleable>().ToArray();
-        //     foreach (var toggleable in toggleables)
-        //     {
-        //         toggleable.Toggle(value);
-        //     }
-        // }
+        private void OnHealthComponentHealthDepleted(Battler battler)
+        {
+            battler.Animation.SetTrigger("Die");
+        }
+
+        private void EndTheGame()
+        {
+
+        }
     }
 }

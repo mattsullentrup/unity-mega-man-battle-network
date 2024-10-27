@@ -28,6 +28,11 @@ namespace MegaManBattleNetwork
 
         public abstract void ExecuteChip();
 
+        public void Die()
+        {
+            Destroy(this);
+        }
+
 
         public virtual void TakeDamage(int amount)
         {
@@ -52,6 +57,11 @@ namespace MegaManBattleNetwork
                 script.enabled = value;
             }
         }
+
+        // private void OnHealthComponentHealthDepleted(Battler battler)
+        // {
+        //     Animation.SetTrigger("Die");
+        // }
 
         protected IEnumerator DamageDelayRoutine(float delay)
         {
