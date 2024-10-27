@@ -24,8 +24,8 @@ namespace MegaManBattleNetwork
 
         private Animator _animationPlayer;
         private const int _initialMaxChips = 5;
-        private const int _maxSelectedChips = 3;
         private const int _maxChipContainerSize = 10;
+        private const int _maxSelectedChips = 3;
         private int _maxAvailableChips = _initialMaxChips;
         private List<ChipSO> _selectedChips = new();
         private InputAction _primaryAction;
@@ -103,7 +103,6 @@ namespace MegaManBattleNetwork
 
         private void OnRoundEnding()
         {
-            // EventSystem.current.enabled = true;
             FillInBlankChips();
         }
 
@@ -118,8 +117,6 @@ namespace MegaManBattleNetwork
                 {
                     int index = UnityEngine.Random.Range(0, _chipsPool.Count);
                     var randomChip = Instantiate(_chipsPool[index]);
-                    // var chipCommand = Instantiate(randomChip.ChipCommandSO);
-                    // randomChip.ChipCommandSO = chipCommand;
                     _buttonData[button] = randomChip;
                     image.sprite = randomChip.Sprite;
                 }
@@ -173,6 +170,24 @@ namespace MegaManBattleNetwork
 
         public void OnOkButtonPressed()
         {
+            UpdateButtonData();
+            ChipsSelected?.Invoke(new List<ChipSO>(_selectedChips));
+            _selectedChips.Clear();
+            EndChipSelection();
+        }
+
+        public void OnAddButtonPressed()
+        {
+            UpdateButtonData();
+            _maxAvailableChips += _selectedChips.Count();
+            _maxAvailableChips = Mathf.Clamp(_maxAvailableChips, 0, _maxChipContainerSize);
+            _selectedChips.Clear();
+            ChipsSelected?.Invoke(null);
+            EndChipSelection();
+        }
+
+        private void UpdateButtonData()
+        {
             // Detach selected chips from their associated buttons
             foreach (var button in new List<GameObject>(_buttonData.Keys))
             {
@@ -184,19 +199,6 @@ namespace MegaManBattleNetwork
                     }
                 }
             }
-
-            ChipsSelected?.Invoke(new List<ChipSO>(_selectedChips));
-            _selectedChips.Clear();
-            EndChipSelection();
-        }
-
-        public void OnAddButtonPressed()
-        {
-            _maxAvailableChips += _selectedChips.Count();
-            _maxAvailableChips = math.clamp(_maxSelectedChips, 0, _maxChipContainerSize);
-            _selectedChips.Clear();
-            ChipsSelected?.Invoke(null);
-            EndChipSelection();
         }
 
         private void EndChipSelection()
