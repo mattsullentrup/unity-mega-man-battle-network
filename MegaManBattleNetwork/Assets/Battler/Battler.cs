@@ -8,6 +8,7 @@ namespace MegaManBattleNetwork
 {
     public abstract class Battler : MonoBehaviour, IDamagable
     {
+        public static event Action<Battler> BattlerDied;
         public float InvulnerableCooldown { get; private set; } = 3.0f;
         public float DamageTakenMoveCooldown { get; private set; } = 1.0f;
         public bool CanMove { get; set; } = true;
@@ -30,7 +31,7 @@ namespace MegaManBattleNetwork
 
         public void Die()
         {
-            Destroy(this);
+            Destroy(gameObject);
         }
 
 

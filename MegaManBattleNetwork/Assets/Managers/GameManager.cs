@@ -74,11 +74,15 @@ namespace MegaManBattleNetwork
         private void OnHealthComponentHealthDepleted(Battler battler)
         {
             battler.Animation.SetTrigger("Die");
+            if (battler is Player || FindFirstObjectByType<EnemyManager>().Enemies.Count == 1)
+            {
+                EndTheGame();
+            }
         }
 
         private void EndTheGame()
         {
-
+            Debug.Log("ending the game");
         }
     }
 }
