@@ -33,8 +33,6 @@ namespace MegaManBattleNetwork
 
         public IEnumerator TakeDamageRoutine()
         {
-            // Player.CanMove = false;
-            // StopCoroutine(MoveCooldownRoutine());
             StopAllCoroutines();
             yield return new WaitForSeconds(_player.DamageTakenMoveCooldown);
             _player.CanMove = true;

@@ -8,12 +8,10 @@ namespace MegaManBattleNetwork
     {
         [field: SerializeField]
         public List<ChipSO> Chips { get; set; } = new();
-        // public Battler Battler { get; set; }
         private Player _player;
 
         private void Start()
         {
-            // Battler = GetComponent<Battler>();
             _player = GetComponent<Player>();
         }
 
