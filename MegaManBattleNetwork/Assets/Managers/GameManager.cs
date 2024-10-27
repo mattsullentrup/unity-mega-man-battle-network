@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace MegaManBattleNetwork
 {
@@ -13,11 +15,12 @@ namespace MegaManBattleNetwork
         public float ElapsedTime => _elapsedTime;
         public bool IsSelectingChips => _isSelectingChips;
 
-        private static GameManager _instance;
         [SerializeField] private int _roundLength = 10;
-        private bool _isRoundProgressing;
+        [SerializeField] private Button _restartButton;
         private float _elapsedTime;
+        private bool _isRoundProgressing;
         private bool _isSelectingChips = true;
+        private static GameManager _instance;
 
         private void Awake()
         {
@@ -25,6 +28,10 @@ namespace MegaManBattleNetwork
             Time.timeScale = 0;
         }
 
+        private void Start()
+        {
+            _restartButton.gameObject.SetActive(false);
+        }
         private void OnEnable()
         {
             PlayerInput.PlayerPressedSelect += OnPlayerPressedSelect;
@@ -45,6 +52,11 @@ namespace MegaManBattleNetwork
             {
                 _elapsedTime += Time.deltaTime;
             }
+        }
+
+        public void OnRestartButtonPressed()
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
         private void OnPlayerPressedSelect()
@@ -92,6 +104,7 @@ namespace MegaManBattleNetwork
         private void EndTheGame()
         {
             Debug.Log("ending the game");
+            _restartButton.gameObject.SetActive(true);
         }
     }
 }
