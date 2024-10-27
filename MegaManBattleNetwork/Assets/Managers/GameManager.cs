@@ -94,11 +94,10 @@ namespace MegaManBattleNetwork
                 enemyManager.Enemies.Remove(enemy);
             }
 
-            if (battler is Player || enemyManager.Enemies.Count == 0)
-            {
-                EndTheGame();
-            }
+            if (enemyManager.Enemies.Count != 0 && battler is not Player)
+                return;
 
+            EndTheGame();
         }
 
         private void EndTheGame()

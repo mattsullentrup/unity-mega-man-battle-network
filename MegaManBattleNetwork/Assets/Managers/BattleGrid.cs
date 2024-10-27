@@ -67,18 +67,25 @@ namespace MegaManBattleNetwork
         public List<Battler> GetDamagableDefenders(ChipCommandSO chipCommand)
         {
             var attacker = chipCommand.Battler;
-            List<Battler> defenders = new();
+            List<Battler> defenders;
             if (attacker is Player)
             {
-                foreach (Enemy enemy in _enemyManager.Enemies)
-                {
-                    defenders.Add(enemy);
-                }
+                // foreach (Enemy enemy in _enemyManager.Enemies)
+                // {
+                //     defenders.Add(enemy);
+                // }
+                defenders = new(_enemyManager.Enemies);
             }
             else
             {
-                defenders.Add(_player);
+                defenders = new()
+                {
+                    _player
+                };
             }
+
+            if (attacker == null || defenders.Count == 0)
+                return new();
 
             var globalDamagableCells = new List<Vector2Int>();
             foreach (var cell in chipCommand.DamagableCells)
@@ -93,7 +100,7 @@ namespace MegaManBattleNetwork
                 {
                     if (!row.Contains(cell))
                         continue;
-                
+
                     foreach (var defender in defenders)
                     {
                         if (Globals.WorldToCell2D(defender.transform.position) == cell)

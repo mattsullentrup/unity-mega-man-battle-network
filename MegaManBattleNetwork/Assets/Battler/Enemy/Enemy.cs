@@ -16,6 +16,7 @@ namespace MegaManBattleNetwork
 
         [SerializeField] private float _actionCooldown = 4.0f;
         [SerializeField] protected ChipCommandSO _chipCommand;
+        private Player _player;
 
         private void Awake()
         {
@@ -35,6 +36,7 @@ namespace MegaManBattleNetwork
         public virtual void Start()
         {
             StartCoroutine(ActionRoutine());
+            _player = FindFirstObjectByType<Player>();
         }
 
         private void OnDestroy()
@@ -58,6 +60,9 @@ namespace MegaManBattleNetwork
 
         public override void DealDamage()
         {
+            if (_player == null)
+                return;
+
             BattlerAttacking?.Invoke(_chipCommand);
             StartCoroutine(ActionRoutine());
         }

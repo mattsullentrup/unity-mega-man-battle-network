@@ -54,6 +54,9 @@ namespace MegaManBattleNetwork
 
         private void OnEnemyStartingAction(Enemy enemy, ChipCommandSO chipCommand)
         {
+            if (_player == null)
+                return;
+
             if (_battleGrid.GetDamagableDefenders(chipCommand).Count != 0)
             {
                 enemy.ExecuteChip();
