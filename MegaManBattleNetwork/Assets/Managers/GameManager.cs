@@ -22,6 +22,7 @@ namespace MegaManBattleNetwork
         private void Awake()
         {
             _instance = this;
+            Time.timeScale = 0;
         }
 
         private void OnEnable()
@@ -74,10 +75,18 @@ namespace MegaManBattleNetwork
         private void OnHealthComponentHealthDepleted(Battler battler)
         {
             battler.Animation.SetTrigger("Die");
-            if (battler is Player || FindFirstObjectByType<EnemyManager>().Enemies.Count == 1)
+            var enemyManager = FindFirstObjectByType<EnemyManager>();
+            var enemy = battler as Enemy;
+            if (enemy != null)
+            {
+                enemyManager.Enemies.Remove(enemy);
+            }
+
+            if (battler is Player || enemyManager.Enemies.Count == 0)
             {
                 EndTheGame();
             }
+
         }
 
         private void EndTheGame()
