@@ -970,10 +970,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: GoblinParent
       objectReference: {fileID: 0}
-    - target: {fileID: 3487658579154384507, guid: 238fda662255db089a46b72d32638b38, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6485547718680499317, guid: 238fda662255db089a46b72d32638b38, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2
@@ -1729,7 +1725,6 @@ GameObject:
   - component: {fileID: 518180099}
   - component: {fileID: 518180101}
   - component: {fileID: 518180100}
-  - component: {fileID: 518180103}
   - component: {fileID: 518180102}
   - component: {fileID: 518180104}
   - component: {fileID: 518180105}
@@ -1894,18 +1889,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Chips>k__BackingField: []
---- !u!114 &518180103
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 518180094}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74c58dc1b90a672ba8abe3e8a45a3b56, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &518180104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7023,7 +7006,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3487658579154384507, guid: 607e46afec50bb2d0866e2bb21840979, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6485547718680499317, guid: 607e46afec50bb2d0866e2bb21840979, type: 3}
       propertyPath: m_LocalPosition.x
