@@ -9,10 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9e9ae1c865b626b1a4defc2fccb6825, type: 3}
-  m_Name: SwordChipCommand
+  m_Script: {fileID: 11500000, guid: cc575c53fabcfc3c48b4474f579d797c, type: 3}
+  m_Name: CannonChipCommand
   m_EditorClassIdentifier: 
-  Damage: 10
+  Damage: 20
   Delay: 0.3
   DamagableCells:
   - {x: 1, y: 0}
+  - {x: 2, y: 0}
+  - {x: 3, y: 0}
+  - {x: 4, y: 0}
+  - {x: 5, y: 0}

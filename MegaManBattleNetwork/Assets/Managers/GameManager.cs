@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -102,8 +103,8 @@ namespace MegaManBattleNetwork
 
         private void EndTheGame()
         {
-            Debug.Log("ending the game");
             _restartButton.gameObject.SetActive(true);
+            EventSystem.current.SetSelectedGameObject(_restartButton.transform.gameObject);
         }
     }
 }
