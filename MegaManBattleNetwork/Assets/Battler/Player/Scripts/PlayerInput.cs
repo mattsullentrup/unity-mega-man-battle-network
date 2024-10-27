@@ -31,6 +31,9 @@ namespace MegaManBattleNetwork
 
         private void Update()
         {
+            if (GameManager.Instance.IsSelectingChips)
+                return;
+
             Vector2 moveValue = _moveAction.ReadValue<Vector2>();
             if (_directions.Contains(moveValue))
             {
