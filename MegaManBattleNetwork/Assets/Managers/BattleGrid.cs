@@ -84,7 +84,7 @@ namespace MegaManBattleNetwork
                 return new();
 
             var globalDamagableCells = new List<Vector2Int>();
-            foreach (var cell in chipCommand.DamagableCells)
+            foreach (var cell in chipCommand.DamageableCells)
             {
                 globalDamagableCells.Add(cell + chipCommand.StartPosition);
             }

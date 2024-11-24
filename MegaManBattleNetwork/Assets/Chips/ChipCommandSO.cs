@@ -10,7 +10,7 @@ namespace MegaManBattleNetwork
         public event Action<Battler, ChipCommandSO> ChipExecuting;
         public int Damage;
         public float Delay;
-        public List<Vector2Int> DamagableCells;
+        public List<Vector2Int> DamageableCells;
         public Battler Battler { get; set; }
         public Vector2Int StartPosition { get; set; }
 

@@ -25,9 +25,9 @@ namespace MegaManBattleNetwork
             _chipCommand = Instantiate(_chipCommand);
             _chipCommand.Battler = this;
 
-            for (int i = 0; i < _chipCommand.DamagableCells.Count; i++)
+            for (int i = 0; i < _chipCommand.DamageableCells.Count; i++)
             {
-                _chipCommand.DamagableCells[i] *= Vector2Int.left;
+                _chipCommand.DamageableCells[i] *= Vector2Int.left;
             }
 
             _chipCommand.ChipExecuting += OnChipExecuting;
