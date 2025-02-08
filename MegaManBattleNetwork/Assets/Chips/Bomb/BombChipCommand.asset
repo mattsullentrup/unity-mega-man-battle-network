@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BombChipCommand
   m_EditorClassIdentifier: 
   Damage: 15
-  Delay: 1
-  DamagableCells:
+  Delay: 0.6666667
+  DamageableCells:
   - {x: 3, y: 0}
   _throwAnimation: {fileID: 7400000, guid: 0cd13c4ebd89a8401b617aa37e1efc52, type: 2}
